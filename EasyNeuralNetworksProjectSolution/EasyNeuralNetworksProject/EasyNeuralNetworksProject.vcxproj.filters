@@ -16,6 +16,9 @@
     <Filter Include="Header Files\Headers">
       <UniqueIdentifier>{a056c2a2-77ac-421c-8f51-aea4555c5839}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Modules">
+      <UniqueIdentifier>{c0020f48-a1f7-43e8-a6d1-c37e82d7f74f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -23,6 +26,9 @@
     </ClCompile>
     <ClCompile Include="App.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ModuleWindow.cpp">
+      <Filter>Source Files\Modules</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -43,6 +49,9 @@
     </ClInclude>
     <ClInclude Include="Code_rules.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ModuleWindow.h">
+      <Filter>Source Files\Modules</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

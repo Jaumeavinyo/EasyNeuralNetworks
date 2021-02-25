@@ -1,9 +1,6 @@
 #ifndef __Module_H__
 #define __Module_H__
 
-
-
-
 class Application;
 
 class Module

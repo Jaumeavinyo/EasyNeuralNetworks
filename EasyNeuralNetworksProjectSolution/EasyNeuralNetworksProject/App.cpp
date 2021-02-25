@@ -5,7 +5,10 @@
 
 Application::Application() {
 	//here we initialize a module declared on the header, example: window = new ModuleWindow(this, true);
-	dt = 0.00000000000000000000000000000000001;
+	//window = new ModuleWindow(this, true);
+
+
+	dt = 0.01;
 	//then we add it to a list of modules in the order we want to print them
 
 }

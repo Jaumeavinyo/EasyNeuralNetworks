@@ -6,7 +6,7 @@ class Application
 {
 public:
 	//modules here
-
+	Module* window;
 	
 private:
 
