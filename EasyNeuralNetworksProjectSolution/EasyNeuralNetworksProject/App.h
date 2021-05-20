@@ -1,6 +1,6 @@
 #include "Globals.h"
 #include "Module.h"
-
+#include "ModuleWindow.h"
 
 class Application
 {

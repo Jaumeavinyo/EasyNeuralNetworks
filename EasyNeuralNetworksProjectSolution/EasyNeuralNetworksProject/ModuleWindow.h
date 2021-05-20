@@ -3,13 +3,13 @@
 
 #include "Globals.h"
 #include "Module.h"
-
+#include <SDL.h>
 
 class ModuleWindow : public Module
 {
 public:
 
-	ModuleWindow(Application* app, bool start_enabled = true);
+	ModuleWindow(Application* app,const char* moduleName, bool start_enabled = true);
 
 	// Destructor
 	virtual ~ModuleWindow();
@@ -29,9 +29,10 @@ public:
 
 public:
 
+	const char* window_title = "Easy Neural Networks";
+
 	SDL_Window*			window = NULL; //The window we'll be rendering to	
 	SDL_Surface*		screen_surface;//The surface contained by the window
-
 
 };
 

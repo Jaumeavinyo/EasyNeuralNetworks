@@ -1,0 +1,8 @@
+﻿  App.cpp
+  Main.cpp
+  Generating code
+  8 of 51 functions (15.7%) were compiled, the rest were copied from previous compilation.
+    2 functions were new in current compilation
+    2 functions had inline decision re-evaluated but remain unchanged
+  Finished generating code
+  EasyNeuralNetworksProject.vcxproj -> C:\Users\Usuario\Documents\GitHub\EasyNeuralNetworks\EasyNeuralNetworksProjectSolution\x64\Release\EasyNeuralNetworksProject.exe

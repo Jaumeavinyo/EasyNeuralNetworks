@@ -5,12 +5,13 @@
 
 Application::Application() {
 	//here we initialize a module declared on the header, example: window = new ModuleWindow(this, true);
-	//window = new ModuleWindow(this, true);
+	window = new ModuleWindow(this,"moduleWindow", true);
 
 
-	dt = 0.01;
+	dt = 0.01f;
 	//then we add it to a list of modules in the order we want to print them
 
+	AddModule(window);
 }
 
 Application::~Application() {
