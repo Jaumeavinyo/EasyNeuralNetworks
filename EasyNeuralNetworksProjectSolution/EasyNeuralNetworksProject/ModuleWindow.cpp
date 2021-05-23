@@ -61,7 +61,7 @@ bool ModuleWindow::Init() {
 	if (window == NULL)
 	{
 		
-		printf("Window could not be created! SDL_Error: %s\n", SDL_GetError());
+		printf(" ---> Window could not be created! SDL_Error: %s\n", SDL_GetError());
 		ret = false;
 	}
 	else

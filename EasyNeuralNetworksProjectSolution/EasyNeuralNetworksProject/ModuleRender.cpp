@@ -32,8 +32,20 @@ bool ModuleRender::Init() {
 		printf(" --- > Using Vsync");
 	}
 	
-	//renderer = SDL_CreateRenderer(App);
-	
+	renderer = SDL_CreateRenderer(App->window->window, -1, flags);
+
+	if (renderer == NULL) {
+
+		printf(" ---> Error creating renderer SDL_Error: %s\n", SDL_GetError());
+		ret = false;
+	}
+	else {
+		camera.h = App->window->screen_surface->h;
+		camera.w = App->window->screen_surface->w;
+		camera.x = 100;
+		camera.y = 200;
+	}
+
 	return ret;
 
 }
@@ -41,7 +53,10 @@ bool ModuleRender::Init() {
 bool ModuleRender::Start() {
 	
 	bool ret = true;
-	
+
+	SDL_RenderGetViewport(renderer, &viewport); //GET THE DRAWING AREA FOR THE CURRENT TARGET
+	SDL_RenderSetLogicalSize(renderer, SCREEN_WIDTH, SCREEN_HEIGHT);//SET DEVICE INDEPENDENT RESOLUTION FOR RENDERING. (IN THIS CASE RENDERING RESOLUTION IS OUR SCREEN RESOLUTION)
+
 	return ret;
 
 }
@@ -49,18 +64,26 @@ bool ModuleRender::Start() {
 update_status  ModuleRender::PreUpdate(float dt) {
 
 	update_status ret = update_status::UPDATE_CONTINUE;
+
+	SDL_RenderClear(renderer);//CLEAR PREV FRAME SCREEN
+
 	return ret;
 }
 
 update_status  ModuleRender::Update(float dt) {
 
 	update_status ret = update_status::UPDATE_CONTINUE;
+
 	return ret;
 }
 
 update_status  ModuleRender::PostUpdate(float dt) {
 
 	update_status ret = update_status::UPDATE_CONTINUE;
+
+	SDL_SetRenderDrawColor(renderer, background.r, background.g, background.g, background.a);//SET COLOR FOR RENDERING
+	SDL_RenderPresent(renderer);//UPDATE SCREEN WITH NEW RENDERING DONE
+
 	return ret;
 }
 
@@ -68,6 +91,9 @@ update_status  ModuleRender::PostUpdate(float dt) {
 bool ModuleRender::CleanUp() {
 
 	bool ret = true;
+
+	SDL_DestroyRenderer(renderer);
+
 	return ret;
 
 }

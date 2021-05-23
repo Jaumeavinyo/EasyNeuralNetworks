@@ -6,8 +6,8 @@
 
 
 
-/*class ModuleWindow;
-class ModuleRender;*/
+class ModuleWindow;
+class ModuleRender;
 
 
 
@@ -15,8 +15,8 @@ class Application{
 
 public:
 	//modules here
-	Module* window;
-	Module* render;
+	ModuleWindow* window;
+	ModuleRender* render;
 private:
 	
 						

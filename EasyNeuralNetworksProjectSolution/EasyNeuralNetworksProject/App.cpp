@@ -10,7 +10,7 @@ Application::Application() {
 	
 	dt = 0.01f;
 	//then we add it to a list of modules in the order we want to print them
-
+	
 	AddModule(window);
 	AddModule(render);
 }
