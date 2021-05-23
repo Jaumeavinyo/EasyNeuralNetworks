@@ -31,7 +31,7 @@ int main(int argc, char** argv) {
 			break;
 
 		case START:		
-
+			
 			if (App->Init() == false)
 			{
 				printf("Application Init exits with ERROR");

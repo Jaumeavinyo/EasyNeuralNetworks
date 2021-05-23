@@ -34,7 +34,7 @@ bool Application::Init() {
 	printf("Application Modules Init complete");
 
 	item = p_list_modules.getFirst();
-
+	
 	while (item != NULL && ret == true){ //Start all modules
 		ret = item->data->Start();
 		item = item->next;

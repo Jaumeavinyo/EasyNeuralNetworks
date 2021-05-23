@@ -1,4 +1,5 @@
 #include "ModuleRender.h"
+#include "App.h"
 
 
 //############  CONSTRUCTORS ############
@@ -6,7 +7,7 @@
 
 ModuleRender::ModuleRender(Application* app, const char* moduleName, bool start_enabled) : Module(app, start_enabled, moduleName){
 
-	int a = 1;
+
 
 }
 
@@ -30,15 +31,17 @@ bool ModuleRender::Init() {
 		flags |= SDL_RENDERER_PRESENTVSYNC;
 		printf(" --- > Using Vsync");
 	}
-
+	
+	//renderer = SDL_CreateRenderer(App);
+	
 	return ret;
 
 }
 
 bool ModuleRender::Start() {
-
+	
 	bool ret = true;
-
+	
 	return ret;
 
 }

@@ -1,12 +1,15 @@
 #include "Globals.h"
 #include "Module.h"
+
 #include "ModuleWindow.h"
 #include "ModuleRender.h"
 
 
 
-class ModuleWindow;
-class ModuleRender;
+/*class ModuleWindow;
+class ModuleRender;*/
+
+
 
 class Application{
 
@@ -15,7 +18,7 @@ public:
 	Module* window;
 	Module* render;
 private:
-
+	
 						
 	float dt = 0.1f;	//delta time need to be done and added to update functions
 

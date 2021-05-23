@@ -1,5 +1,5 @@
 #include "ModuleWindow.h"
-
+#include "App.h"
 
 //############  CONSTRUCTORS ############
 

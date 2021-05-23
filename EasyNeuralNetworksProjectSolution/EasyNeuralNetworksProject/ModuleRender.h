@@ -4,7 +4,6 @@
 #include "Globals.h"
 #include "Module.h"
 
-
 class ModuleRender : public Module {
 
 public:
