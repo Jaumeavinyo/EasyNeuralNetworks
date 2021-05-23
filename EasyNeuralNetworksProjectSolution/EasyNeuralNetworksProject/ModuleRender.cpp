@@ -109,3 +109,22 @@ void ModuleRender::setBackgroundColor(int r, int g, int b, int a) {
 	background.a = a;
 
 }
+
+void ModuleRender::ScreenToWorld(int* x, int* y) const
+{
+	int scale = App->window->GetScale();
+
+	x = (x - camera.x / scale);
+	y = (y - camera.y / scale);
+}
+
+iPoint ModuleRender::ScreenToWorld(int x, int y) const
+{
+	iPoint ret;
+	int scale = App->window->GetScale();
+
+	ret.x = (x - camera.x / scale);
+	ret.y = (y - camera.y / scale);
+
+	return ret;
+}

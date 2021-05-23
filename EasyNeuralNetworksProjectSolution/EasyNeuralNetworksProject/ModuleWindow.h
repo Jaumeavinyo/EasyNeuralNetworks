@@ -27,13 +27,17 @@ public:
 
 	void SetWindowSize(int width, int height);
 
+	float GetScale();
+
+	void SetScale(float newScale); 
+
 public:
 
 	const char* window_title = "Easy Neural Networks";
 
 	SDL_Window*			window = NULL; //The window we'll be rendering to	
 	SDL_Surface*		screen_surface;//The surface contained by the window
-
+	float               scale;
 };
 
 #endif MODULE_WINDOW_H_

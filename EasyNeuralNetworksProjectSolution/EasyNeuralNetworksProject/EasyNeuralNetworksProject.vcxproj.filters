@@ -36,6 +36,9 @@
     <ClCompile Include="ModuleRender.cpp">
       <Filter>Source Files\Modules</Filter>
     </ClCompile>
+    <ClCompile Include="ModuleInput.cpp">
+      <Filter>Source Files\Modules</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="p2List.h">
@@ -64,6 +67,9 @@
     </ClInclude>
     <ClInclude Include="Variables.h">
       <Filter>Header Files\Definition headers</Filter>
+    </ClInclude>
+    <ClInclude Include="ModuleInput.h">
+      <Filter>Source Files\Modules</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

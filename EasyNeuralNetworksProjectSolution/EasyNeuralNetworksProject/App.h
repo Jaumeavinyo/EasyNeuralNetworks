@@ -3,12 +3,12 @@
 
 #include "ModuleWindow.h"
 #include "ModuleRender.h"
-
+#include "ModuleInput.h"
 
 
 class ModuleWindow;
 class ModuleRender;
-
+class ModuleInput;
 
 
 class Application{
@@ -17,6 +17,7 @@ public:
 	//modules here
 	ModuleWindow* window;
 	ModuleRender* render;
+	ModuleInput*  input;
 private:
 	
 						

@@ -120,3 +120,11 @@ void ModuleWindow::SetResizable(bool active) {
 void ModuleWindow::SetWindowSize(int width, int height) {
 	SDL_SetWindowSize(window, width, height);
 }
+
+float ModuleWindow::GetScale() {
+	return scale;
+}
+
+void ModuleWindow::SetScale(float newScale){
+	scale = newScale;
+}

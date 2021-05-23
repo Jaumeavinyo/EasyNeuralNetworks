@@ -1,77 +1,21 @@
-﻿  ModuleRender.cpp
+﻿  App.cpp
+  Main.cpp
+  ModuleInput.cpp
+C:\Users\Usuario\Documents\GitHub\EasyNeuralNetworks\EasyNeuralNetworksProjectSolution\EasyNeuralNetworksProject\ModuleInput.cpp(113,14): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+  ModuleRender.cpp
+C:\Users\Usuario\Documents\GitHub\EasyNeuralNetworks\EasyNeuralNetworksProjectSolution\EasyNeuralNetworksProject\ModuleRender.cpp(115,12): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\Usuario\Documents\GitHub\EasyNeuralNetworks\EasyNeuralNetworksProjectSolution\EasyNeuralNetworksProject\ModuleRender.cpp(124,12): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
   ModuleWindow.cpp
 C:\Users\Usuario\Documents\GitHub\EasyNeuralNetworks\EasyNeuralNetworksProjectSolution\EasyNeuralNetworksProject\ModuleWindow.cpp(28,12): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
 C:\Users\Usuario\Documents\GitHub\EasyNeuralNetworks\EasyNeuralNetworksProjectSolution\EasyNeuralNetworksProject\ModuleWindow.cpp(29,13): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
   Generating Code...
-  LINK : 0 new modules and 2 (out of 245) modules have changed since prior linking
-  
-  Searching libraries
-      Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.19041.0\um\x64\kernel32.lib:
-      Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.19041.0\um\x64\user32.lib:
-      Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.19041.0\um\x64\gdi32.lib:
-      Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.19041.0\um\x64\winspool.lib:
-      Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.19041.0\um\x64\comdlg32.lib:
-      Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.19041.0\um\x64\advapi32.lib:
-      Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.19041.0\um\x64\shell32.lib:
-      Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.19041.0\um\x64\ole32.lib:
-      Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.19041.0\um\x64\oleaut32.lib:
-      Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.19041.0\um\x64\uuid.lib:
-      Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.19041.0\um\x64\odbc32.lib:
-      Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.19041.0\um\x64\odbccp32.lib:
-      Searching C:\Users\Usuario\Documents\GitHub\EasyNeuralNetworks\EasyNeuralNetworksProjectSolution\EasyNeuralNetworksProject\SDL2\lib\x64\SDL2.lib:
-        Found SDL_CreateRenderer
-          Referenced in ModuleRender.obj
-          Loaded SDL2.lib(SDL2.dll)
-        Found SDL_RenderSetLogicalSize
-          Referenced in ModuleRender.obj
-          Loaded SDL2.lib(SDL2.dll)
-        Found SDL_RenderGetViewport
-          Referenced in ModuleRender.obj
-          Loaded SDL2.lib(SDL2.dll)
-        Found SDL_SetRenderDrawColor
-          Referenced in ModuleRender.obj
-          Loaded SDL2.lib(SDL2.dll)
-        Found SDL_RenderClear
-          Referenced in ModuleRender.obj
-          Loaded SDL2.lib(SDL2.dll)
-        Found SDL_RenderPresent
-          Referenced in ModuleRender.obj
-          Loaded SDL2.lib(SDL2.dll)
-        Found SDL_DestroyRenderer
-          Referenced in ModuleRender.obj
-          Loaded SDL2.lib(SDL2.dll)
-  
-  Finished searching libraries
+  LINK : 0 new modules and 5 (out of 248) modules have changed since prior linking
   Starting pass 2
        ModuleWindow.obj
        ModuleRender.obj
-       SDL2.lib(SDL2.dll)
-       SDL2.lib(SDL2.dll)
-       SDL2.lib(SDL2.dll)
-       SDL2.lib(SDL2.dll)
-       SDL2.lib(SDL2.dll)
-       SDL2.lib(SDL2.dll)
-       SDL2.lib(SDL2.dll)
-       SDL2.lib(SDL2.dll)
-       SDL2.lib(SDL2.dll)
-       SDL2.lib(SDL2.dll)
-       SDL2.lib(SDL2.dll)
-       SDL2.lib(SDL2.dll)
-       SDL2.lib(SDL2.dll)
-       SDL2.lib(SDL2.dll)
-       SDL2.lib(SDL2.dll)
-       SDL2.lib(SDL2.dll)
-       SDL2.lib(SDL2.dll)
-       SDL2.lib(SDL2.dll)
-       SDL2.lib(SDL2.dll)
-       SDL2.lib(SDL2.dll)
-       SDL2.lib(SDL2.dll)
-       SDL2.lib(SDL2.dll)
-       SDL2.lib(SDL2.dll)
-       SDL2.lib(SDL2.dll)
-       SDL2.lib(SDL2.dll)
-       SDL2.lib(SDL2.dll)
-       SDL2.lib(SDL2.dll)
+       ModuleInput.obj
+       Main.obj
+       App.obj
        LIBCMTD.lib(loadcfg.obj)
   Finished pass 2
   EasyNeuralNetworksProject.vcxproj -> C:\Users\Usuario\Documents\GitHub\EasyNeuralNetworks\EasyNeuralNetworksProjectSolution\x64\Debug\EasyNeuralNetworksProject.exe
