@@ -4,7 +4,8 @@
 //#define LOG(format, ...) log(__FILE__, __LINE__, format, __VA_ARGS__);
 
 #include "StandartLibraries.h"
-
+#include <SDL.h>
+#include "Variables.h"
 //void log(const char file[], int line, const char* format, ...);
 
 
@@ -18,6 +19,7 @@ enum update_status
 	UPDATE_ERROR
 
 };
+
 
 
 // Window Configuration -----------

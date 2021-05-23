@@ -1,6 +1,8 @@
 #include "ModuleWindow.h"
 
 
+//############  CONSTRUCTORS ############
+
 
 ModuleWindow::ModuleWindow(Application* app,const char* moduleName, bool start_enabled) : Module(app, start_enabled,moduleName) {
 
@@ -12,6 +14,10 @@ ModuleWindow::ModuleWindow(Application* app,const char* moduleName, bool start_e
 ModuleWindow::~ModuleWindow() {
 
 }
+
+
+//############  MAIN APP FUNCTIONS ############
+
 
 bool ModuleWindow::Init() {
 	
@@ -80,6 +86,10 @@ bool ModuleWindow::CleanUp() {
 
 	return true;
 }
+
+
+//############  UTILITY FUNCTIONS ############
+
 
 void ModuleWindow::SetTitle(const char* title)
 {

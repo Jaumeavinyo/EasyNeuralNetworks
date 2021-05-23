@@ -6,12 +6,13 @@
 Application::Application() {
 	//here we initialize a module declared on the header, example: window = new ModuleWindow(this, true);
 	window = new ModuleWindow(this,"moduleWindow", true);
-
-
+	render = new ModuleRender(this, "moduleRender", true);
+	
 	dt = 0.01f;
 	//then we add it to a list of modules in the order we want to print them
 
 	AddModule(window);
+	AddModule(render);
 }
 
 Application::~Application() {
@@ -48,11 +49,11 @@ void Application::PrepareUpdate() {
 
 update_status Application::Update() {
 
-	update_status ret = UPDATE_CONTINUE;
+	update_status ret = update_status::UPDATE_CONTINUE;
 
 	p2List_item<Module*>* item = p_list_modules.getFirst();
 
-	while (item != NULL && ret == UPDATE_CONTINUE)
+	while (item != NULL && ret == update_status::UPDATE_CONTINUE)
 	{
 		ret = item->data->PreUpdate(dt);
 		item = item->next;
@@ -60,7 +61,7 @@ update_status Application::Update() {
 
 	item = p_list_modules.getFirst();
 
-	while (item != NULL && ret == UPDATE_CONTINUE)
+	while (item != NULL && ret == update_status::UPDATE_CONTINUE)
 	{
 		ret = item->data->Update(dt);
 		item = item->next;
@@ -68,7 +69,7 @@ update_status Application::Update() {
 
 	item = p_list_modules.getFirst();
 
-	while (item != NULL && ret == UPDATE_CONTINUE)
+	while (item != NULL && ret == update_status::UPDATE_CONTINUE)
 	{
 		ret = item->data->PostUpdate(dt);
 		item = item->next;
@@ -98,7 +99,7 @@ bool Application::CleanUp() {
 }
 
 
-//############  OTHER APP FUNCTIONS ############
+//############  UTILITY FUNCTIONS ############
 
 void Application::AddModule(Module* m) {
 	p_list_modules.add(m);

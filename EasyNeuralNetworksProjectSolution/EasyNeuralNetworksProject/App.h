@@ -1,17 +1,23 @@
 #include "Globals.h"
 #include "Module.h"
 #include "ModuleWindow.h"
+#include "ModuleRender.h"
 
-class Application
-{
+
+
+class ModuleWindow;
+class ModuleRender;
+
+class Application{
+
 public:
 	//modules here
 	Module* window;
-	
+	Module* render;
 private:
 
 						
-	float dt;	//delta time
+	float dt = 0.1f;	//delta time need to be done and added to update functions
 
 						
 
@@ -39,4 +45,5 @@ private:
 	std::string organization_name;
 
 };
+
 extern Application* App;

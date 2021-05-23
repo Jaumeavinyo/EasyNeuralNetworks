@@ -19,6 +19,9 @@
     <Filter Include="Source Files\Modules">
       <UniqueIdentifier>{c0020f48-a1f7-43e8-a6d1-c37e82d7f74f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Definition headers">
+      <UniqueIdentifier>{47877467-38a3-4ae0-a014-abe0ce01d88c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ModuleWindow.cpp">
@@ -30,16 +33,13 @@
     <ClCompile Include="Main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="ModuleRender.cpp">
+      <Filter>Source Files\Modules</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="StandartLibraries.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="p2List.h">
       <Filter>Resource Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Globals.h">
-      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="App.h">
       <Filter>Header Files\Headers</Filter>
@@ -47,11 +47,23 @@
     <ClInclude Include="Module.h">
       <Filter>Header Files\Headers</Filter>
     </ClInclude>
-    <ClInclude Include="Code_rules.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="ModuleWindow.h">
       <Filter>Source Files\Modules</Filter>
+    </ClInclude>
+    <ClInclude Include="ModuleRender.h">
+      <Filter>Source Files\Modules</Filter>
+    </ClInclude>
+    <ClInclude Include="Globals.h">
+      <Filter>Header Files\Definition headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Code_rules.h">
+      <Filter>Header Files\Definition headers</Filter>
+    </ClInclude>
+    <ClInclude Include="StandartLibraries.h">
+      <Filter>Header Files\Definition headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Variables.h">
+      <Filter>Header Files\Definition headers</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

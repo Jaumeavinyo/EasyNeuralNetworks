@@ -3,7 +3,7 @@
 
 #include "Globals.h"
 #include "Module.h"
-#include <SDL.h>
+
 
 class ModuleWindow : public Module
 {

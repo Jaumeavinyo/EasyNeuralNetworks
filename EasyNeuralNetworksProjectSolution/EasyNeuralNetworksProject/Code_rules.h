@@ -37,4 +37,27 @@ enum first_second
 -function(){
 }
 
+----------------------------------
+
+
+All modules in cpp will follow this structure: 
+
+
+//############  CONSTRUCTORS ############
+
+
+code
+
+
+//############  MAIN APP FUNCTIONS ############
+
+
+code
+
+
+//############  UTILITY FUNCTIONS ############
+
+
+----------------------------------
+
 */

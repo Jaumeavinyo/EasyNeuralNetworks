@@ -7,12 +7,12 @@ class Module
 {
 private:
 	bool p_enabled;
-	const char* moduleName_;
+	const char* p_moduleName;
 
 public:
 	Application* App;
 
-	Module(Application* parent, bool start_enabled,const char* moduleName) : App(parent), p_enabled(start_enabled), moduleName_(moduleName)//p_enabled init = pc
+	Module(Application* parent, bool start_enabled,const char* moduleName) : App(parent), p_enabled(start_enabled), p_moduleName(moduleName)//p_enabled init = pc
 	{}
 
 
