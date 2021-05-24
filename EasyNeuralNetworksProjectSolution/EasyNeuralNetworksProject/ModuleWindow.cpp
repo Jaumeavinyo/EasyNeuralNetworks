@@ -27,6 +27,7 @@ bool ModuleWindow::Init() {
 
 	int width = SCREEN_WIDTH * SCREEN_SIZE;
 	int height = SCREEN_HEIGHT * SCREEN_SIZE;
+	scale = SCREEN_SIZE;
 	Uint32 flags = SDL_WINDOW_OPENGL | SDL_WINDOW_SHOWN;
 
 	//Use OpenGL 2.1
