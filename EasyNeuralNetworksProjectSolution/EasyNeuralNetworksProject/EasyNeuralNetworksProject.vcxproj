@@ -161,21 +161,39 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\imgui-1.83\imgui.cpp" />
+    <ClCompile Include="..\imgui-1.83\imgui_demo.cpp" />
+    <ClCompile Include="..\imgui-1.83\imgui_draw.cpp" />
+    <ClCompile Include="..\imgui-1.83\imgui_tables.cpp" />
+    <ClCompile Include="..\imgui-1.83\imgui_widgets.cpp" />
     <ClCompile Include="App.cpp" />
+    <ClCompile Include="ImGui_p.cpp" />
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="ModuleImGui.cpp" />
     <ClCompile Include="ModuleInput.cpp" />
+    <ClCompile Include="ModuleNeuralNetwork.cpp" />
     <ClCompile Include="ModuleRender.cpp" />
     <ClCompile Include="ModuleScene.cpp" />
     <ClCompile Include="ModuleWindow.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\imgui-1.83\imconfig.h" />
+    <ClInclude Include="..\imgui-1.83\imgui.h" />
+    <ClInclude Include="..\imgui-1.83\imgui_internal.h" />
+    <ClInclude Include="..\imgui-1.83\imstb_rectpack.h" />
+    <ClInclude Include="..\imgui-1.83\imstb_textedit.h" />
+    <ClInclude Include="..\imgui-1.83\imstb_truetype.h" />
     <ClInclude Include="App.h" />
     <ClInclude Include="Code_rules.h" />
     <ClInclude Include="Globals.h" />
+    <ClInclude Include="Layer.h" />
     <ClInclude Include="Module.h" />
+    <ClInclude Include="ModuleImGui.h" />
     <ClInclude Include="ModuleInput.h" />
+    <ClInclude Include="ModuleNeuralNetwork.h" />
     <ClInclude Include="ModuleRender.h" />
     <ClInclude Include="ModuleWindow.h" />
+    <ClInclude Include="Neuron.h" />
     <ClInclude Include="p2List.h" />
     <ClInclude Include="StandartLibraries.h" />
     <ClInclude Include="Variables.h" />

@@ -1,5 +1,5 @@
-#ifndef MODULE_WINDOW_H_
-#define MODULE_WINDOW_H_
+#ifndef MODULE_WINDOW_H
+#define MODULE_WINDOW_H
 
 #include "Globals.h"
 #include "Module.h"
@@ -31,13 +31,24 @@ public:
 
 	void SetScale(float newScale); 
 
+
+
+
+
 public:
 
 	const char* window_title = "Easy Neural Networks";
 
 	SDL_Window*			window = NULL; //The window we'll be rendering to	
 	SDL_Surface*		screen_surface;//The surface contained by the window
+
+	SDL_GLContext       gl_context;
+
 	float               scale;
+
+
+
+
 };
 
-#endif MODULE_WINDOW_H_
+#endif MODULE_WINDOW_H

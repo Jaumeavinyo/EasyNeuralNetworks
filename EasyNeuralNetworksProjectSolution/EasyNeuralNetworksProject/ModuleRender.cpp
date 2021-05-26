@@ -21,16 +21,16 @@ ModuleRender::~ModuleRender() {
 
 bool ModuleRender::Init() {
 	
-	printf("ModuleRender Init()");
+	printf("ModuleRender Init()\n");
 
 	bool ret = true;
 
 	uint32 flags = SDL_RENDERER_ACCELERATED;
 	
-	if (VSYNC) {
-		flags |= SDL_RENDERER_PRESENTVSYNC;
-		printf(" --- > Using Vsync");
-	}
+	//if (VSYNC) {                                     ALREADY DONE IN WINDOW.CPP
+	//	flags |= SDL_RENDERER_PRESENTVSYNC;
+	//	printf(" --- > Using Vsync");
+	//}
 	
 	renderer = SDL_CreateRenderer(App->window->window, -1, flags);
 

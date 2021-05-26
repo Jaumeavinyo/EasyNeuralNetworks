@@ -21,43 +21,64 @@ ModuleWindow::~ModuleWindow() {
 
 bool ModuleWindow::Init() {
 	
-	printf(" ModuleWindow Init() ");
+	printf(" ModuleWindow Init()\n ");
 
 	bool ret = true;
 
 	int width = SCREEN_WIDTH * SCREEN_SIZE;
 	int height = SCREEN_HEIGHT * SCREEN_SIZE;
 	scale = SCREEN_SIZE;
-	Uint32 flags = SDL_WINDOW_OPENGL | SDL_WINDOW_SHOWN;
+	Uint32 flags = SDL_WINDOW_SHOWN;
 
-	//Use OpenGL 2.1
-	SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 2);
-	SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 1);
-
-	if (WIN_FULLSCREEN == true)
+	if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_TIMER | SDL_INIT_GAMECONTROLLER) != 0) //imgui main.cpp uses it
 	{
+		printf(" ---> SDL_Init Error: %s\n", SDL_GetError());
+		ret = false;
+	}
+
+	
+	SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 2);
+	SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 2);
+
+	// Setup window
+	SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);  //imgui main.cpp uses it
+	SDL_GL_SetAttribute(SDL_GL_DEPTH_SIZE, 24);   //imgui main.cpp uses it
+	SDL_GL_SetAttribute(SDL_GL_STENCIL_SIZE, 8);  //imgui main.cpp uses it
+
+	if (SDL_WIN_ALLOW_HIGHDPI == true) {//imgui main.cpp uses it
+		flags |= SDL_WINDOW_ALLOW_HIGHDPI;
+	}
+
+	if (SDL_WIN_OPENGL == true) { //imgui main.cpp uses it
+		flags |= SDL_WINDOW_OPENGL;
+	}
+
+	if (WIN_FULLSCREEN == true) {
 		flags |= SDL_WINDOW_FULLSCREEN;
 	}
 
-	if (WIN_RESIZABLE == true)
-	{
-		flags |= SDL_WINDOW_RESIZABLE;
+	if (WIN_RESIZABLE == true) {
+		flags |= SDL_WINDOW_RESIZABLE;//imgui main.cpp uses it
 	}
 
-	if (WIN_BORDERLESS == true)
-	{
+	if (WIN_BORDERLESS == true) {
 		flags |= SDL_WINDOW_BORDERLESS;
 	}
 
-	if (WIN_FULLSCREEN_DESKTOP == true)
-	{
+	if (WIN_FULLSCREEN_DESKTOP == true) {
 		flags |= SDL_WINDOW_FULLSCREEN_DESKTOP;
 	}
-	/*if (WIN_DOUBLE_BUFFERING == true) {
-		flags |= GL_DOUBLEBUFFER;// glew.h stuff
-	}*/
+	if (WIN_DOUBLE_BUFFERING == true) {//imgui main.cpp uses it
+		//flags |= GL_DOUBLEBUFFER;// glew.h stuff
+	}
+	if (VSYNC == true) {
+		SDL_GL_SetSwapInterval(1); //imgui main.cpp uses it
+	}
 
 	window = SDL_CreateWindow(TITLE, SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, width, height, flags);
+
+	gl_context = SDL_GL_CreateContext(window);  //imgui main.cpp uses it
+	SDL_GL_MakeCurrent(window, gl_context);     //imgui main.cpp uses it	
 
 	if (window == NULL)
 	{
@@ -129,3 +150,4 @@ float ModuleWindow::GetScale() {
 void ModuleWindow::SetScale(float newScale){
 	scale = newScale;
 }
+

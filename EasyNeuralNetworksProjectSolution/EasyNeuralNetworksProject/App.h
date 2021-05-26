@@ -4,12 +4,12 @@
 #include "ModuleWindow.h"
 #include "ModuleRender.h"
 #include "ModuleInput.h"
-
+#include "ModuleImGui.h"
 
 class ModuleWindow;
 class ModuleRender;
 class ModuleInput;
-
+//class ModuleImGui;
 
 class Application{
 
@@ -18,6 +18,8 @@ public:
 	ModuleWindow* window;
 	ModuleRender* render;
 	ModuleInput*  input;
+	//ModuleImGui* imgui;
+
 private:
 	
 						

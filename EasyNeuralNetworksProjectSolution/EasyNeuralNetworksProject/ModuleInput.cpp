@@ -2,6 +2,7 @@
 #include "App.h"
 
 
+//############  CONSTRUCTORS ############
 
 
 ModuleInput::ModuleInput(Application* app, const char* moduleName, bool start_enabled) : Module(app, start_enabled, moduleName) {
@@ -16,9 +17,13 @@ ModuleInput::~ModuleInput(){
 	delete[] p_keyboard;
 }
 
+
+//############  MAIN APP FUNCTIONS ############
+
+
 // Called before render is available
 bool ModuleInput::Init(){
-	printf("ModuleInput Init()");
+	printf("ModuleInput Init()\n");
 	bool ret = true;
 	SDL_Init(0);
 
@@ -101,12 +106,12 @@ update_status ModuleInput::PreUpdate(float dt)
 
 		case SDL_MOUSEBUTTONDOWN:
 			p_mouse_buttons[event.button.button - 1] = KEY_DOWN;
-			//LOG("Mouse button %d down", event.button.button-1);
+			
 			break;
 
 		case SDL_MOUSEBUTTONUP:
 			p_mouse_buttons[event.button.button - 1] = KEY_UP;
-			//LOG("Mouse button %d up", event.button.button-1);
+			
 			break;
 
 		case SDL_MOUSEMOTION:
@@ -115,7 +120,7 @@ update_status ModuleInput::PreUpdate(float dt)
 			p_mouse_motion_y = event.motion.yrel / scale;
 			p_mouse_x = event.motion.x / scale;
 			p_mouse_y = event.motion.y / scale;
-			//LOG("Mouse motion x %d y %d", mouse_motion_x, mouse_motion_y);
+			
 			break;
 		}
 	}
@@ -123,7 +128,7 @@ update_status ModuleInput::PreUpdate(float dt)
 	return update_status::UPDATE_CONTINUE;
 }
 
-// Called before quitting
+
 bool ModuleInput::CleanUp()
 {
 	
@@ -131,7 +136,10 @@ bool ModuleInput::CleanUp()
 	return true;
 }
 
-// ---------
+
+//############  UTILITY FUNCTIONS ############
+
+
 bool ModuleInput::GetWindowEvent(EventWindow ev)
 {
 	return p_windowEvents[ev];

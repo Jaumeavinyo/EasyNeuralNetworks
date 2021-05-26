@@ -6,14 +6,17 @@
 Application::Application() {
 	//here we initialize a module declared on the header, example: window = new ModuleWindow(this, true);
 	window = new ModuleWindow(this,"moduleWindow", true);
-	render = new ModuleRender(this, "moduleRender", true);
 	input = new  ModuleInput(this, "moduleInput", true);
+	render = new ModuleRender(this, "moduleRender", true);
+	//imgui = new ModuleImGui(this, "ModuleImGui", true);
+
 	dt = 0.01f;
 	//then we add it to a list of modules in the order we want to print them
 	
 	AddModule(window);
-	AddModule(render);
-	AddModule(input);
+	AddModule(input);//must go before render
+	AddModule(render);//must go after window
+	//AddModule(imgui);//must go after window and render
 }
 
 Application::~Application() {

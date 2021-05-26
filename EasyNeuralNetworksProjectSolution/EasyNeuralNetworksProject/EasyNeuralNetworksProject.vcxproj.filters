@@ -22,6 +22,15 @@
     <Filter Include="Header Files\Definition headers">
       <UniqueIdentifier>{47877467-38a3-4ae0-a014-abe0ce01d88c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\ImGui">
+      <UniqueIdentifier>{1672d3a4-c6c8-42df-9275-3e3df8e76d8b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\ImGui\backends">
+      <UniqueIdentifier>{25800390-377c-41c2-a6fe-d9a36e53c155}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Neural">
+      <UniqueIdentifier>{dea881c3-8ab5-4442-a911-b9a418338b24}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ModuleWindow.cpp">
@@ -40,6 +49,30 @@
       <Filter>Source Files\Modules</Filter>
     </ClCompile>
     <ClCompile Include="ModuleScene.cpp">
+      <Filter>Source Files\Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="ModuleImGui.cpp">
+      <Filter>Source Files\Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="ImGui_p.cpp">
+      <Filter>Source Files\ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\imgui-1.83\imgui_demo.cpp">
+      <Filter>Source Files\ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\imgui-1.83\imgui_draw.cpp">
+      <Filter>Source Files\ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\imgui-1.83\imgui_tables.cpp">
+      <Filter>Source Files\ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\imgui-1.83\imgui_widgets.cpp">
+      <Filter>Source Files\ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\imgui-1.83\imgui.cpp">
+      <Filter>Source Files\ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="ModuleNeuralNetwork.cpp">
       <Filter>Source Files\Modules</Filter>
     </ClCompile>
   </ItemGroup>
@@ -73,6 +106,36 @@
     </ClInclude>
     <ClInclude Include="ModuleInput.h">
       <Filter>Source Files\Modules</Filter>
+    </ClInclude>
+    <ClInclude Include="ModuleImGui.h">
+      <Filter>Source Files\Modules</Filter>
+    </ClInclude>
+    <ClInclude Include="..\imgui-1.83\imgui.h">
+      <Filter>Source Files\ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\imgui-1.83\imgui_internal.h">
+      <Filter>Source Files\ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\imgui-1.83\imstb_rectpack.h">
+      <Filter>Source Files\ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\imgui-1.83\imstb_textedit.h">
+      <Filter>Source Files\ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\imgui-1.83\imstb_truetype.h">
+      <Filter>Source Files\ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\imgui-1.83\imconfig.h">
+      <Filter>Source Files\ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="ModuleNeuralNetwork.h">
+      <Filter>Source Files\Modules</Filter>
+    </ClInclude>
+    <ClInclude Include="Layer.h">
+      <Filter>Source Files\Neural</Filter>
+    </ClInclude>
+    <ClInclude Include="Neuron.h">
+      <Filter>Source Files\Neural</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
