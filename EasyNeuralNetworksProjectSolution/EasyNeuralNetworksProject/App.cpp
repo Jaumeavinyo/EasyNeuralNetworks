@@ -9,6 +9,7 @@ Application::Application() {
 	input = new  ModuleInput(this, "moduleInput", true);
 	render = new ModuleRender(this, "moduleRender", true);
 	//imgui = new ModuleImGui(this, "ModuleImGui", true);
+	scene = new ModuleScene(this, "moduleScene", true);
 
 	dt = 0.01f;
 	//then we add it to a list of modules in the order we want to print them
@@ -17,6 +18,7 @@ Application::Application() {
 	AddModule(input);//must go before render
 	AddModule(render);//must go after window
 	//AddModule(imgui);//must go after window and render
+	AddModule(scene);
 }
 
 Application::~Application() {
@@ -35,7 +37,7 @@ bool Application::Init() {
 		item = item->next;
 	}
 	
-	printf("Application Modules Init complete");
+	printf("Application Modules Init complete\n");
 
 	item = p_list_modules.getFirst();
 	

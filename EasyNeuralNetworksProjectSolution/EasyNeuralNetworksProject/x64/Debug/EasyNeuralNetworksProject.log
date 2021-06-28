@@ -1,11 +1,17 @@
 ﻿  App.cpp
+  Layer.cpp
   Main.cpp
   ModuleInput.cpp
 C:\Users\Usuario\Documents\GitHub\EasyNeuralNetworks\EasyNeuralNetworksProjectSolution\EasyNeuralNetworksProject\ModuleInput.cpp(118,14): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+  NeuralNetwork.cpp
   ModuleRender.cpp
-C:\Users\Usuario\Documents\GitHub\EasyNeuralNetworks\EasyNeuralNetworksProjectSolution\EasyNeuralNetworksProject\ModuleRender.cpp(115,12): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-C:\Users\Usuario\Documents\GitHub\EasyNeuralNetworks\EasyNeuralNetworksProjectSolution\EasyNeuralNetworksProject\ModuleRender.cpp(124,12): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\Usuario\Documents\GitHub\EasyNeuralNetworks\EasyNeuralNetworksProjectSolution\EasyNeuralNetworksProject\ModuleRender.cpp(117,12): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\Usuario\Documents\GitHub\EasyNeuralNetworks\EasyNeuralNetworksProjectSolution\EasyNeuralNetworksProject\ModuleRender.cpp(126,12): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+  ModuleScene.cpp
+C:\Users\Usuario\Documents\GitHub\EasyNeuralNetworks\EasyNeuralNetworksProjectSolution\EasyNeuralNetworksProject\ModuleScene.cpp(40,9): warning C4477: 'printf' : format string '%i' requires an argument of type 'int', but variadic argument 1 has type 'int *'
+C:\Users\Usuario\Documents\GitHub\EasyNeuralNetworks\EasyNeuralNetworksProjectSolution\EasyNeuralNetworksProject\ModuleScene.cpp(40,9): warning C4313: 'printf': '%i' in format string conflicts with argument 1 of type 'int *'
   ModuleWindow.cpp
+  Neuron.cpp
   Generating Code...
   
   Starting pass 1
@@ -231,9 +237,12 @@ C:\Users\Usuario\Documents\GitHub\EasyNeuralNetworks\EasyNeuralNetworksProjectSo
           Referenced in imgui.obj
           Loaded LIBCMTD.lib(ehvecdtr.obj)
         Found "void __cdecl operator delete(void *,unsigned __int64)" (??3@YAXPEAX_K@Z)
-          Referenced in ModuleInput.obj
-          Referenced in ModuleRender.obj
+          Referenced in ModuleScene.obj
           Referenced in ModuleWindow.obj
+          Referenced in Layer.obj
+          Referenced in ModuleInput.obj
+          Referenced in NeuralNetwork.obj
+          Referenced in ModuleRender.obj
           Referenced in imgui.obj
           Referenced in imgui_draw.obj
           Referenced in imgui_tables.obj
@@ -241,6 +250,7 @@ C:\Users\Usuario\Documents\GitHub\EasyNeuralNetworks\EasyNeuralNetworksProjectSo
           Loaded LIBCMTD.lib(delete_scalar_size.obj)
         Found _RTC_CheckStackVars
           Referenced in ModuleRender.obj
+          Referenced in ModuleScene.obj
           Referenced in ModuleWindow.obj
           Referenced in imgui_widgets.obj
           Referenced in App.obj
@@ -252,24 +262,32 @@ C:\Users\Usuario\Documents\GitHub\EasyNeuralNetworks\EasyNeuralNetworksProjectSo
           Referenced in imgui_tables.obj
           Loaded LIBCMTD.lib(stack.obj)
         Found _RTC_InitBase
-          Referenced in ModuleRender.obj
           Referenced in ModuleWindow.obj
+          Referenced in Neuron.obj
+          Referenced in ModuleInput.obj
+          Referenced in NeuralNetwork.obj
+          Referenced in ModuleRender.obj
+          Referenced in ModuleScene.obj
           Referenced in imgui_widgets.obj
           Referenced in App.obj
+          Referenced in Layer.obj
           Referenced in Main.obj
-          Referenced in ModuleInput.obj
           Referenced in imgui.obj
           Referenced in imgui_demo.obj
           Referenced in imgui_draw.obj
           Referenced in imgui_tables.obj
           Loaded LIBCMTD.lib(init.obj)
         Found __CheckForDebuggerJustMyCode
-          Referenced in ModuleRender.obj
           Referenced in ModuleWindow.obj
+          Referenced in Neuron.obj
+          Referenced in ModuleInput.obj
+          Referenced in NeuralNetwork.obj
+          Referenced in ModuleRender.obj
+          Referenced in ModuleScene.obj
           Referenced in imgui_widgets.obj
           Referenced in App.obj
+          Referenced in Layer.obj
           Referenced in Main.obj
-          Referenced in ModuleInput.obj
           Referenced in imgui.obj
           Referenced in imgui_demo.obj
           Referenced in imgui_draw.obj
@@ -277,6 +295,7 @@ C:\Users\Usuario\Documents\GitHub\EasyNeuralNetworks\EasyNeuralNetworksProjectSo
           Loaded LIBCMTD.lib(debugger_jmc.obj)
         Found __GSHandlerCheck
           Referenced in ModuleRender.obj
+          Referenced in ModuleScene.obj
           Referenced in ModuleWindow.obj
           Referenced in imgui_widgets.obj
           Referenced in App.obj
@@ -290,6 +309,7 @@ C:\Users\Usuario\Documents\GitHub\EasyNeuralNetworks\EasyNeuralNetworksProjectSo
         Found __GSHandlerCheck_EH4
           Referenced in imgui_widgets.obj
           Referenced in App.obj
+          Referenced in ModuleScene.obj
           Referenced in imgui.obj
           Referenced in imgui_demo.obj
           Referenced in imgui_draw.obj
@@ -303,6 +323,7 @@ C:\Users\Usuario\Documents\GitHub\EasyNeuralNetworks\EasyNeuralNetworksProjectSo
           Loaded LIBCMTD.lib(chkstk.obj)
         Found __security_check_cookie
           Referenced in ModuleRender.obj
+          Referenced in ModuleScene.obj
           Referenced in ModuleWindow.obj
           Referenced in LIBCMTD.lib(gshandler.obj)
           Referenced in imgui_widgets.obj
@@ -316,6 +337,7 @@ C:\Users\Usuario\Documents\GitHub\EasyNeuralNetworks\EasyNeuralNetworksProjectSo
           Loaded LIBCMTD.lib(amdsecgs.obj)
         Found __security_cookie
           Referenced in ModuleRender.obj
+          Referenced in ModuleScene.obj
           Referenced in ModuleWindow.obj
           Referenced in LIBCMTD.lib(amdsecgs.obj)
           Referenced in imgui_widgets.obj
@@ -352,13 +374,16 @@ C:\Users\Usuario\Documents\GitHub\EasyNeuralNetworks\EasyNeuralNetworksProjectSo
           Loaded LIBCMTD.lib(tlssup.obj)
         Found "void * __cdecl operator new(unsigned __int64)" (??2@YAPEAX_K@Z)
           Referenced in App.obj
+          Referenced in Layer.obj
           Referenced in Main.obj
+          Referenced in ModuleScene.obj
           Loaded LIBCMTD.lib(new_scalar.obj)
         Found "const type_info::`vftable'" (??_7type_info@@6B@)
+          Referenced in ModuleWindow.obj
           Referenced in App.obj
           Referenced in ModuleInput.obj
           Referenced in ModuleRender.obj
-          Referenced in ModuleWindow.obj
+          Referenced in ModuleScene.obj
           Loaded LIBCMTD.lib(std_type_info_static.obj)
         Found "void * __cdecl operator new[](unsigned __int64)" (??_U@YAPEAX_K@Z)
           Referenced in ModuleInput.obj
@@ -509,12 +534,16 @@ C:\Users\Usuario\Documents\GitHub\EasyNeuralNetworks\EasyNeuralNetworksProjectSo
           Referenced in imgui_demo.obj
           Loaded libvcruntimed.lib(strstr.obj)
         Found __CxxFrameHandler4
-          Referenced in ModuleWindow.obj
+          Referenced in Neuron.obj
           Referenced in LIBCMTD.lib(gshandlereh4.obj)
+          Referenced in NeuralNetwork.obj
+          Referenced in ModuleRender.obj
+          Referenced in ModuleScene.obj
+          Referenced in ModuleWindow.obj
           Referenced in imgui_widgets.obj
           Referenced in App.obj
+          Referenced in Layer.obj
           Referenced in ModuleInput.obj
-          Referenced in ModuleRender.obj
           Referenced in imgui.obj
           Referenced in imgui_demo.obj
           Referenced in imgui_draw.obj
@@ -626,6 +655,7 @@ C:\Users\Usuario\Documents\GitHub\EasyNeuralNetworks\EasyNeuralNetworksProjectSo
           Loaded libucrtd.lib(assert.obj)
         Found __acrt_iob_func
           Referenced in ModuleRender.obj
+          Referenced in ModuleScene.obj
           Referenced in ModuleWindow.obj
           Referenced in libucrtd.lib(assert.obj)
           Referenced in imgui.obj
@@ -2061,26 +2091,26 @@ C:\Users\Usuario\Documents\GitHub\EasyNeuralNetworks\EasyNeuralNetworksProjectSo
    /v
    /x
    /fo
-   "C:\Users\Usuario\AppData\Local\Temp\lnk{0DFCD848-3EA3-4AF3-A541-D1B4BF39FE1D}.tmp"
-   "C:\Users\Usuario\AppData\Local\Temp\lnk{6A68F655-FA5F-4BD5-9983-39FC9A69288F}.tmp"
+   "C:\Users\Usuario\AppData\Local\Temp\lnk{8C45A9CE-C282-4A41-BCF1-C4CFFA940F22}.tmp"
+   "C:\Users\Usuario\AppData\Local\Temp\lnk{987550ED-D062-45CC-9B47-9EF7BB92646A}.tmp"
   Microsoft (R) Windows (R) Resource Compiler Version 10.0.10011.16384
   
   Copyright (C) Microsoft Corporation.  All rights reserved.
   
   
-  Creating C:\Users\Usuario\AppData\Local\Temp\lnk{0DFCD848-3EA3-4AF3-A541-D1B4BF39FE1D}.tmp
+  Creating C:\Users\Usuario\AppData\Local\Temp\lnk{8C45A9CE-C282-4A41-BCF1-C4CFFA940F22}.tmp
   
   Using codepage 1252 as default
   
-  C:\Users\Usuario\AppData\Local\Temp\lnk{6A68F655-FA5F-4BD5-9983-39FC9A69288F}.tmp.
+  C:\Users\Usuario\AppData\Local\Temp\lnk{987550ED-D062-45CC-9B47-9EF7BB92646A}.tmp.
   Writing 24:1,	lang:0x409,	size 381
   
   Invoking cvtres.exe:
    /machine:amd64
    /verbose
-   /out:"C:\Users\Usuario\AppData\Local\Temp\lnk{4FB2EBA7-B35D-4678-8606-17DDA30FA684}.tmp"
+   /out:"C:\Users\Usuario\AppData\Local\Temp\lnk{07E344E4-D0DE-4A91-909C-21F456313786}.tmp"
    /readonly
-   "C:\Users\Usuario\AppData\Local\Temp\lnk{0DFCD848-3EA3-4AF3-A541-D1B4BF39FE1D}.tmp"
+   "C:\Users\Usuario\AppData\Local\Temp\lnk{8C45A9CE-C282-4A41-BCF1-C4CFFA940F22}.tmp"
   Microsoft (R) Windows Resource To Object Converter Version 14.26.28805.0
   Copyright (C) Microsoft Corporation.  All rights reserved.
   
@@ -2101,12 +2131,15 @@ C:\Users\Usuario\Documents\GitHub\EasyNeuralNetworks\EasyNeuralNetworksProjectSo
   
   Starting pass 2
        * linker generated manifest res *
+       Neuron.obj
        ModuleWindow.obj
        ModuleScene.obj
        ModuleRender.obj
+       NeuralNetwork.obj
        ModuleInput.obj
        ModuleImGui.obj
        Main.obj
+       Layer.obj
        ImGui_p.obj
        App.obj
        imgui_widgets.obj

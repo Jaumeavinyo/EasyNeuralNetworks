@@ -38,6 +38,11 @@ enum first_second
 }
 
 ----------------------------------
+function names like:
+
+functionNameWithCapitalLeters(){
+}
+----------------------------------
 
 
 All modules in cpp will follow this structure: 

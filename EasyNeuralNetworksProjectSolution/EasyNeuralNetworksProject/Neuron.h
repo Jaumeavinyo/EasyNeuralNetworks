@@ -20,13 +20,7 @@ private:
 
 };
 
-Neuron::Neuron()
-{
-}
 
-Neuron::~Neuron()
-{
-}
 
 
 #endif NEURON_H

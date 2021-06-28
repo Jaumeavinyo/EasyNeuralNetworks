@@ -5,11 +5,9 @@
 #include "ModuleRender.h"
 #include "ModuleInput.h"
 #include "ModuleImGui.h"
+#include "ModuleScene.h"
 
-class ModuleWindow;
-class ModuleRender;
-class ModuleInput;
-//class ModuleImGui;
+
 
 class Application{
 
@@ -19,6 +17,7 @@ public:
 	ModuleRender* render;
 	ModuleInput*  input;
 	//ModuleImGui* imgui;
+	ModuleScene* scene;
 
 private:
 	

@@ -54,6 +54,8 @@ bool ModuleRender::Start() {
 	
 	bool ret = true;
 
+	printf("ModuleRender Start()\n");
+
 	SDL_RenderGetViewport(renderer, &viewport); //GET THE DRAWING AREA FOR THE CURRENT TARGET
 	SDL_RenderSetLogicalSize(renderer, SCREEN_WIDTH, SCREEN_HEIGHT);//SET DEVICE INDEPENDENT RESOLUTION FOR RENDERING. (IN THIS CASE RENDERING RESOLUTION IS OUR SCREEN RESOLUTION)
 
