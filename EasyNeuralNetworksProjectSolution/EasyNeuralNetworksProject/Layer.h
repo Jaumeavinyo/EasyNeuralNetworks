@@ -18,6 +18,9 @@ public:
 	usint getLayerID();
 	void setLayerID(usint layerID);
 
+	void addNeuron(usint neuronID);
+	void removeNeuron(usint neuronID);
+	void deleteNeuronList();
 
 private:
 

@@ -13,6 +13,7 @@ NeuralNetwork::NeuralNetwork(usint layers){
 
 NeuralNetwork::~NeuralNetwork()
 {
+	deleteLayerList();
 }
 
 //############  UTILITY FUNCTIONS ############
@@ -20,7 +21,7 @@ NeuralNetwork::~NeuralNetwork()
 void NeuralNetwork::addLayer(usint layerID) {
 	
 	Layer* tmpLayer = new Layer(layerID);
-	tmpLayer->setLayerID(layerID);
+	//tmpLayer->setLayerID(layerID);literal lo hago encima
 	
 	p2list_Layers.add(tmpLayer);
 }
