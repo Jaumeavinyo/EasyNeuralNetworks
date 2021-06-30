@@ -97,22 +97,28 @@ public:
 	/**
 	* Insert by index
 	*/
-	p2List_item<tdata>* insert(unsigned int index, const tdata& item) const{
-
-		p2List_item<tdata>* p_data = start;
+	p2List_item<tdata>* insert(unsigned int index,  tdata& item){
+		
+		p2List_item<tdata>* p_data;
 	    p2List_item<tdata>* data_item;
 		data_item = new p2List_item < tdata >(item);
 		
-
-		for (unsigned int i = 0; i < index && p_data != NULL; ++i)
-			p_data = p_data->next;
-
-		
-		data_item->next = p_data; //newitem->next is p_data
-		data_item->prev = p_data->prev; //new item prev is p_data prev
-		p_data->prev = data_item; // p_data prev changes but next is the same as before
-
-		return p_data;
+		if (start == NULL)
+		{
+			start = end = data_item;
+		}
+		else
+		{
+			p_data = start;
+			for (unsigned int i = 0; i < index && p_data != NULL; ++i) {
+				p_data = p_data->next;
+			}
+			data_item->next = p_data; //newitem->next is p_data
+			data_item->prev = p_data->prev; //new item prev is p_data prev
+			p_data->prev = data_item; // p_data prev changes but next is the same as before
+			++size;
+			return p_data;
+		}	
 	}
 
 	/**

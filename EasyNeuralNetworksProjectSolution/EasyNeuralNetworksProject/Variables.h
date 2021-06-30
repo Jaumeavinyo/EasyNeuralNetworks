@@ -4,7 +4,7 @@
 
 
 
-
+typedef unsigned short int usint;
 typedef unsigned int uint;
 typedef unsigned char uchar;
 typedef unsigned __int32 uint32;
