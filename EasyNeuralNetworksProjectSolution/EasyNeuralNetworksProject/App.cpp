@@ -8,7 +8,7 @@ Application::Application() {
 	window = new ModuleWindow(this,"moduleWindow", true);
 	input = new  ModuleInput(this, "moduleInput", true);
 	render = new ModuleRender(this, "moduleRender", true);
-	//imgui = new ModuleImGui(this, "ModuleImGui", true);
+	imgui = new ModuleImGui(this, "ModuleImGui", true);
 	scene = new ModuleScene(this, "moduleScene", true);
 
 	dt = 0.01f;
@@ -17,7 +17,7 @@ Application::Application() {
 	AddModule(window);
 	AddModule(input);//must go before render
 	AddModule(render);//must go after window
-	//AddModule(imgui);//must go after window and render
+	AddModule(imgui);//must go after window and render
 	AddModule(scene);
 }
 

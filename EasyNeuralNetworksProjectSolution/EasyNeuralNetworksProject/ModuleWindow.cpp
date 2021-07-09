@@ -1,6 +1,7 @@
 #include "ModuleWindow.h"
 #include "App.h"
-
+#include "..\ImGUI\backends\imgui_impl_opengl3.h"
+#include "glad/glad.h"
 //############  CONSTRUCTORS ############
 
 
@@ -37,14 +38,17 @@ bool ModuleWindow::Init() {
 	}
 
 	
-	SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 2);
+	SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 3);
 	SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 2);
 
 	// Setup window
 	SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);  //imgui main.cpp uses it
 	SDL_GL_SetAttribute(SDL_GL_DEPTH_SIZE, 24);   //imgui main.cpp uses it
 	SDL_GL_SetAttribute(SDL_GL_STENCIL_SIZE, 8);  //imgui main.cpp uses it
-
+	SDL_GL_SetAttribute(
+		SDL_GL_CONTEXT_PROFILE_MASK,
+		SDL_GL_CONTEXT_PROFILE_CORE
+	);
 	if (SDL_WIN_ALLOW_HIGHDPI == true) {//imgui main.cpp uses it
 		flags |= SDL_WINDOW_ALLOW_HIGHDPI;
 	}
@@ -75,14 +79,22 @@ bool ModuleWindow::Init() {
 		SDL_GL_SetSwapInterval(1); //imgui main.cpp uses it
 	}
 
-	window = SDL_CreateWindow(TITLE, SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, width, height, flags);
+	window = SDL_CreateWindow(TITLE, SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_UNDEFINED, width, height, flags);
 
-	gl_context = SDL_GL_CreateContext(window);  //imgui main.cpp uses it
-	SDL_GL_MakeCurrent(window, gl_context);     //imgui main.cpp uses it	
-
+	gl_context = SDL_GL_CreateContext(window);  
+	SDL_GL_MakeCurrent(window, gl_context);     
+	
+//#if defined(IMGUI_IMPL_OPENGL_LOADER_GLAD)   //done in moduleimgui
+//	bool error = gladLoadGL() == 0;
+//#else 
+//	bool error = false;
+//#endif
+//	if (error) {
+//		fprintf(stderr, "Failed to initialize OpenGL loader!\n");
+//		ret = false;
+//	}
 	if (window == NULL)
 	{
-		
 		printf(" ---> Window could not be created! SDL_Error: %s\n", SDL_GetError());
 		ret = false;
 	}
@@ -100,6 +112,7 @@ bool ModuleWindow::Init() {
 
 bool ModuleWindow::CleanUp() {
 
+	SDL_GL_DeleteContext(gl_context);
 	if (window != NULL) {
 		SDL_DestroyWindow(window);
 	}

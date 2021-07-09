@@ -16,7 +16,7 @@ public:
 	ModuleWindow* window;
 	ModuleRender* render;
 	ModuleInput*  input;
-	//ModuleImGui* imgui;
+	ModuleImGui* imgui;
 	ModuleScene* scene;
 
 private:
