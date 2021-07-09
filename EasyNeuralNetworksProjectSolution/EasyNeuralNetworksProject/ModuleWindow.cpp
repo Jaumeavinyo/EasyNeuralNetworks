@@ -84,15 +84,7 @@ bool ModuleWindow::Init() {
 	gl_context = SDL_GL_CreateContext(window);  
 	SDL_GL_MakeCurrent(window, gl_context);     
 	
-//#if defined(IMGUI_IMPL_OPENGL_LOADER_GLAD)   //done in moduleimgui
-//	bool error = gladLoadGL() == 0;
-//#else 
-//	bool error = false;
-//#endif
-//	if (error) {
-//		fprintf(stderr, "Failed to initialize OpenGL loader!\n");
-//		ret = false;
-//	}
+
 	if (window == NULL)
 	{
 		printf(" ---> Window could not be created! SDL_Error: %s\n", SDL_GetError());

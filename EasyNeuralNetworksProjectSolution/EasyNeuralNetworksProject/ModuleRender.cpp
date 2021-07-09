@@ -26,12 +26,7 @@ bool ModuleRender::Init() {
 	bool ret = true;
 
 	uint32 flags = SDL_RENDERER_ACCELERATED;
-	
-	//if (VSYNC) {                                     ALREADY DONE IN WINDOW.CPP
-	//	flags |= SDL_RENDERER_PRESENTVSYNC;
-	//	printf(" --- > Using Vsync");
-	//}
-	
+
 	renderer = SDL_CreateRenderer(App->window->window, -1, flags);
 
 	if (renderer == NULL) {
@@ -84,7 +79,7 @@ update_status  ModuleRender::PostUpdate(float dt) {
 	update_status ret = update_status::UPDATE_CONTINUE;
 
 	SDL_SetRenderDrawColor(renderer, background.r, background.g, background.g, background.a);//SET COLOR FOR RENDERING
-	SDL_RenderPresent(renderer);//UPDATE SCREEN WITH NEW RENDERING DONE
+	//SDL_RenderPresent(renderer);//UPDATE SCREEN WITH NEW RENDERING DONE
 
 	return ret;
 }
