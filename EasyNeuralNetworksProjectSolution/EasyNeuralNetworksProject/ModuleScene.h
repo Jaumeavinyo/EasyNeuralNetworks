@@ -35,6 +35,8 @@ private:
 
 	NeuralNetwork* p_neuralNet;
 
+	bool displayNeuralNetworkGui = false;
+
 };
 
 

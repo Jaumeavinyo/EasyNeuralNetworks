@@ -6,6 +6,8 @@
 
 #include "Layer.h"
 #include "Neuron.h"//#include "Globals.h" included in neuron
+#include "Module.h"
+
 
 class NeuralNetwork 
 {
@@ -14,6 +16,10 @@ public:
 	~NeuralNetwork();
 
 	p2List<Layer*> p2list_Layers; //ALL LAYERS
+
+	void displayGui();
+
+	bool updateNeuralNetwork();
 
 	void addLayer( usint layerID);
 	/*ths function adds a Layer in the list. 

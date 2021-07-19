@@ -1,5 +1,5 @@
 #include "NeuralNetwork.h"
-
+#include "..\ImGUI\imgui.h"
 
 //############  CONSTRUCTORS ############
 
@@ -9,11 +9,28 @@ NeuralNetwork::NeuralNetwork(usint layers){
 		p2list_Layers.add(new Layer(i));
 	}
 	
-}
+} 
 
 NeuralNetwork::~NeuralNetwork()
 {
 	deleteLayerList();
+}
+//############  MAIN NEURAL NETWORK FUNCTIONS ############
+
+bool NeuralNetwork::updateNeuralNetwork() {
+	bool ret = true;
+	return ret;
+}
+
+void NeuralNetwork::displayGui() {
+
+
+	ImGui::Begin("Neural Network");
+
+
+
+	ImGui::End();
+
 }
 
 //############  UTILITY FUNCTIONS ############

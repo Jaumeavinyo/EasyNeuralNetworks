@@ -1,5 +1,5 @@
 #include "ModuleScene.h"
-
+#include "..\ImGUI\imgui.h"
 #include "App.h"
 
 
@@ -33,20 +33,7 @@ bool ModuleScene::Start() {
 	printf("ModuleScene Start()\n");
 	printf(" ---> creating new neural network...");
 
-	p_neuralNet = new NeuralNetwork(0);
-
 	
-	printf("\n ---> NOW LETS ADD A LAYER AND THEN DELETE THE FIRST ONE");
-
-	p_neuralNet->addLayer(0);
-	p_neuralNet->addLayer(1);
-	p_neuralNet->addLayer(2);
-	printf("\n -------> layer added with id %i", p_neuralNet->p2list_Layers.getLast()->data->getLayerID());
-
-	
-	//p_neuralNet->deleteLayerList();
-
-	//printf("\n --------> layer list deleted. now size is: %i", p_neuralNet->p2list_Layers.count());
 
 	return ret;
 
@@ -56,6 +43,24 @@ update_status ModuleScene::PreUpdate(float dt) {
 
 	update_status ret = update_status::UPDATE_CONTINUE;
 
+
+	ImGui::BeginMainMenuBar();
+	if (ImGui::BeginMenu("File"))
+	{
+		if (ImGui::MenuItem("New Network"))
+		{
+			p_neuralNet = new NeuralNetwork(0);
+			displayNeuralNetworkGui = true;
+		}
+		ImGui::EndMenu();
+	}
+
+	ImGui::EndMainMenuBar();
+	
+	if (displayNeuralNetworkGui) {
+		p_neuralNet->displayGui();
+	}
+	
 
 	return ret;
 }

@@ -1,12 +1,26 @@
-﻿  ModuleImGui.cpp
-  LINK : 0 new modules and 1 (out of 374) modules have changed since prior linking
+﻿  App.cpp
+  Main.cpp
+  ModuleImGui.cpp
+  ModuleInput.cpp
+C:\Users\Usuario\Documents\GitHub\EasyNeuralNetworks\EasyNeuralNetworksProjectSolution\EasyNeuralNetworksProject\ModuleInput.cpp(118,14): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+  ModuleRender.cpp
+C:\Users\Usuario\Documents\GitHub\EasyNeuralNetworks\EasyNeuralNetworksProjectSolution\EasyNeuralNetworksProject\ModuleRender.cpp(112,12): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\Usuario\Documents\GitHub\EasyNeuralNetworks\EasyNeuralNetworksProjectSolution\EasyNeuralNetworksProject\ModuleRender.cpp(121,12): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+  ModuleScene.cpp
+  ModuleWindow.cpp
+  NeuralNetwork.cpp
+C:\Users\Usuario\Documents\GitHub\EasyNeuralNetworks\EasyNeuralNetworksProjectSolution\EasyNeuralNetworksProject\NeuralNetwork.cpp(66,20): warning C4018: '<': signed/unsigned mismatch
+  Generating Code...
+  LINK : 0 new modules and 8 (out of 374) modules have changed since prior linking
   Starting pass 2
+       ModuleWindow.obj
+       ModuleScene.obj
+       ModuleRender.obj
+       NeuralNetwork.obj
+       ModuleInput.obj
        ModuleImGui.obj
+       Main.obj
+       App.obj
        LIBCMTD.lib(loadcfg.obj)
-       libcpmtd.lib(cerr.obj)
-       libcpmtd.lib(cout.obj)
-       libcpmtd.lib(locale.obj)
-       libcpmtd.lib(wlocale.obj)
-       libcpmtd.lib(xlocale.obj)
   Finished pass 2
   EasyNeuralNetworksProject.vcxproj -> C:\Users\Usuario\Documents\GitHub\EasyNeuralNetworks\EasyNeuralNetworksProjectSolution\x64\Debug\EasyNeuralNetworksProject.exe
