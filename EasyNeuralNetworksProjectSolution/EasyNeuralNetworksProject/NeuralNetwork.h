@@ -2,8 +2,6 @@
 #define MODULE_NEURAL_NETWORK_H
 
 
-
-
 #include "Layer.h"
 #include "Neuron.h"//#include "Globals.h" included in neuron
 #include "Module.h"

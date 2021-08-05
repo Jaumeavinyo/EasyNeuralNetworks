@@ -1,6 +1,7 @@
 #include "ModuleImGui.h"
 #include "glad/glad.h"
 #include "..\ImGUI\imgui.h"
+#include "..\ImGUI\imNODES\imnodes.h"
 #include "..\ImGUI\backends\imgui_impl_opengl3.h"
 #include "..\ImGUI\backends\imgui_impl_sdl.h"
 #include <SDL.h>
@@ -41,6 +42,7 @@ bool ModuleImGui::Init() {
 	IMGUI_CHECKVERSION();
 
 	ImGui::CreateContext();
+	ImNodes::CreateContext();
 	ImGuiIO& io = ImGui::GetIO(); (void)io;
 
 	io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard;     // Enable Keyboard Controls
@@ -122,6 +124,7 @@ bool ModuleImGui::CleanUp() {
     ImGui_ImplOpenGL3_Shutdown();
     ImGui_ImplSDL2_Shutdown();
     ImGui::DestroyContext();
+	ImNodes::DestroyContext();
 	return ret;
 
 }

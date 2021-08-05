@@ -30,6 +30,7 @@ public:
 
 	NeuralNetwork createNeuralnetwork(int layers);
 
+	NeuralNetwork* getNeuralNetwork();
 
 private:
 

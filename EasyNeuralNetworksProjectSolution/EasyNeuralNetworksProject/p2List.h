@@ -122,12 +122,11 @@ public:
 	}
 
 	/**
-	* Find by index
+	* Find and copy into your data structure by index 
 	*/
 	bool at(unsigned int index, tdata& data) const{
 
 		bool ret = false;
-		unsigned int i = 0;
 		p2List_item<tdata>* p_data = start;
 
 		for (unsigned int i = 0; i < index && p_data != NULL; ++i)
@@ -141,6 +140,23 @@ public:
 
 		return ret;
 	}
+
+	/**
+	* finds using index
+	*/
+	p2List_item<tdata>* getItem(usint index) {
+		p2List_item<tdata>* p_data = start;
+
+		for (unsigned int i = 0; i < index && p_data != NULL; ++i)
+			p_data = p_data->next;
+
+		if (p_data != NULL)
+		{
+			return p_data;
+		}
+	}
+
+
 	
 	/**
 	* Deletes an item from the list

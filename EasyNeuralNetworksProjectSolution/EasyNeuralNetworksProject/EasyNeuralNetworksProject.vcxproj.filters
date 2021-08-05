@@ -40,6 +40,9 @@
     <Filter Include="Source Files\ImGui\Opengl2">
       <UniqueIdentifier>{7a1c3431-b10b-4075-983b-891d7f472b62}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\ImGui\ImNodes">
+      <UniqueIdentifier>{20edc6e3-a5c2-4325-83ff-5028bb0c341d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ModuleWindow.cpp">
@@ -95,6 +98,9 @@
     </ClCompile>
     <ClCompile Include="..\ImGUI\backends\imgui_impl_sdl.cpp">
       <Filter>Source Files\ImGui\backends</Filter>
+    </ClCompile>
+    <ClCompile Include="..\ImGUI\imNODES\imnodes.cpp">
+      <Filter>Source Files\ImGui\ImNodes</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -169,6 +175,12 @@
     </ClInclude>
     <ClInclude Include="..\ImGUI\backends\imgui_impl_sdl.h">
       <Filter>Source Files\ImGui\backends</Filter>
+    </ClInclude>
+    <ClInclude Include="..\ImGUI\imNODES\imnodes.h">
+      <Filter>Source Files\ImGui\ImNodes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\ImGUI\imNODES\imnodes_internal.h">
+      <Filter>Source Files\ImGui\ImNodes</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

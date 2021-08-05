@@ -16,16 +16,20 @@ public:
 	void insertNeuron(uint pos, Neuron* neuron);   //insert neuron at the desired position
 
 	usint getLayerID();
+	
 	void setLayerID(usint layerID);
 
-	void addNeuron(usint neuronID);
+	void addNewNeuron(usint neuronID, usint neuronLayer);
 	void removeNeuron(usint neuronID);
 	void deleteNeuronList();
+	
+	void displayGui();
 
+	bool deletingItem = false;
 private:
 
 	usint p_layerID;
-
+	
 };
 
 

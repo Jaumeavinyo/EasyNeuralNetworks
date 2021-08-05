@@ -3,10 +3,11 @@
 
 #include "Globals.h"
 
-class Neuron
+class Neuron 
 {
 public:
-	Neuron(usint neuronID);
+
+	Neuron(usint neuronID,usint neuronLayer);
 	~Neuron();
 
 	float inputWeight;
@@ -17,10 +18,17 @@ public:
 	void modifyNeuronInputInformation(float newInput);
 	usint getNeuronID();
 
+	void displayGui();
+
+	bool checkbox = false;
+
+	void Destroy();
+
 private:
 
-	
-	usint p_NeuronID;
+	usint p_neuronLayerID;
+	usint p_neuronID;
+
 };
 
 

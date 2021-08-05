@@ -1,26 +1,9 @@
-﻿  App.cpp
-  Main.cpp
-  ModuleImGui.cpp
-  ModuleInput.cpp
-C:\Users\Usuario\Documents\GitHub\EasyNeuralNetworks\EasyNeuralNetworksProjectSolution\EasyNeuralNetworksProject\ModuleInput.cpp(118,14): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-  ModuleRender.cpp
-C:\Users\Usuario\Documents\GitHub\EasyNeuralNetworks\EasyNeuralNetworksProjectSolution\EasyNeuralNetworksProject\ModuleRender.cpp(112,12): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-C:\Users\Usuario\Documents\GitHub\EasyNeuralNetworks\EasyNeuralNetworksProjectSolution\EasyNeuralNetworksProject\ModuleRender.cpp(121,12): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-  ModuleScene.cpp
-  ModuleWindow.cpp
-  NeuralNetwork.cpp
-C:\Users\Usuario\Documents\GitHub\EasyNeuralNetworks\EasyNeuralNetworksProjectSolution\EasyNeuralNetworksProject\NeuralNetwork.cpp(66,20): warning C4018: '<': signed/unsigned mismatch
-  Generating Code...
-  LINK : 0 new modules and 8 (out of 374) modules have changed since prior linking
+﻿  Layer.cpp
+C:\Users\Usuario\Documents\GitHub\EasyNeuralNetworks\EasyNeuralNetworksProjectSolution\EasyNeuralNetworksProject\Layer.cpp(23,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Usuario\Documents\GitHub\EasyNeuralNetworks\EasyNeuralNetworksProjectSolution\EasyNeuralNetworksProject\p2List.h(122): warning C4715: 'p2List<Neuron *>::insert': not all control paths return a value
+  LINK : 0 new modules and 1 (out of 377) modules have changed since prior linking
   Starting pass 2
-       ModuleWindow.obj
-       ModuleScene.obj
-       ModuleRender.obj
-       NeuralNetwork.obj
-       ModuleInput.obj
-       ModuleImGui.obj
-       Main.obj
-       App.obj
+       Layer.obj
        LIBCMTD.lib(loadcfg.obj)
   Finished pass 2
   EasyNeuralNetworksProject.vcxproj -> C:\Users\Usuario\Documents\GitHub\EasyNeuralNetworks\EasyNeuralNetworksProjectSolution\x64\Debug\EasyNeuralNetworksProject.exe

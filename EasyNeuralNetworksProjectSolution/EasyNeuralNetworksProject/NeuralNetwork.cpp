@@ -1,6 +1,6 @@
 #include "NeuralNetwork.h"
 #include "..\ImGUI\imgui.h"
-
+#include "..\ImGUI\imNODES\imnodes.h"
 //############  CONSTRUCTORS ############
 
 NeuralNetwork::NeuralNetwork(usint layers){
@@ -27,8 +27,44 @@ void NeuralNetwork::displayGui() {
 
 	ImGui::Begin("Neural Network");
 
+	if(ImGui::CollapsingHeader("Working Station")){
 
+		//LAYER CONFIG START
+		if (ImGui::Button("Add Layer")) {
+			Layer* tmp = new Layer(p2list_Layers.count());
+			p2list_Layers.add(tmp);
+		}
+		static int selectedLayer = 0;
+		ImGui::SliderInt("Active Layer", &selectedLayer, 0, p2list_Layers.count()-1);
+		//LAYER CONFIG END
 
+		//NEURON CONFIG START
+		if (ImGui::Button("Add Neuron")) {
+			Layer* tmpL;
+			p2list_Layers.at(selectedLayer, tmpL);
+			Neuron* tmpN = new Neuron(p_p2list_Neurons.count(),selectedLayer);
+			p_p2list_Neurons.add(tmpN);//add neuron to general list
+			tmpL->addNeuron(tmpN);//add neuron to Layer list
+		}
+		//NEURON CONFIG END
+	}
+	
+
+	ImNodes::BeginNodeEditor();
+
+	if (p2list_Layers.count() > 0) {
+		p2List_item<Layer*>* layerIterator;
+		layerIterator = p2list_Layers.getFirst();
+		if (p_p2list_Neurons.count() > 0) {
+			for (int i = 0; i < p2list_Layers.count(); i++) {
+				layerIterator->data->displayGui();
+				layerIterator = layerIterator->next;
+			}
+		}
+		
+	}
+	ImNodes::EndNodeEditor();
+	
 	ImGui::End();
 
 }
@@ -68,3 +104,4 @@ void NeuralNetwork::deleteLayerList() {
 	}
 	p2list_Layers.clear();
 }
+

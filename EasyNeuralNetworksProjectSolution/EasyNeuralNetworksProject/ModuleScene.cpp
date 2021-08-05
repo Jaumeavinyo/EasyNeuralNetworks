@@ -49,7 +49,7 @@ update_status ModuleScene::PreUpdate(float dt) {
 	{
 		if (ImGui::MenuItem("New Network"))
 		{
-			p_neuralNet = new NeuralNetwork(0);
+			p_neuralNet = new NeuralNetwork(2);
 			displayNeuralNetworkGui = true;
 		}
 		ImGui::EndMenu();
@@ -93,3 +93,9 @@ bool ModuleScene::CleanUp() {
 
 
 //############  UTILITY FUNCTIONS ############
+
+NeuralNetwork* ModuleScene::getNeuralNetwork() {
+	if (p_neuralNet != NULL) {
+		return p_neuralNet;
+	}
+}
