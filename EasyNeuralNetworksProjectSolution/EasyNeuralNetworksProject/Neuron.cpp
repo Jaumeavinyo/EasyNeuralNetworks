@@ -3,8 +3,14 @@
 #include "..\ImGUI\imNODES\imnodes.h"
 #include "App.h"
 
+struct Link;
+
 Neuron::Neuron(usint neuronID, usint neuronLayer) : p_neuronID(neuronID), p_neuronLayerID(neuronLayer)
 {
+	Link link;
+	inputID = p_neuronID + 1;
+	outputID = p_neuronID + 2;
+
 }
 
 Neuron::~Neuron()
@@ -12,7 +18,7 @@ Neuron::~Neuron()
 }
 
 void Neuron::modifyNeuronInputInformation(float newInput) {
-	input = newInput;
+	inputValue = newInput;
 }
 
 usint Neuron::getNeuronID() {
@@ -35,7 +41,7 @@ void Neuron::displayGui() {
 	
 	
 	ImNodes::BeginNode(p_neuronID);
-
+	
 	ImNodes::BeginNodeTitleBar();
 	ImGui::Text("ID: %i Layer:%i",p_neuronID, p_neuronLayerID);
 	if (ImGui::Button("x")) {
@@ -43,11 +49,11 @@ void Neuron::displayGui() {
 	}
 	ImNodes::EndNodeTitleBar();
 
-	ImNodes::BeginInputAttribute(1);
+	ImNodes::BeginInputAttribute(inputID <<8);
 	ImGui::Text("input");
 	ImNodes::EndInputAttribute();
 
-	ImNodes::BeginOutputAttribute(3);
+	ImNodes::BeginOutputAttribute(outputID <<24);
 	ImGui::Indent(40);//moves atributes to the right
 	ImGui::Text("output");
 	ImNodes::EndOutputAttribute();

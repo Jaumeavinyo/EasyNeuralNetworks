@@ -5,7 +5,12 @@
 #include "Layer.h"
 #include "Neuron.h"//#include "Globals.h" included in neuron
 #include "Module.h"
-
+#include <vector>
+#include <xutility>
+struct Link {
+	int id;
+	int input_attr, output_attr;
+};
 
 class NeuralNetwork 
 {
@@ -13,7 +18,9 @@ public:
 	NeuralNetwork(usint layers);
 	~NeuralNetwork();
 
+	p2List<Neuron*> p2list_Neurons; //ALL NEURONS
 	p2List<Layer*> p2list_Layers; //ALL LAYERS
+	std::vector<Link> links;      //ALL LINKS
 
 	void displayGui();
 
@@ -29,9 +36,15 @@ public:
 	*/
 	void deleteLayerList();
 	/*this functions deletes and free all space for the list p2list_Layers*/
+	void createLink(int input_attr, int output_attr, int ID);
+
+public:
+
+	int currentID;
+
 private:
 
-	p2List<Neuron*> p_p2list_Neurons; //ALL NEURONS
+	
 
 };
 

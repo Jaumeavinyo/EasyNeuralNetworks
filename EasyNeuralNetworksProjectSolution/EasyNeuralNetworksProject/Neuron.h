@@ -12,8 +12,10 @@ public:
 
 	float inputWeight;
 
-	float input;
-	float output;
+	float inputValue;
+	int inputID;
+	float outputValue;
+	int outputID;
 
 	void modifyNeuronInputInformation(float newInput);
 	usint getNeuronID();

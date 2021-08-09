@@ -1,5 +1,6 @@
 #include "Layer.h"
 #include "..\ImGUI\imgui.h"
+#include "App.h"
 //############  CONSTRUCTORS ############
 
 Layer::Layer(usint layerID):p_layerID(layerID) {
@@ -21,10 +22,6 @@ void Layer::displayGui() {
 
 
 	for (int i = 0; i < p2list_LayerNeurons.count(); i++) {
-		printf("GUI- %i\n", i);
-		if (i == 3) {
-			printf("aaa");
-		}		
 		auxIterator = iterator->next;//this exists to avoid having a null next when destroying a node inside the displaygui function
 		iterator->data->displayGui();
 		iterator = auxIterator;
@@ -34,11 +31,13 @@ void Layer::displayGui() {
 
 void Layer::addNeuron(Neuron *neuron) {
 	p2list_LayerNeurons.add(neuron);
+	App->scene->getNeuralNetwork()->p2list_Neurons.add(neuron);
 }
 
-void Layer::insertNeuron(uint pos, Neuron* neuron) {
-	p2list_LayerNeurons.insert(pos, neuron);
-}
+//void Layer::insertNeuron(uint pos, Neuron* neuron) {
+//	p2list_LayerNeurons.insert(pos, neuron);
+//
+//}
 
 usint Layer::getLayerID() {
 	return p_layerID;
@@ -53,19 +52,33 @@ void Layer::setLayerID(usint layerID) {
 void Layer::addNewNeuron(usint neuronID,usint neuronLayer) {
 	Neuron* tmpNeuron = new Neuron(neuronID, neuronLayer);
 	p2list_LayerNeurons.add(tmpNeuron);
+	
 }
 
 void Layer::removeNeuron(usint neuronID) {
-	usint size = p2list_LayerNeurons.count();
-	p2List_item<Neuron*>* neuronItem;
-	neuronItem = p2list_LayerNeurons.getFirst();
+	usint size1 = p2list_LayerNeurons.count();
+	p2List_item<Neuron*>* neuronItem1;
+	neuronItem1 = p2list_LayerNeurons.getFirst();
 
-	for (int i = 0; i < size; i++) {
-		if (neuronItem->data->getNeuronID() == neuronID) {
-			p2list_LayerNeurons.del(neuronItem);
+	usint size2 = App->scene->getNeuralNetwork()->p2list_Neurons.count();
+	p2List_item<Neuron*>* neuronItem2;
+	neuronItem2 = App->scene->getNeuralNetwork()->p2list_Neurons.getFirst();
+
+	for (int i = 0; i < size1; i++) {//delete from Layer list
+		if (neuronItem1->data->getNeuronID() == neuronID) {
+			p2list_LayerNeurons.del(neuronItem1);
+			
 			break;
 		}
-		neuronItem = neuronItem->next;
+		neuronItem1 = neuronItem1->next;
+	}
+	for (int i = 0; i < size2; i++) {//delete from Neural Network list
+		if (neuronItem2->data->getNeuronID() == neuronID) {
+			App->scene->getNeuralNetwork()->p2list_Neurons.del(neuronItem2);
+
+			break;
+		}
+		neuronItem2 = neuronItem2->next;
 	}
 }
 
