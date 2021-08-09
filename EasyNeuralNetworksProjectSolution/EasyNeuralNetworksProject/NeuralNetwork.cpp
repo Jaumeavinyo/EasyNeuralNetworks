@@ -1,6 +1,7 @@
 #include "NeuralNetwork.h"
 #include "..\ImGUI\imgui.h"
 #include "..\ImGUI\imNODES\imnodes.h"
+#include "App.h"
 //############  CONSTRUCTORS ############
 
 NeuralNetwork::NeuralNetwork(usint layers){
@@ -45,10 +46,10 @@ void NeuralNetwork::displayGui() {
 			p2list_Layers.at(selectedLayer, tmpL);
 			if (ImGui::Button("Add Neuron")) {	
 				Neuron* tmpN = new Neuron(p2list_Neurons.count(), selectedLayer);
-				p2list_Neurons.add(tmpN);//add neuron to general list
 				tmpL->addNeuron(tmpN);//add neuron to Layer list
 			}
-			ImGui::Text("Ammount of neurons in this layer: %d", tmpL->p2list_LayerNeurons.count());
+			ImGui::Text("Total Neurons: %d", p2list_Neurons.count());
+			ImGui::Text("Neurons inside Layer: %d", tmpL->p2list_LayerNeurons.count());
 		}
 		
 		//NEURON CONFIG END
