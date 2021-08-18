@@ -156,3 +156,7 @@ void ModuleInput::GetMouseMotion(int& x, int& y)
 	x = p_mouse_motion_x;
 	y = p_mouse_motion_y;
 }
+
+KeyState ModuleInput::GetKey(int id) {
+	return p_keyboard[id];
+}

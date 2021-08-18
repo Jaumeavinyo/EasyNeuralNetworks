@@ -28,16 +28,12 @@ void Layer::displayGui() {
 	}
 	
 }
-
+/*Add a neuron to Layer and Network lists*/
 void Layer::addNeuron(Neuron *neuron) {
 	p2list_LayerNeurons.add(neuron);
 	App->scene->getNeuralNetwork()->p2list_Neurons.add(neuron);
 }
 
-//void Layer::insertNeuron(uint pos, Neuron* neuron) {
-//	p2list_LayerNeurons.insert(pos, neuron);
-//
-//}
 
 usint Layer::getLayerID() {
 	return p_layerID;

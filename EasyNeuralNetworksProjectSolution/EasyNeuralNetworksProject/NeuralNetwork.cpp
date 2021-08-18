@@ -1,6 +1,7 @@
 #include "NeuralNetwork.h"
 #include "..\ImGUI\imgui.h"
 #include "..\ImGUI\imNODES\imnodes.h"
+#include "..\ImGUI\imNODES\imnodes_internal.h"
 #include "App.h"
 //############  CONSTRUCTORS ############
 
@@ -10,6 +11,7 @@ NeuralNetwork::NeuralNetwork(usint layers){
 		p2list_Layers.add(new Layer(i));
 	}
 	currentID = 0;
+	deleteItem = false;
 } 
 
 NeuralNetwork::~NeuralNetwork()
@@ -45,13 +47,17 @@ void NeuralNetwork::displayGui() {
 			Layer* tmpL;
 			p2list_Layers.at(selectedLayer, tmpL);
 			if (ImGui::Button("Add Neuron")) {	
+				int newID = p2list_Neurons.count();
 				Neuron* tmpN = new Neuron(p2list_Neurons.count(), selectedLayer);
-				tmpL->addNeuron(tmpN);//add neuron to Layer list
+				tmpL->addNeuron(tmpN);
 			}
 			ImGui::Text("Total Neurons: %d", p2list_Neurons.count());
 			ImGui::Text("Neurons inside Layer: %d", tmpL->p2list_LayerNeurons.count());
 		}
 		
+		if ((App->input->GetKey(SDL_SCANCODE_LCTRL) == KEY_REPEAT)) {	
+			deleteItem = true;
+		}
 		//NEURON CONFIG END
 	}
 	
@@ -76,32 +82,76 @@ void NeuralNetwork::displayGui() {
 	
 	ImNodes::EndNodeEditor();
 	
-	{
-		Link link;
-		if (ImNodes::IsLinkCreated(&link.input_attr, &link.output_attr))
-		{
-			link.id = ++currentID;
-			links.push_back(link);
-		}
-	}
-
-	{
-		int link_id;
-		if (ImNodes::IsLinkDestroyed(&link_id))
-		{
-			auto iter = std::find_if(
-				links.begin(), links.end(), [link_id](const Link& link) -> bool {
-					return link.id == link_id;
-				});
-			assert(iter != links.end());
-			links.erase(iter);
-		}
-	}
+	ImNodesManagement();
 
 	ImGui::End();
 
 }
 
+
+void NeuralNetwork::ImNodesManagement() {
+
+	bool ret = true;
+
+	Link link;
+	ImNodesEditorContext& editor = ImNodes::EditorContextGet();
+	if (ImNodes::IsLinkCreated(&link.input_attr, &link.output_attr)){
+		link.id = link.input_attr;
+		links.push_back(link);
+
+		
+		
+		
+
+	}
+	//ids de editor.Links.Pool[i].EndPinIdx y editor.Links.Pool[i].StartPinIdx no son los mismos que los que se asignan a los link en la lista links
+	for (Link& linksIter : links) {//my list
+		for (int i = 0; i < editor.Links.Pool.Size; i++) {//internal ImNodes list
+			if (linksIter.input_attr == editor.Links.Pool[i].StartPinIdx && linksIter.output_attr == editor.Links.Pool[i].EndPinIdx) {//if a link between my list[i] and internat ImNodes list[i2] match
+				for (int j = 0; i < editor.Pins.Pool.Size; j++) {
+					linksIter.input_node = editor.Pins.Pool[linksIter.input_attr].ParentNodeIdx;
+					linksIter.output_node = editor.Pins.Pool[linksIter.output_attr].ParentNodeIdx;
+				}
+			}
+		}
+
+	}
+
+	
+
+	int link_id;//Destroy links when they are called to be destroyed
+	if (ImNodes::IsLinkDestroyed(&link_id)){
+		auto iter = std::find_if(
+			links.begin(), links.end(), [link_id](const Link& link) -> bool {
+				return link.id == link_id;
+			});
+		assert(iter != links.end());
+		links.erase(iter);
+	}
+	
+	int itemHovered;//Destroy selected link
+	if (ImGui::GetIO().MouseClicked[2] && ImNodes::IsLinkHovered(&itemHovered)) {
+		usint counter = 0;
+		//std::vector<int>::iterator it = myvector.begin()
+		std::vector<Link>::iterator iter = links.begin();
+		for ( Link& link : links) {
+			if (link.id == itemHovered) {
+
+				Link* tmp = &link;
+				links.erase(iter);
+				
+				break;
+			}
+			if (links.size() > counter ) {
+				iter++;
+				counter++;
+			}
+				
+		}
+	}
+
+	
+}
 //############  UTILITY FUNCTIONS ############
 
 void NeuralNetwork::createLink(int inputL, int outputL, int ID) {

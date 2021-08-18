@@ -43,17 +43,17 @@ void Neuron::displayGui() {
 	ImNodes::BeginNode(p_neuronID);
 	
 	ImNodes::BeginNodeTitleBar();
-	ImGui::Text("ID: %i Layer:%i",p_neuronID, p_neuronLayerID);
+	ImGui::Text("ID: %i Layer:%i IID:%i OID:%i ",p_neuronID, p_neuronLayerID,inputID,outputID);
 	if (ImGui::Button("x")) {
 		Destroy();
 	}
 	ImNodes::EndNodeTitleBar();
-
-	ImNodes::BeginInputAttribute(inputID <<8);
+	
+	ImNodes::BeginInputAttribute(p_neuronID <<8);
 	ImGui::Text("input");
 	ImNodes::EndInputAttribute();
 
-	ImNodes::BeginOutputAttribute(outputID <<24);
+	ImNodes::BeginOutputAttribute(p_neuronID <<24);
 	ImGui::Indent(40);//moves atributes to the right
 	ImGui::Text("output");
 	ImNodes::EndOutputAttribute();

@@ -66,6 +66,7 @@ public:
 		return p_mouse_buttons[id - 1];
 	}
 
+	KeyState GetKey(int id);
 	// Check if a certain window event happened
 	bool GetWindowEvent(int code);
 

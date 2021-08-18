@@ -7,9 +7,13 @@
 #include "Module.h"
 #include <vector>
 #include <xutility>
+
+
+
 struct Link {
 	int id;
 	int input_attr, output_attr;
+	int input_node, output_node;
 };
 
 class NeuralNetwork 
@@ -38,10 +42,12 @@ public:
 	/*this functions deletes and free all space for the list p2list_Layers*/
 	void createLink(int input_attr, int output_attr, int ID);
 
+	void ImNodesManagement();
+
 public:
 
 	int currentID;
-
+	bool deleteItem;
 private:
 
 	

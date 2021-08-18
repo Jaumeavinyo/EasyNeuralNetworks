@@ -25,7 +25,7 @@ public:
 	bool checkbox = false;
 
 	void Destroy();
-
+	float floata =0.4;
 private:
 
 	usint p_neuronLayerID;
