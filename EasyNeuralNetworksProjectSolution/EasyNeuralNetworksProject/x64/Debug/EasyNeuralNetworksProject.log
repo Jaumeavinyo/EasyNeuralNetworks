@@ -1,10 +1,9 @@
-﻿  NeuralNetwork.cpp
+﻿  Neuron.cpp
 C:\Users\Usuario\Documents\GitHub\EasyNeuralNetworks\EasyNeuralNetworksProjectSolution\EasyNeuralNetworksProject\Neuron.h(32,19): warning C4305: 'initializing': truncation from 'double' to 'float'
-C:\Users\Usuario\Documents\GitHub\EasyNeuralNetworks\EasyNeuralNetworksProjectSolution\EasyNeuralNetworksProject\NeuralNetwork.cpp(71,22): warning C4018: '<': signed/unsigned mismatch
-C:\Users\Usuario\Documents\GitHub\EasyNeuralNetworks\EasyNeuralNetworksProjectSolution\EasyNeuralNetworksProject\NeuralNetwork.cpp(198,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Usuario\Documents\GitHub\EasyNeuralNetworks\EasyNeuralNetworksProjectSolution\EasyNeuralNetworksProject\Neuron.cpp(10,7): warning C4101: 'link': unreferenced local variable
   LINK : 0 new modules and 1 (out of 377) modules have changed since prior linking
   Starting pass 2
-       NeuralNetwork.obj
+       Neuron.obj
        LIBCMTD.lib(loadcfg.obj)
   Finished pass 2
   EasyNeuralNetworksProject.vcxproj -> C:\Users\Usuario\Documents\GitHub\EasyNeuralNetworks\EasyNeuralNetworksProjectSolution\x64\Debug\EasyNeuralNetworksProject.exe

@@ -42,9 +42,12 @@ void Neuron::displayGui() {
 	
 	ImNodes::BeginNodeTitleBar();
 	ImGui::Text("ID: %i Layer:%i",p_neuronID, p_neuronLayerID);
-	if (!((nextNeuronID || previousNeuronID) == NULL)){
-		ImGui::Text("prevNode: %i nextNode:%i", previousNeuronID, nextNeuronID);
-	}
+	//if (!((previousNeuronsIDs[0] || nextNeuronsIDs[0]) == NULL)){
+		//ImGui::Text("prevNode1: %i prevNode2: %i nextNode:%i", previousNeuronsIDs[0], previousNeuronsIDs[1], nextNeuronsIDs[0]);
+	//}
+	
+	
+
 	if (ImGui::Button("x")) {
 		Destroy();
 	}
