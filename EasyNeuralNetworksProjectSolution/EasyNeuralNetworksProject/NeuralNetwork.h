@@ -12,8 +12,8 @@
 
 struct Link {
 	int id;
-	int input_attr, output_attr;
-	int input_node, output_node;
+	int input_pin/*akka right, akka reciever_node*/, output_pin/*akka sender_node*/;
+	int sender_node, reciever_node;
 };
 
 class NeuralNetwork 
@@ -45,7 +45,7 @@ public:
 	void ImNodesManagement();
 
 public:
-
+	int count = 0;
 	int currentID;
 	bool deleteItem;
 private:

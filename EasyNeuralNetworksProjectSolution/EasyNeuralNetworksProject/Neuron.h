@@ -2,7 +2,7 @@
 #define NEURON_H
 
 #include "Globals.h"
-
+#include "StandartLibraries.h"
 class Neuron 
 {
 public:
@@ -12,10 +12,14 @@ public:
 
 	float inputWeight;
 
-	float inputValue;
-	int inputID;
-	float outputValue;
-	int outputID;
+	float inputValue;//value that enters untouched from last neuron
+	float outputValue;//value after operating
+	
+	std::vector<int> previousNeuronsIDs = {  };
+	std::vector<int> nextNeuronsIDs = {  };
+
+	int previousNeuronID;//delete this two variables
+	int nextNeuronID;
 
 	void modifyNeuronInputInformation(float newInput);
 	usint getNeuronID();

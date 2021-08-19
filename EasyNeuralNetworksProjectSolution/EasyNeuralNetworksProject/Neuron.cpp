@@ -8,8 +8,6 @@ struct Link;
 Neuron::Neuron(usint neuronID, usint neuronLayer) : p_neuronID(neuronID), p_neuronLayerID(neuronLayer)
 {
 	Link link;
-	inputID = p_neuronID + 1;
-	outputID = p_neuronID + 2;
 
 }
 
@@ -43,19 +41,22 @@ void Neuron::displayGui() {
 	ImNodes::BeginNode(p_neuronID);
 	
 	ImNodes::BeginNodeTitleBar();
-	ImGui::Text("ID: %i Layer:%i IID:%i OID:%i ",p_neuronID, p_neuronLayerID,inputID,outputID);
+	ImGui::Text("ID: %i Layer:%i",p_neuronID, p_neuronLayerID);
+	if (!((nextNeuronID || previousNeuronID) == NULL)){
+		ImGui::Text("prevNode: %i nextNode:%i", previousNeuronID, nextNeuronID);
+	}
 	if (ImGui::Button("x")) {
 		Destroy();
 	}
 	ImNodes::EndNodeTitleBar();
 	
 	ImNodes::BeginInputAttribute(p_neuronID <<8);
-	ImGui::Text("input");
+	ImGui::Text("input attr:%i",p_neuronID << 8);//to obtain the node id, just do inputPinID >> 8
 	ImNodes::EndInputAttribute();
 
-	ImNodes::BeginOutputAttribute(p_neuronID <<24);
+	ImNodes::BeginOutputAttribute(p_neuronID <<16);
 	ImGui::Indent(40);//moves atributes to the right
-	ImGui::Text("output");
+	ImGui::Text("output attr:%i",p_neuronID << 16);//to obtain the node id, just do outputPinID >> 16
 	ImNodes::EndOutputAttribute();
 
 	ImNodes::EndNode();
