@@ -99,17 +99,24 @@ void NeuralNetwork::ImNodesManagement() {
 		//link.id = links.size();//this can be done if when deleting a link, all links reorder(erase should reorder automaticly) | (old code)/*(link.input_pin);*/
 		link.reciever_node = (link.output_pin >> 8);//right part of the link ends up in the input_pin from node "n". this way we know: n.ID = n>>8 because input_pin id is "BeginInputAttribute(node_id << 8)"
 		link.sender_node = (link.input_pin >> 16);
-		link.id = link.reciever_node; //this way prevneuronId is the sender and next uis the
+
+		//link id will be the concatenation of 2 integers that will be "sender_node ID + reciever_node ID"
+		int prevID = link.sender_node;
+		int nextID = link.reciever_node;
+
+		int times = 1;
+		while (times <= nextID)
+			times *= 10;
+		
+		link.id = prevID * times + nextID;; //this way prevneuronId is the sender and next uis the
 		links.push_back(link);
 
 		Neuron* tmpNeuron;
 		Neuron* tmpPrevNeuron;
 		p2list_Neurons.at(link.sender_node, tmpPrevNeuron);
-		p2list_Neurons.at(link.id, tmpNeuron);
+		p2list_Neurons.at(link.reciever_node, tmpNeuron);
 
 		int prevNeuronID = link.sender_node;
-		
-		//NEED TO SOLVE LINK ID WHEN MORE THAN ONE LINK GOES TO THE SAME NEURON WE HAVE REPEATED IDs
 		
 		tmpNeuron->previousNeuronsIDs.push_back(prevNeuronID);
 		tmpPrevNeuron->nextNeuronsIDs.push_back(tmpNeuron->getNeuronID());
