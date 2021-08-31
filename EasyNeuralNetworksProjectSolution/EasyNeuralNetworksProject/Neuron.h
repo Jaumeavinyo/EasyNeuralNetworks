@@ -10,11 +10,12 @@ public:
 	Neuron(usint neuronID,usint neuronLayer);
 	~Neuron();
 
-	float inputWeight;
-
-	float inputValue;//value that enters untouched from last neuron
+	std::vector<float> inputWeights = {};
+	std::vector<float>inputValues = {};
+	std::vector<float> bias = {};
+		
 	float outputValue;//value after operating
-	
+
 	std::vector<int> previousNeuronsIDs = {  };
 	std::vector<int> nextNeuronsIDs = {  };
 
@@ -29,7 +30,7 @@ public:
 	bool checkbox = false;
 
 	void Destroy();
-	float floata =0.4;
+	int inputCount;
 private:
 
 	usint p_neuronLayerID;

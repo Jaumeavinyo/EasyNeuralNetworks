@@ -8,7 +8,7 @@ struct Link;
 Neuron::Neuron(usint neuronID, usint neuronLayer) : p_neuronID(neuronID), p_neuronLayerID(neuronLayer)
 {
 	Link link;
-
+	inputCount = 0;
 }
 
 Neuron::~Neuron()
@@ -16,7 +16,7 @@ Neuron::~Neuron()
 }
 
 void Neuron::modifyNeuronInputInformation(float newInput) {
-	inputValue = newInput;
+	//inputValue = newInput;
 }
 
 usint Neuron::getNeuronID() {
@@ -42,20 +42,33 @@ void Neuron::displayGui() {
 	
 	ImNodes::BeginNodeTitleBar();
 	ImGui::Text("ID: %i Layer:%i",p_neuronID, p_neuronLayerID);
-	//if (!((previousNeuronsIDs[0] || nextNeuronsIDs[0]) == NULL)){
-		//ImGui::Text("prevNode1: %i prevNode2: %i nextNode:%i", previousNeuronsIDs[0], previousNeuronsIDs[1], nextNeuronsIDs[0]);
-	//}
-	
-	
-
 	if (ImGui::Button("x")) {
 		Destroy();
 	}
 	ImNodes::EndNodeTitleBar();
-	
+	int a = 111111111;
 	ImNodes::BeginInputAttribute(p_neuronID <<8);
-	ImGui::Text("input attr:%i",p_neuronID << 8);//to obtain the node id, just do inputPinID >> 8
+	ImGui::Text("input attr:%i", p_neuronID << 8);//to obtain the node id, just do inputPinID >> 8
 	ImNodes::EndInputAttribute();
+	if (ImGui::Button("+")) {
+		inputCount++;	
+	}
+
+	if (inputCount > 0) {
+		for (int i = 0; i < inputCount; i++) {
+			int tmpID = p_neuronID;
+			ImNodes::BeginInputAttribute(tmpID << 8);
+			ImGui::Text("input attr:%i", tmpID << 8);//to obtain the node id, just do inputPinID >> 8
+			ImNodes::EndInputAttribute();
+		}
+	}
+	
+
+		ImNodes::BeginInputAttribute(p_neuronID << 8);
+		ImGui::Text("input attr:%i", p_neuronID << 8);//to obtain the node id, just do inputPinID >> 8
+		ImNodes::EndInputAttribute();
+
+
 
 	ImNodes::BeginOutputAttribute(p_neuronID <<16);
 	ImGui::Indent(40);//moves atributes to the right

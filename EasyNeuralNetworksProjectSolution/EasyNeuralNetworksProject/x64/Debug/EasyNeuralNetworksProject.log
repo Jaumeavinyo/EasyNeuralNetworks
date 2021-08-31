@@ -1,9 +1,34 @@
-﻿  Neuron.cpp
-C:\Users\Usuario\Documents\GitHub\EasyNeuralNetworks\EasyNeuralNetworksProjectSolution\EasyNeuralNetworksProject\Neuron.h(32,19): warning C4305: 'initializing': truncation from 'double' to 'float'
+﻿  App.cpp
+  Layer.cpp
+C:\Users\Usuario\Documents\GitHub\EasyNeuralNetworks\EasyNeuralNetworksProjectSolution\EasyNeuralNetworksProject\Layer.cpp(24,20): warning C4018: '<': signed/unsigned mismatch
+  Main.cpp
+  ModuleImGui.cpp
+  ModuleInput.cpp
+C:\Users\Usuario\Documents\GitHub\EasyNeuralNetworks\EasyNeuralNetworksProjectSolution\EasyNeuralNetworksProject\ModuleInput.cpp(118,14): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+  ModuleRender.cpp
+C:\Users\Usuario\Documents\GitHub\EasyNeuralNetworks\EasyNeuralNetworksProjectSolution\EasyNeuralNetworksProject\ModuleRender.cpp(112,12): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\Usuario\Documents\GitHub\EasyNeuralNetworks\EasyNeuralNetworksProjectSolution\EasyNeuralNetworksProject\ModuleRender.cpp(121,12): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+  ModuleScene.cpp
+  ModuleWindow.cpp
+  NeuralNetwork.cpp
+C:\Users\Usuario\Documents\GitHub\EasyNeuralNetworks\EasyNeuralNetworksProjectSolution\EasyNeuralNetworksProject\NeuralNetwork.cpp(71,22): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Usuario\Documents\GitHub\EasyNeuralNetworks\EasyNeuralNetworksProjectSolution\EasyNeuralNetworksProject\NeuralNetwork.cpp(198,20): warning C4018: '<': signed/unsigned mismatch
+  Neuron.cpp
 C:\Users\Usuario\Documents\GitHub\EasyNeuralNetworks\EasyNeuralNetworksProjectSolution\EasyNeuralNetworksProject\Neuron.cpp(10,7): warning C4101: 'link': unreferenced local variable
-  LINK : 0 new modules and 1 (out of 377) modules have changed since prior linking
+  Generating Code...
+C:\Users\Usuario\Documents\GitHub\EasyNeuralNetworks\EasyNeuralNetworksProjectSolution\EasyNeuralNetworksProject\ModuleScene.cpp(101): warning C4715: 'ModuleScene::getNeuralNetwork': not all control paths return a value
+  LINK : 0 new modules and 10 (out of 377) modules have changed since prior linking
   Starting pass 2
        Neuron.obj
+       ModuleWindow.obj
+       ModuleScene.obj
+       ModuleRender.obj
+       NeuralNetwork.obj
+       ModuleInput.obj
+       ModuleImGui.obj
+       Main.obj
+       Layer.obj
+       App.obj
        LIBCMTD.lib(loadcfg.obj)
   Finished pass 2
   EasyNeuralNetworksProject.vcxproj -> C:\Users\Usuario\Documents\GitHub\EasyNeuralNetworks\EasyNeuralNetworksProjectSolution\x64\Debug\EasyNeuralNetworksProject.exe
