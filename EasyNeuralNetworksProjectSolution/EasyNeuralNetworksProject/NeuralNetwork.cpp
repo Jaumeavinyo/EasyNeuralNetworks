@@ -12,6 +12,7 @@ NeuralNetwork::NeuralNetwork(usint layers){
 	}
 	currentID = 0;
 	deleteItem = false;
+	pinID = 0;
 } 
 
 NeuralNetwork::~NeuralNetwork()
@@ -97,8 +98,17 @@ void NeuralNetwork::ImNodesManagement() {
 	ImNodesEditorContext& editor = ImNodes::EditorContextGet();
 	if (ImNodes::IsLinkCreated(&link.input_pin, &link.output_pin)){
 		//link.id = links.size();//this can be done if when deleting a link, all links reorder(erase should reorder automaticly) | (old code)/*(link.input_pin);*/
-		link.reciever_node = (link.output_pin >> 8);//right part of the link ends up in the input_pin from node "n". this way we know: n.ID = n>>8 because input_pin id is "BeginInputAttribute(node_id << 8)"
-		link.sender_node = (link.input_pin >> 16);
+		
+		//buscar el comunicator con pinID == output_pin y en el reciever node pasarle el id del nodo guardado en comunicator
+		int tmpNodeID;
+		for (int i = 0; i < comunicators.size(); i++) {
+			if (comunicators[i].pin_ID == link.output_pin) {
+				tmpNodeID = comunicators[i].neuron_ID;
+			}
+		}
+
+		link.reciever_node = (link.output_pin >> 8);
+		link.sender_node = (link.input_pin >> 16);//left part of the link starts in the output_pin from node "n". this way we know: n.ID = n>>16 because output_pin id is "BeginOutputAttribute(node_id << 16)"
 
 		//link id will be the concatenation of 2 integers that will be "sender_node ID + reciever_node ID"
 		int prevID = link.sender_node;

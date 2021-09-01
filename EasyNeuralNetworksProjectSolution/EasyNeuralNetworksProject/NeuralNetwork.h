@@ -16,6 +16,11 @@ struct Link {
 	int sender_node, reciever_node;
 };
 
+struct comunicator {//relates id from BeguinInPutAttribute and neuron ID
+	int pin_ID;
+	int neuron_ID;
+};
+
 class NeuralNetwork 
 {
 public:
@@ -25,6 +30,7 @@ public:
 	p2List<Neuron*> p2list_Neurons; //ALL NEURONS
 	p2List<Layer*> p2list_Layers; //ALL LAYERS
 	std::vector<Link> links;      //ALL LINKS
+	std::vector<comunicator> comunicators; //All comunicators between ImNodesIDs and the program
 
 	void displayGui();
 
@@ -48,6 +54,7 @@ public:
 	int count = 0;
 	int currentID;
 	bool deleteItem;
+	int pinID; //used by neurons to assign IDs to pins
 private:
 
 	

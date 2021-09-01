@@ -3,6 +3,13 @@
 
 #include "Globals.h"
 #include "StandartLibraries.h"
+
+struct pinSaver {
+	int pin_ID;
+	int pin_count;
+	
+};
+
 class Neuron 
 {
 public:
@@ -19,6 +26,7 @@ public:
 	std::vector<int> previousNeuronsIDs = {  };
 	std::vector<int> nextNeuronsIDs = {  };
 
+	std::vector<pinSaver> pinSavers;
 	int previousNeuronID;//delete this two variables
 	int nextNeuronID;
 
@@ -27,10 +35,19 @@ public:
 
 	void displayGui();
 
-	bool checkbox = false;
-
 	void Destroy();
+
+
+	void addPin();
+	void addNewInputPin();
+	void addNewOutputPin();
+
+
 	int inputCount;
+	int outputCount;
+	bool inputPinExists;
+	bool outputPinExists;
+
 private:
 
 	usint p_neuronLayerID;
