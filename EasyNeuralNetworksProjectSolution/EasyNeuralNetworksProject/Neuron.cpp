@@ -66,9 +66,9 @@ void Neuron::displayGui() {
 	if (inputCount > 0) { //if there should be more inputs
 		for (int i = 1; i < inputCount; i++) {//paint all inputs
 			int tmpPinID;
-			for (int n = 0; n < pinSavers.size(); n++) {//find the unique pinID saved in pinSavers allong with the count in where they where saved
-				if (i == pinSavers[n].pin_count) {
-					tmpPinID = pinSavers[n].pin_ID;
+			for (int n = 0; n < inputPinSavers.size(); n++) {//find the unique pinID saved in pinSavers allong with the count in where they where saved
+				if (i == inputPinSavers[n].pin_count) {
+					tmpPinID = inputPinSavers[n].pin_ID;
 				}
 			}
 
@@ -78,36 +78,45 @@ void Neuron::displayGui() {
 			ImNodes::EndInputAttribute();
 		}
 	}
+	if (ImGui::Button("Add output")) {
+		addNewOutputPin();
+	}
 
-	ImNodes::BeginOutputAttribute(p_neuronID <<16);
-	ImGui::Indent(40);//moves atributes to the right
-	ImGui::Text("output attr:%i",p_neuronID << 16);//to obtain the node id, just do outputPinID >> 16
-	ImNodes::EndOutputAttribute();
+	if (outputCount > 0) { //if there should be more inputs
+		for (int i = 1; i < outputCount; i++) {//paint all inputs
+			int tmpPinID;
+			for (int n = 0; n < outputPinSavers.size(); n++) {//find the unique pinID saved in pinSavers allong with the count in where they where saved
+				if (i == outputPinSavers[n].pin_count) {
+					tmpPinID = outputPinSavers[n].pin_ID;
+				}
+			}
+
+			ImNodes::BeginOutputAttribute(tmpPinID);
+
+			ImGui::Text("output attr:%i", tmpPinID);//to obtain the node id, just do inputPinID >> 8
+			ImNodes::EndOutputAttribute();
+		}
+	}
+
+	
 
 	ImNodes::EndNode();
 	//ImGui::End();
 }
 
-
-void Neuron::addPin() {
-	comunicator tmpComunicator;
-	tmpComunicator.neuron_ID = p_neuronID;
-	tmpComunicator.pin_ID = App->scene->getNeuralNetwork()->pinID;
-
-	App->scene->getNeuralNetwork()->comunicators.push_back(tmpComunicator);
-
-	App->scene->getNeuralNetwork()->pinID++;
-}
-
-
 void Neuron::addNewInputPin() {
 	inputCount++;
 
-	pinSaver saver;
+	inputPinSaver saver;
 	saver.pin_count = inputCount;
 	saver.pin_ID = App->scene->getNeuralNetwork()->pinID;
+	inputPinSavers.push_back(saver);
 
-	pinSavers.push_back(saver);
+	comunicator tmpComunicator;
+	tmpComunicator.neuron_ID = p_neuronID;
+	tmpComunicator.pin_ID = App->scene->getNeuralNetwork()->pinID;
+	App->scene->getNeuralNetwork()->comunicators.push_back(tmpComunicator);
+
 
 	App->scene->getNeuralNetwork()->pinID++;
 }
@@ -115,11 +124,16 @@ void Neuron::addNewInputPin() {
 void Neuron::addNewOutputPin() {
 	outputCount++;
 
-	pinSaver saver;
+	outputPinSaver saver;
 	saver.pin_count = outputCount;
 	saver.pin_ID = App->scene->getNeuralNetwork()->pinID;
 
-	pinSavers.push_back(saver);
+	comunicator tmpComunicator;
+	tmpComunicator.neuron_ID = p_neuronID;
+	tmpComunicator.pin_ID = App->scene->getNeuralNetwork()->pinID;
+	App->scene->getNeuralNetwork()->comunicators.push_back(tmpComunicator);
+
+	outputPinSavers.push_back(saver);
 
 	App->scene->getNeuralNetwork()->pinID++;
 }

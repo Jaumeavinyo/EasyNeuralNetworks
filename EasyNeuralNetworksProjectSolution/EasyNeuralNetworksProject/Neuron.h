@@ -4,10 +4,15 @@
 #include "Globals.h"
 #include "StandartLibraries.h"
 
-struct pinSaver {
+struct inputPinSaver {
 	int pin_ID;
 	int pin_count;
 	
+};
+
+struct outputPinSaver {
+	int pin_ID;
+	int pin_count;
 };
 
 class Neuron 
@@ -26,7 +31,8 @@ public:
 	std::vector<int> previousNeuronsIDs = {  };
 	std::vector<int> nextNeuronsIDs = {  };
 
-	std::vector<pinSaver> pinSavers;
+	std::vector<inputPinSaver>  inputPinSavers;
+	std::vector<outputPinSaver>  outputPinSavers;
 	int previousNeuronID;//delete this two variables
 	int nextNeuronID;
 
@@ -38,10 +44,12 @@ public:
 	void Destroy();
 
 
-	void addPin();
+	
 	void addNewInputPin();
 	void addNewOutputPin();
 
+	void displayInputPins();
+	void displayOutputPins();
 
 	int inputCount;
 	int outputCount;
