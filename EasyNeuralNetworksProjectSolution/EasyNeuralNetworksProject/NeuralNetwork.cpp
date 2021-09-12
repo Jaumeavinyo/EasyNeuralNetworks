@@ -23,6 +23,21 @@ NeuralNetwork::~NeuralNetwork()
 
 bool NeuralNetwork::updateNeuralNetwork() {
 	bool ret = true;
+
+	//destroy layer if empty
+	p2List_item<Layer*>* layerIterator;
+	layerIterator = p2list_Layers.getFirst();
+	for (int i = 0; i < p2list_Layers.count(); i++) {
+		if (layerIterator->data->p2list_LayerNeurons.count() == 0) {
+			p2List_item<Layer*>* tmpLayerIter = layerIterator;
+			layerIterator->next;
+			p2list_Layers.del(tmpLayerIter);
+		}
+		else {
+			layerIterator->next;
+		}	
+	}
+
 	return ret;
 }
 
@@ -47,19 +62,56 @@ void NeuralNetwork::displayGui() {
 		{
 			Layer* tmpL;
 			p2list_Layers.at(selectedLayer, tmpL);
-			if (ImGui::Button("Add Neuron")) {	
+			if (ImGui::Button("Add Neuron")) {	//????????????? necessary=?=
 				int newID = p2list_Neurons.count();
-				Neuron* tmpN = new Neuron(p2list_Neurons.count(), selectedLayer);
+				Neuron* tmpN = new Neuron(p2list_Neurons.count(), selectedLayer,tmpL->p2list_LayerNeurons.count());
 				tmpL->addNeuron(tmpN);
 			}
-			ImGui::Text("Total Neurons: %d", p2list_Neurons.count());
-			ImGui::Text("Neurons inside Layer: %d", tmpL->p2list_LayerNeurons.count());
+			if (p2list_Layers.count() != 0) {
+				ImGui::Text("Total Neurons: %d", p2list_Neurons.count());
+				ImGui::Text("Neurons inside Layer: %d", tmpL->p2list_LayerNeurons.count());
+			}
+			
 		}
 		
 		if ((App->input->GetKey(SDL_SCANCODE_LCTRL) == KEY_REPEAT)) {	
 			deleteItem = true;
 		}
 		//NEURON CONFIG END
+		ImGui::Text("Automatic Network Generator");
+	
+		static int LayerNum = 0;
+		ImGui::SliderInt("Layers", &LayerNum, 0, 100 - 1);
+		
+		
+		if (ImGui::Button("Generate automatic net")) {
+			
+				userSelectedAmmountOfLayers = LayerNum;
+				generateAutomaticNetwork(LayerNum);
+				inputVals.push_back(10.0);
+				inputVals.push_back(5.0);
+				inputVals.push_back(1.0);
+				printf("\n \n \n input values: %f %f %f \n", inputVals[0], inputVals[1], inputVals[2]);
+				
+		}
+				
+
+		if (ImGui::Button("TRAIN NET")) {
+			for (int i = 0; i < 100; i++) {
+
+				feedForward(inputVals);
+				getResults(resultVals);
+				printf("\n \n result values:           %f       %f      %f     \n", resultVals[0], resultVals[1], resultVals[2]);
+
+				targetVals.push_back(15.0);
+				targetVals.push_back(10.0);
+				targetVals.push_back(6.0);
+				printf("target values: --------> %f %f %f \n", targetVals[0], targetVals[1], targetVals[2]);
+				backPropagation(targetVals);
+
+				printf("\n \n Net recent average error: %f \n", p_netRecentAverageError);
+			}
+		}
 	}
 	
 	//NEURON DISPLAYGUI START
@@ -171,6 +223,146 @@ void NeuralNetwork::ImNodesManagement() {
 
 	
 }
+
+
+
+void NeuralNetwork::generateAutomaticNetwork(usint LayerNum) { //check
+	usint numLayers = LayerNum;
+	for (int i = 0; i <= numLayers; i++) {
+		Layer* tmpL = new Layer(p2list_Layers.count());
+		p2list_Layers.add(tmpL);
+		printf("created a new layer: %d \n",i);
+		printf("Layer count: %d \n", p2list_Layers.count());
+		//we have new layer now we add neurons inside
+		for (int j = 0; j < 3/*hardcoded*/; j++) {
+			if ( i != numLayers ) {//first or hidden layer = output weights
+				Neuron* tmpN = new Neuron(p2list_Neurons.count(), i,j, 3); //new neuron inside layer i
+				tmpL->addNeuron(tmpN, 3/*hardcoded next layer neurons num*/);
+				printf("addNeuron(tmpN) \n");
+			}
+			else if (i == numLayers ) {//last layer = no output weights
+				Neuron* tmpN = new Neuron(p2list_Neurons.count(), i,j, 0); //new neuron inside layer i
+				tmpL->addNeuron(tmpN, 0/*hardcoded next layer neurons num*/);
+				printf("addNeuron(tmpN)-last \n");
+			}	
+		}
+	}
+}
+
+void NeuralNetwork::feedForward(const std::vector<double> &inputVals) { //check
+	
+	assert(inputVals.size() == p2list_Layers.getFirst()->data->p2list_LayerNeurons.count());
+	
+	//assign input values to the neurons in first layer
+	p2List_item<Layer*>* layerIterator;
+	layerIterator = p2list_Layers.getFirst();
+
+	p2List_item<Neuron*>* neuronIterator;
+	neuronIterator = layerIterator->data->p2list_LayerNeurons.getFirst();
+	for (int i = 0; i < inputVals.size(); i++) {
+		neuronIterator->data->outputValue = inputVals[i];
+		//neuronIterator->data->inputValues.push_back(inputVals[i]);
+		neuronIterator->next;
+	}
+
+	//forward propagate
+	for (int i = 1; i < p2list_Layers.count(); i++) {//iterate layers
+		Layer* tmpL;
+		p2list_Layers.at(i, tmpL);
+		p2List_item<Neuron*>* neuronIterator = tmpL->p2list_LayerNeurons.getFirst();
+		for (int n = 0; n < tmpL->p2list_LayerNeurons.count(); n++) {//iterate neurons in layer
+			Layer *tmpLprev;
+			p2list_Layers.at(i-1, tmpLprev);
+			neuronIterator->data->feedForward(*tmpLprev);
+			neuronIterator->next;
+			
+		}
+		
+	}
+}
+
+void NeuralNetwork::backPropagation(const std::vector<double>& _targetVals) {
+
+	//Calculate RMS "Root Mean Square Error" also known as overall net error
+	
+	/*Layer& outputLayer = p2list_Layers.getLast();*/
+	p_netError = 0.0;
+	Layer* tmpL; //output layer
+	p2list_Layers.at(p2list_Layers.count() - 1, tmpL);
+	
+	for (int n = 0; n < tmpL->p2list_LayerNeurons.count(); n++) {
+		Neuron* tmpN;
+		tmpL->p2list_LayerNeurons.at(n, tmpN);
+
+		double delta = _targetVals[n] - tmpN->outputValue;
+		p_netError += delta * delta;
+	}
+	p_netError /= tmpL->p2list_LayerNeurons.count() - 1; //average error sqrted
+	p_netError = sqrt(p_netError); //RMS
+	p_netRecentAverageError = (p_netRecentAverageError * p_netRecentSmoothingFactor + p_netError)
+		/ (p_netRecentSmoothingFactor + 1);
+		
+	//calculate output layer gradients
+	p2List_item<Neuron*>* neuronIterator;
+	neuronIterator = tmpL->p2list_LayerNeurons.getFirst();//output layer neuron iterator
+	for (int n = 0; n < tmpL->p2list_LayerNeurons.count() - 1 ; n++) {
+		neuronIterator->data->calculateOutputGradients(targetVals[n]);	
+		neuronIterator->next;
+	}
+
+	//calculate hidden layer gradients
+	Layer* tmpL2;
+	p2list_Layers.at(p2list_Layers.count() - 2, tmpL2);
+
+	p2List_item<Layer*>* layerIterator;
+	layerIterator = p2list_Layers.getLast();
+	layerIterator = layerIterator->prev; //first hidden layer before last layer
+	for (int l = p2list_Layers.count() - 2; l>0	; l--) {//-1 is the last, -2 is the first hidden starting from the back
+		Layer* nextL;
+		nextL = layerIterator->next->data;
+		
+		p2List_item<Neuron*>* neuronIterator;
+		neuronIterator = layerIterator->data->p2list_LayerNeurons.getFirst();
+		for (int i = 0; i < layerIterator->data->p2list_LayerNeurons.count(); i++) {//calls calchuddengradients of all layer neurons
+			neuronIterator->data->calculateHiddenGradients(*nextL);
+			neuronIterator->next;
+		}
+		layerIterator->prev;
+	}
+
+	//from all layers, from output layer to first hidden layer update all weights
+	layerIterator = p2list_Layers.getLast();
+	layerIterator = layerIterator->prev; //first hidden layer before last layer	
+	for (int i = p2list_Layers.count() - 1; i > 0; i--) {
+		Layer* prevL;
+		prevL = layerIterator->prev->data;
+
+		p2List_item<Neuron*>* neuronIterator;
+		neuronIterator = layerIterator->data->p2list_LayerNeurons.getFirst();
+		for (int n = 0; n < layerIterator->data->p2list_LayerNeurons.count(); n++) {
+			neuronIterator->data->updateInputWeights(*prevL);
+			
+			neuronIterator->next;
+		}
+
+		layerIterator->prev;
+	}
+
+}
+
+void NeuralNetwork::getResults(std::vector<double>& resultVals) {
+	resultVals.clear();
+	p2List_item<Neuron*>* neuronIterator;
+	neuronIterator = p2list_Layers.getLast()->data->p2list_LayerNeurons.getFirst();
+	
+	for (int n = 0; n < p2list_Layers.getLast()->data->p2list_LayerNeurons.count(); n++) {
+		
+		resultVals.push_back(neuronIterator->data->outputValue);
+		
+		neuronIterator->next;
+	}
+}
+
 //############  UTILITY FUNCTIONS ############
 
 void NeuralNetwork::createLink(int inputL, int outputL, int ID) {

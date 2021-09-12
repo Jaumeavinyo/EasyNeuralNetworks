@@ -31,7 +31,7 @@ bool ModuleScene::Start() {
 
 	bool ret = true;
 	printf("ModuleScene Start()\n");
-	printf(" ---> creating new neural network...");
+	printf(" ---> creating new neural network program,...");
 
 	
 
@@ -49,7 +49,7 @@ update_status ModuleScene::PreUpdate(float dt) {
 	{
 		if (ImGui::MenuItem("New Network"))
 		{
-			p_neuralNet = new NeuralNetwork(2);
+			p_neuralNet = new NeuralNetwork(0);
 			displayNeuralNetworkGui = true;
 		}
 		ImGui::EndMenu();
@@ -58,7 +58,8 @@ update_status ModuleScene::PreUpdate(float dt) {
 	ImGui::EndMainMenuBar();
 	
 	if (displayNeuralNetworkGui) {
-		p_neuralNet->displayGui();
+		p_neuralNet->updateNeuralNetwork();
+		p_neuralNet->displayGui();	
 	}
 	
 

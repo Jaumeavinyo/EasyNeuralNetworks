@@ -34,6 +34,11 @@ void Layer::addNeuron(Neuron *neuron) {
 	App->scene->getNeuralNetwork()->p2list_Neurons.add(neuron);
 }
 
+void Layer::addNeuron(Neuron* neuron, usint nextLayerNeurons) {
+	neuron->_nextLayerNeurons = nextLayerNeurons;
+	p2list_LayerNeurons.add(neuron);
+	App->scene->getNeuralNetwork()->p2list_Neurons.add(neuron);
+}
 
 usint Layer::getLayerID() {
 	return p_layerID;
@@ -45,11 +50,7 @@ void Layer::setLayerID(usint layerID) {
 	p_layerID = layerID;
 }
 
-void Layer::addNewNeuron(usint neuronID,usint neuronLayer) {
-	Neuron* tmpNeuron = new Neuron(neuronID, neuronLayer);
-	p2list_LayerNeurons.add(tmpNeuron);
-	
-}
+
 
 void Layer::removeNeuron(usint neuronID) {
 	usint size1 = p2list_LayerNeurons.count();

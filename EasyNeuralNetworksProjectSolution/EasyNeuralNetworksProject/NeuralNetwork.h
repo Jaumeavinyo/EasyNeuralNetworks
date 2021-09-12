@@ -5,7 +5,7 @@
 #include "Layer.h"
 #include "Neuron.h"//#include "Globals.h" included in neuron
 #include "Module.h"
-#include <vector>
+#include "Globals.h"
 #include <xutility>
 
 
@@ -32,6 +32,15 @@ public:
 	std::vector<Link> links;      //ALL LINKS
 	std::vector<comunicator> comunicators; //All comunicators between ImNodesIDs and the program
 
+	std::vector<unsigned> TOP;
+	std::vector<double> inputVals;
+	std::vector<double> targetVals;
+	std::vector<double> resultVals;
+
+	void feedForward(const std::vector<double>& inputVals);
+	void backPropagation(const std::vector<double>& TargetVals);
+	void getResults(std::vector<double>& resultVals);
+
 	void displayGui();
 
 	bool updateNeuralNetwork();
@@ -50,15 +59,22 @@ public:
 
 	void ImNodesManagement();
 
+	void generateAutomaticNetwork(usint layerNum);
+
 public:
 	int count = 0;
 	int currentID;
 	bool deleteItem;
 	int pinID; //used by neurons to assign IDs to pins
+	int userSelectedAmmountOfLayers;
+
+	int train = 0;
+	bool trainNow= false;
 private:
 
-	
-
+	double p_netError;
+	double p_netRecentAverageError;
+	double p_netRecentSmoothingFactor=100;
 };
 
 
