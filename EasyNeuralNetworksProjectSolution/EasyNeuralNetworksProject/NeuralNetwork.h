@@ -74,7 +74,7 @@ private:
 
 	double p_netError;
 	double p_netRecentAverageError;
-	double p_netRecentSmoothingFactor=100;
+	double p_netRecentSmoothingFactor=500;
 };
 
 

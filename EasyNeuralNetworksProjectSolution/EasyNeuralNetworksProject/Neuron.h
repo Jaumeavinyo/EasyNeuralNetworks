@@ -85,9 +85,9 @@ private:
 	usint p_neuronLayerID;
 	usint p_neuronID;
 	double p_gradient;
-	usint p_myIndexInTheList;
+	
 public:
-
+	usint p_myIndexInTheList;
 	usint _nextLayerNeurons;
 
 public:

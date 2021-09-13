@@ -30,11 +30,11 @@ bool NeuralNetwork::updateNeuralNetwork() {
 	for (int i = 0; i < p2list_Layers.count(); i++) {
 		if (layerIterator->data->p2list_LayerNeurons.count() == 0) {
 			p2List_item<Layer*>* tmpLayerIter = layerIterator;
-			layerIterator->next;
+			layerIterator = layerIterator->next;
 			p2list_Layers.del(tmpLayerIter);
 		}
 		else {
-			layerIterator->next;
+			layerIterator = layerIterator->next;
 		}	
 	}
 
@@ -88,24 +88,24 @@ void NeuralNetwork::displayGui() {
 			
 				userSelectedAmmountOfLayers = LayerNum;
 				generateAutomaticNetwork(LayerNum);
-				inputVals.push_back(10.0);
-				inputVals.push_back(5.0);
 				inputVals.push_back(1.0);
+				inputVals.push_back(0.0);
+				inputVals.push_back(0.5);
 				printf("\n \n \n input values: %f %f %f \n", inputVals[0], inputVals[1], inputVals[2]);
 				
 		}
 				
 
 		if (ImGui::Button("TRAIN NET")) {
-			for (int i = 0; i < 100; i++) {
+			for (int i = 0; i < 1000; i++) {
 
 				feedForward(inputVals);
 				getResults(resultVals);
 				printf("\n \n result values:           %f       %f      %f     \n", resultVals[0], resultVals[1], resultVals[2]);
 
-				targetVals.push_back(15.0);
-				targetVals.push_back(10.0);
-				targetVals.push_back(6.0);
+				targetVals.push_back(0.0);
+				targetVals.push_back(1.0);
+				targetVals.push_back(0.0);
 				printf("target values: --------> %f %f %f \n", targetVals[0], targetVals[1], targetVals[2]);
 				backPropagation(targetVals);
 
@@ -232,13 +232,13 @@ void NeuralNetwork::generateAutomaticNetwork(usint LayerNum) { //check
 		Layer* tmpL = new Layer(p2list_Layers.count());
 		p2list_Layers.add(tmpL);
 		printf("created a new layer: %d \n",i);
-		printf("Layer count: %d \n", p2list_Layers.count());
+		printf("Layer ID: %i \n", tmpL->getLayerID());
 		//we have new layer now we add neurons inside
 		for (int j = 0; j < 3/*hardcoded*/; j++) {
 			if ( i != numLayers ) {//first or hidden layer = output weights
 				Neuron* tmpN = new Neuron(p2list_Neurons.count(), i,j, 3); //new neuron inside layer i
 				tmpL->addNeuron(tmpN, 3/*hardcoded next layer neurons num*/);
-				printf("addNeuron(tmpN) \n");
+				printf("addNeuron(tmpN) with id: %i\n",tmpN->getNeuronID());
 			}
 			else if (i == numLayers ) {//last layer = no output weights
 				Neuron* tmpN = new Neuron(p2list_Neurons.count(), i,j, 0); //new neuron inside layer i
@@ -261,8 +261,9 @@ void NeuralNetwork::feedForward(const std::vector<double> &inputVals) { //check
 	neuronIterator = layerIterator->data->p2list_LayerNeurons.getFirst();
 	for (int i = 0; i < inputVals.size(); i++) {
 		neuronIterator->data->outputValue = inputVals[i];
+		printf("inputValue: %f", inputVals[i]);
 		//neuronIterator->data->inputValues.push_back(inputVals[i]);
-		neuronIterator->next;
+		neuronIterator = neuronIterator->next;
 	}
 
 	//forward propagate
@@ -270,15 +271,22 @@ void NeuralNetwork::feedForward(const std::vector<double> &inputVals) { //check
 		Layer* tmpL;
 		p2list_Layers.at(i, tmpL);
 		p2List_item<Neuron*>* neuronIterator = tmpL->p2list_LayerNeurons.getFirst();
+		Layer* tmpLprev;
+		p2list_Layers.at(i - 1, tmpLprev);
 		for (int n = 0; n < tmpL->p2list_LayerNeurons.count(); n++) {//iterate neurons in layer
-			Layer *tmpLprev;
-			p2list_Layers.at(i-1, tmpLprev);
 			neuronIterator->data->feedForward(*tmpLprev);
-			neuronIterator->next;
+			printf("\n Layer: %i", tmpLprev->getLayerID());
+			printf("\n ---NeuronID: %i", neuronIterator->data->getNeuronID());
+			if (tmpL->getLayerID() != p2list_Layers.count()-1) {
+				printf("\n ------Neuron Weight: %f", neuronIterator->data->outputWeights[neuronIterator->data->p_myIndexInTheList].weight);
+				printf("\n ---------Neuron output: %f", neuronIterator->data->outputValue);
+			}
 			
+			neuronIterator = neuronIterator->next;
 		}
-		
 	}
+
+	
 }
 
 void NeuralNetwork::backPropagation(const std::vector<double>& _targetVals) {
@@ -301,13 +309,14 @@ void NeuralNetwork::backPropagation(const std::vector<double>& _targetVals) {
 	p_netError = sqrt(p_netError); //RMS
 	p_netRecentAverageError = (p_netRecentAverageError * p_netRecentSmoothingFactor + p_netError)
 		/ (p_netRecentSmoothingFactor + 1);
-		
+	printf("\n p_netRecentAverageError  ------------------------%f", p_netRecentAverageError);
+	printf("\n p_netError  ------------------------%f", p_netError);
 	//calculate output layer gradients
 	p2List_item<Neuron*>* neuronIterator;
 	neuronIterator = tmpL->p2list_LayerNeurons.getFirst();//output layer neuron iterator
 	for (int n = 0; n < tmpL->p2list_LayerNeurons.count() - 1 ; n++) {
 		neuronIterator->data->calculateOutputGradients(targetVals[n]);	
-		neuronIterator->next;
+		neuronIterator = neuronIterator->next;
 	}
 
 	//calculate hidden layer gradients
@@ -325,27 +334,27 @@ void NeuralNetwork::backPropagation(const std::vector<double>& _targetVals) {
 		neuronIterator = layerIterator->data->p2list_LayerNeurons.getFirst();
 		for (int i = 0; i < layerIterator->data->p2list_LayerNeurons.count(); i++) {//calls calchuddengradients of all layer neurons
 			neuronIterator->data->calculateHiddenGradients(*nextL);
-			neuronIterator->next;
+			neuronIterator = neuronIterator->next;
 		}
-		layerIterator->prev;
+		layerIterator = layerIterator->prev;
 	}
 
 	//from all layers, from output layer to first hidden layer update all weights
 	layerIterator = p2list_Layers.getLast();
-	layerIterator = layerIterator->prev; //first hidden layer before last layer	
+	//layerIterator = layerIterator->prev; //first hidden layer before last layer	
 	for (int i = p2list_Layers.count() - 1; i > 0; i--) {
 		Layer* prevL;
 		prevL = layerIterator->prev->data;
-
+		
 		p2List_item<Neuron*>* neuronIterator;
 		neuronIterator = layerIterator->data->p2list_LayerNeurons.getFirst();
 		for (int n = 0; n < layerIterator->data->p2list_LayerNeurons.count(); n++) {
 			neuronIterator->data->updateInputWeights(*prevL);
 			
-			neuronIterator->next;
+			neuronIterator = neuronIterator->next;
 		}
 
-		layerIterator->prev;
+		layerIterator = layerIterator->prev;
 	}
 
 }
@@ -359,7 +368,7 @@ void NeuralNetwork::getResults(std::vector<double>& resultVals) {
 		
 		resultVals.push_back(neuronIterator->data->outputValue);
 		
-		neuronIterator->next;
+		neuronIterator = neuronIterator->next;
 	}
 }
 

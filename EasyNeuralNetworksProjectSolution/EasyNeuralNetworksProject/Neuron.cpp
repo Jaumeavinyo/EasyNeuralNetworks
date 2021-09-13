@@ -22,6 +22,7 @@ Neuron::Neuron(usint neuronID, usint neuronLayer, usint myIndexInTheList, usint 
 	for (int w = 0; w < nextLayerNeurons; w++) {
 		weight tmpW;
 		tmpW.weight = rand() / double(RAND_MAX);
+		tmpW.deltaWeight = 0;
 		//tmpW.deltaWeight = rand() / double(RAND_MAX); no es el problema de la repeticion de output values
 		outputWeights.push_back(tmpW);
 
@@ -164,13 +165,10 @@ void Neuron::feedForward(Layer &prevLayer) {
 	neuronIterator2 = prevLayer.p2list_LayerNeurons.getFirst();
 	for (int n = 0; n < prevLayer.p2list_LayerNeurons.count(); n++) {
 		sum = sum + neuronIterator2->data->outputValue * neuronIterator2->data->outputWeights[p_myIndexInTheList].weight;
-		neuronIterator2->next;
+		printf("\n NeuronFeedForward: neuron: %i weight = %f",neuronIterator2->data->p_neuronID, neuronIterator2->data->outputWeights[p_myIndexInTheList].weight);
+		neuronIterator2 = neuronIterator2->next;
 	}
 
-	//PC
-	//to add a BIAS neuron virtually:
-	
-	//END PC
 	outputValue = transferFunction(sum);//also called activation function
 }
 
@@ -203,7 +201,7 @@ double Neuron::sumDOW(const Layer& nextL)const {
 	for (int i = 0; i < nextL.p2list_LayerNeurons.count(); i++) {
 		sum += outputWeights[i].weight * neuronIterator->data->p_gradient;
 
-		neuronIterator->next;
+		neuronIterator = neuronIterator->next;
 	}
 	return sum; 
 }
@@ -219,6 +217,6 @@ void Neuron::updateInputWeights(Layer& prevL) {//weights to update are inside we
 		
 		neuronIterator->data->outputWeights[p_myIndexInTheList].deltaWeight = newDeltaWeight;
 		neuronIterator->data->outputWeights[p_myIndexInTheList].weight += newDeltaWeight;
-		neuronIterator->next;
+		neuronIterator = neuronIterator->next;
 	}
 }

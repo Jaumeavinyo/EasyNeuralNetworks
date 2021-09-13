@@ -1,14 +1,14 @@
 ﻿  NeuralNetwork.cpp
 C:\Users\Usuario\Documents\GitHub\EasyNeuralNetworks\EasyNeuralNetworksProjectSolution\EasyNeuralNetworksProject\NeuralNetwork.cpp(30,20): warning C4018: '<': signed/unsigned mismatch
 C:\Users\Usuario\Documents\GitHub\EasyNeuralNetworks\EasyNeuralNetworksProjectSolution\EasyNeuralNetworksProject\NeuralNetwork.cpp(124,22): warning C4018: '<': signed/unsigned mismatch
-C:\Users\Usuario\Documents\GitHub\EasyNeuralNetworks\EasyNeuralNetworksProjectSolution\EasyNeuralNetworksProject\NeuralNetwork.cpp(269,20): warning C4018: '<': signed/unsigned mismatch
-C:\Users\Usuario\Documents\GitHub\EasyNeuralNetworks\EasyNeuralNetworksProjectSolution\EasyNeuralNetworksProject\NeuralNetwork.cpp(273,21): warning C4018: '<': signed/unsigned mismatch
-C:\Users\Usuario\Documents\GitHub\EasyNeuralNetworks\EasyNeuralNetworksProjectSolution\EasyNeuralNetworksProject\NeuralNetwork.cpp(293,20): warning C4018: '<': signed/unsigned mismatch
-C:\Users\Usuario\Documents\GitHub\EasyNeuralNetworks\EasyNeuralNetworksProjectSolution\EasyNeuralNetworksProject\NeuralNetwork.cpp(308,20): warning C4018: '<': signed/unsigned mismatch
-C:\Users\Usuario\Documents\GitHub\EasyNeuralNetworks\EasyNeuralNetworksProjectSolution\EasyNeuralNetworksProject\NeuralNetwork.cpp(326,21): warning C4018: '<': signed/unsigned mismatch
-C:\Users\Usuario\Documents\GitHub\EasyNeuralNetworks\EasyNeuralNetworksProjectSolution\EasyNeuralNetworksProject\NeuralNetwork.cpp(342,21): warning C4018: '<': signed/unsigned mismatch
-C:\Users\Usuario\Documents\GitHub\EasyNeuralNetworks\EasyNeuralNetworksProjectSolution\EasyNeuralNetworksProject\NeuralNetwork.cpp(358,20): warning C4018: '<': signed/unsigned mismatch
-C:\Users\Usuario\Documents\GitHub\EasyNeuralNetworks\EasyNeuralNetworksProjectSolution\EasyNeuralNetworksProject\NeuralNetwork.cpp(404,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Usuario\Documents\GitHub\EasyNeuralNetworks\EasyNeuralNetworksProjectSolution\EasyNeuralNetworksProject\NeuralNetwork.cpp(270,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Usuario\Documents\GitHub\EasyNeuralNetworks\EasyNeuralNetworksProjectSolution\EasyNeuralNetworksProject\NeuralNetwork.cpp(276,21): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Usuario\Documents\GitHub\EasyNeuralNetworks\EasyNeuralNetworksProjectSolution\EasyNeuralNetworksProject\NeuralNetwork.cpp(301,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Usuario\Documents\GitHub\EasyNeuralNetworks\EasyNeuralNetworksProjectSolution\EasyNeuralNetworksProject\NeuralNetwork.cpp(317,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Usuario\Documents\GitHub\EasyNeuralNetworks\EasyNeuralNetworksProjectSolution\EasyNeuralNetworksProject\NeuralNetwork.cpp(335,21): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Usuario\Documents\GitHub\EasyNeuralNetworks\EasyNeuralNetworksProjectSolution\EasyNeuralNetworksProject\NeuralNetwork.cpp(351,21): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Usuario\Documents\GitHub\EasyNeuralNetworks\EasyNeuralNetworksProjectSolution\EasyNeuralNetworksProject\NeuralNetwork.cpp(367,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Usuario\Documents\GitHub\EasyNeuralNetworks\EasyNeuralNetworksProjectSolution\EasyNeuralNetworksProject\NeuralNetwork.cpp(413,20): warning C4018: '<': signed/unsigned mismatch
   LINK : 0 new modules and 1 (out of 380) modules have changed since prior linking
   Starting pass 2
        NeuralNetwork.obj
