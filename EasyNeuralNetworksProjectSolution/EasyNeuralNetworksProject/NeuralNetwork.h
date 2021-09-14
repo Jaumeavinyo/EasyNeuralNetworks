@@ -58,8 +58,10 @@ public:
 	void createLink(int input_attr, int output_attr, int ID);
 
 	void ImNodesManagement();
+	void NodeEditorManagement();
+	void workStationManagement();
 
-	void generateAutomaticNetwork(usint layerNum);
+	void generateAutomaticNetwork(usint config);
 
 public:
 	int count = 0;

@@ -47,7 +47,7 @@ update_status ModuleScene::PreUpdate(float dt) {
 	ImGui::BeginMainMenuBar();
 	if (ImGui::BeginMenu("File"))
 	{
-		if (ImGui::MenuItem("New Network"))
+		if (ImGui::MenuItem("New Scenario"))
 		{
 			p_neuralNet = new NeuralNetwork(0);
 			displayNeuralNetworkGui = true;
