@@ -116,7 +116,7 @@ void Neuron::addNewOutputPin() {
 	saver.pin_count = outputCount;
 	saver.pin_ID = App->scene->getNeuralNetwork()->pinID;
 	outputPinSavers.push_back(saver);
-
+	
 	comunicator tmpComunicator;
 	tmpComunicator.neuron_ID = p_neuronID;
 	tmpComunicator.pin_ID = App->scene->getNeuralNetwork()->pinID;
@@ -137,7 +137,7 @@ void Neuron::displayInputPins() {
 
 		ImNodes::BeginInputAttribute(tmpPinID);
 
-		ImGui::Text("input attr:%i", tmpPinID);//to obtain the node id, just do inputPinID >> 8
+		ImGui::Text("input", tmpPinID);//to obtain the node id, just do inputPinID >> 8
 		ImNodes::EndInputAttribute();
 	}
 }
@@ -153,7 +153,7 @@ void Neuron::displayOutputPins() {
 
 		ImNodes::BeginOutputAttribute(tmpPinID);
 
-		ImGui::Text("output attr:%i", tmpPinID);
+		ImGui::Text("output", tmpPinID);
 		ImNodes::EndOutputAttribute();
 	}
 }
@@ -165,7 +165,8 @@ void Neuron::feedForward(Layer &prevLayer) {
 	neuronIterator2 = prevLayer.p2list_LayerNeurons.getFirst();
 	for (int n = 0; n < prevLayer.p2list_LayerNeurons.count(); n++) {
 		sum = sum + neuronIterator2->data->outputValue * neuronIterator2->data->outputWeights[p_myIndexInTheList].weight;
-		printf("\n NeuronFeedForward: neuron: %i weight = %f",neuronIterator2->data->p_neuronID, neuronIterator2->data->outputWeights[p_myIndexInTheList].weight);
+		//printf("\n    feedForward neuron %i",neuronIterator2->data->getNeuronID());
+		/*printf("\n NeuronFeedForward: neuron: %i weight = %f",neuronIterator2->data->p_neuronID, neuronIterator2->data->outputWeights[p_myIndexInTheList].weight);*/
 		neuronIterator2 = neuronIterator2->next;
 	}
 
@@ -190,7 +191,7 @@ void Neuron::calculateOutputGradients(double targetVal) {
 void Neuron::calculateHiddenGradients(const Layer& nextL) {
 	double dow = sumDOW(nextL);
 	p_gradient = dow * Neuron::transferFunctionDerivative(outputValue);
-	printf("·");
+	printf("gradient %f", p_gradient);
 }
 
 double Neuron::sumDOW(const Layer& nextL)const {
@@ -211,12 +212,13 @@ void Neuron::updateInputWeights(Layer& prevL) {//weights to update are inside we
 	p2List_item<Neuron*>* neuronIterator;
 	neuronIterator = prevL.p2list_LayerNeurons.getFirst();
 	for (int n = 0; n < prevL.p2list_LayerNeurons.count(); n++) {
-		double oldDeltaWeight = neuronIterator->data->outputWeights[n].deltaWeight;
+		double oldDeltaWeight = neuronIterator->data->outputWeights[p_myIndexInTheList].deltaWeight;
 
 		double newDeltaWeight = ETA * neuronIterator->data->outputValue * p_gradient + ALPHA * oldDeltaWeight;
 		
 		neuronIterator->data->outputWeights[p_myIndexInTheList].deltaWeight = newDeltaWeight;
 		neuronIterator->data->outputWeights[p_myIndexInTheList].weight += newDeltaWeight;
+		printf("\nUPDATE WEIGHTS : ---->LAYER: %i ---->NEURON: %i ---->weights: %f", neuronIterator->data->p_neuronLayerID, neuronIterator->data->getNeuronID(), neuronIterator->data->outputWeights[0]);
 		neuronIterator = neuronIterator->next;
 	}
 }

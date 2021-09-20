@@ -62,6 +62,9 @@ public:
 	void workStationManagement();
 
 	void generateAutomaticNetwork(usint config);
+	void generateAutomaticNetwork(std::vector<int> config);
+
+	void trainNeuralNetwork();
 
 public:
 	int count = 0;
@@ -77,6 +80,13 @@ private:
 	double p_netError;
 	double p_netRecentAverageError;
 	double p_netRecentSmoothingFactor=500;
+
+
+public://ImGui Vars
+	bool ShowError1 = false;
+	bool ShowError2 = false;
+	bool TrainNet = false;
+	std::vector<int> neuronsInside;
 };
 
 

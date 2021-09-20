@@ -66,8 +66,6 @@ int main(int argc, char** argv) {
 			else {
 				funcReturn = EXIT_SUCCESS;
 			}
-
-			
 			break;
 		}
 

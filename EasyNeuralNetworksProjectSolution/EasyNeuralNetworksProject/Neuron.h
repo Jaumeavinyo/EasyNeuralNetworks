@@ -29,6 +29,7 @@ class Neuron
 public:
 
 	
+
 	Neuron(usint neuronID, usint neuronLayer, usint myIndexInTheList, usint nextLayerNeurons = 0);
 	~Neuron();
 

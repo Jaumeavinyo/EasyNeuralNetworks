@@ -162,21 +162,48 @@ void NeuralNetwork::NodeEditorManagement() {
 }
 
 void NeuralNetwork::workStationManagement() {
+
 	if (ImGui::CollapsingHeader("predefined models")) {
+		ImGui::Spacing();
+		ImGui::Spacing();
+		ImGui::Spacing();
+		ImGui::TextColored(ImVec4(1.0f, 1.0f, 0.0f, 1.0f), "Select one of the sugested architectures");
+		ImGui::Spacing();
 		const char* items[] = { "1x2x1", "2x3x1", "2x3x3x1", "3x6x6x1" };
 		static int item_current = 0;
 		ImGui::Combo("Predefined configurations", &item_current, items, IM_ARRAYSIZE(items));
+		ImGui::Spacing();
 		if (ImGui::Button("Generate selected Neural Network")) {
-			generateAutomaticNetwork(item_current);
+			if (p2list_Layers.count() == 0) {
+				generateAutomaticNetwork(item_current);
+			}
+			else {
+				ShowError2 = true;
+			}
+			
 		}
+		if (ShowError2) {
+			ImGui::Begin("ERROR 01");
+			ImGui::TextColored(ImVec4(1.0f, 0.0f, 0.0f, 1.0f), "You can only use one neural net at a time!");
+			
+			if (ImGui::Button("ok")) {
+				ShowError2 = false;
+			}
+			ImGui::End();
+		}
+		ImGui::Spacing();
 	}
 	if (ImGui::CollapsingHeader("Configuration")) {
-		
+		ImGui::Spacing();
+		ImGui::Spacing();
+		ImGui::Spacing();
+		ImGui::TextColored(ImVec4(1.0f, 1.0f, 0.0f, 1.0f), "Select your Net ammount of Layers");
+		ImGui::Spacing();
 		//######################################################
 		static int layerCounter = 8;
 		float spacing = ImGui::GetStyle().ItemInnerSpacing.x;
 		ImGui::PushButtonRepeat(true);
-		if (ImGui::ArrowButton("##left", ImGuiDir_Left)) { layerCounter <=3? layerCounter = layerCounter : layerCounter--; }
+		if (ImGui::ArrowButton("##left", ImGuiDir_Left)) { layerCounter <= 3 ? layerCounter = layerCounter : layerCounter--; }
 		ImGui::SameLine(0.0f, spacing);
 		if (ImGui::ArrowButton("##right", ImGuiDir_Right)) { layerCounter >= 16 ? layerCounter = layerCounter : layerCounter++; }
 		ImGui::PopButtonRepeat();
@@ -187,63 +214,133 @@ void NeuralNetwork::workStationManagement() {
 		ImGui::SliderInt("Layers", &LayerAmmount, 0, layerCounter);
 
 		//######################################################
+		ImGui::Spacing();
+		ImGui::Spacing();
+		ImGui::Spacing();
+		ImGui::TextColored(ImVec4(1.0f, 1.0f, 0.0f, 1.0f), "For each layer, select an ammount of neurons");
+		ImGui::Spacing();
 
-		
+		static int SelectedLayer;
+		ImGui::SliderInt("Selected Layer", &SelectedLayer, 0, LayerAmmount);
+		int* a = &SelectedLayer;
+		ImGui::Spacing();
+		if (SelectedLayer != NULL) {
+			ImGui::TextColored(ImVec4(0.0f, 1.0f, 0.0f, 1.0f), "Neurons inside: %i", neuronsInside[SelectedLayer]);
+		}
+		static int NeuronsPerLayer;
+		ImGui::InputInt("insert a number", &NeuronsPerLayer, 1, 2);
 
-
-		//LAYER CONFIG END
-
-		//NEURON CONFIG START
-	//	{
-	//	
-	//		if (ImGui::Button("Add Neuron")) {	//????????????? necessary=?=
-	//			
-	//		}
-	//		if (p2list_Layers.count() != 0) {
-	//			ImGui::Text("Total Neurons: %d", p2list_Neurons.count());
-	//			
-	//		}
-
-	//	}
-
-	//	if ((App->input->GetKey(SDL_SCANCODE_LCTRL) == KEY_REPEAT)) {
-	//		deleteItem = true;
-	//	}
-	//	//NEURON CONFIG END
-	//	ImGui::Text("Automatic Network Generator");
-
-	//	static int LayerNum = 0;
-	//	ImGui::SliderInt("Layers", &LayerNum, 0, 100 - 1);
+		if (neuronsInside.size() != 16) {
+			for (int i = 0; i < 16; i++) {
+				neuronsInside.push_back(0);
+			}
+		}
 
 
-	//	if (ImGui::Button("Generate automatic net")) {
+		if (ImGui::Button("Save value")) {
+			if (NeuronsPerLayer > 16 || NeuronsPerLayer < 1) {
+				ShowError1 = true;
+			}
+			else {
+				neuronsInside[SelectedLayer] = NeuronsPerLayer;
+			}
 
-	//		userSelectedAmmountOfLayers = LayerNum;
-	//		generateAutomaticNetwork(LayerNum);
-	//		inputVals.push_back(1.0);
-	//		inputVals.push_back(0.0);
-	//		inputVals.push_back(0.5);
-	//		printf("\n \n \n input values: %f %f %f \n", inputVals[0], inputVals[1], inputVals[2]);
+		}
+		if (ShowError1) {
+			ImGui::Begin("ERROR 01");
+			ImGui::TextColored(ImVec4(1.0f, 0.0f, 0.0f, 1.0f), "Max neurons per layer: 16");
+			ImGui::SameLine();
+			if (ImGui::Button("ok")) {
+				ShowError1 = false;
+			}
+			ImGui::End();
+		}
 
-	//	}
+		ImGui::SameLine();
+		ImGui::Text("%i", NeuronsPerLayer);
 
+		//######################################################
+		ImGui::Spacing();
+		ImGui::Spacing();
+		ImGui::Spacing();
+		ImGui::TextColored(ImVec4(1.0f, 1.0f, 0.0f, 1.0f), "insert how many inputs will use this Net");
+		ImGui::Spacing();
+		static int numInputs;
+		ImGui::InputInt("inputs", &numInputs);
+		if (numInputs != 0) {
+			neuronsInside[0] = numInputs;
+		}
 
-	//	if (ImGui::Button("TRAIN NET")) {
-	//		for (int i = 0; i < 1000; i++) {
+		//#######################################################
 
-	//			feedForward(inputVals);
-	//			getResults(resultVals);
-	//			printf("\n \n result values:           %f       %f      %f     \n", resultVals[0], resultVals[1], resultVals[2]);
+		ImGui::Spacing();
+		ImGui::Spacing();
+		ImGui::Spacing();
+		ImGui::TextColored(ImVec4(1.0f, 1.0f, 0.0f, 1.0f), "click the button to generate your network");
+		ImGui::Spacing();
+		if (ImGui::Button("Generate Neural Net")) {
+			generateAutomaticNetwork(neuronsInside);
+		}
 
-	//			targetVals.push_back(0.0);
-	//			targetVals.push_back(1.0);
-	//			targetVals.push_back(0.0);
-	//			printf("target values: --------> %f %f %f \n", targetVals[0], targetVals[1], targetVals[2]);
-	//			backPropagation(targetVals);
+	}	// CONFIG END
+	if (ImGui::CollapsingHeader("Neural Network training ")) {
+		if (ImGui::Button("train Net")) {
+			inputVals.push_back(0.5);
+			inputVals.push_back(0.5);
+			inputVals.push_back(0.5);
+			targetVals.push_back(0.0);
+			/*targetVals.push_back(1.0);
+			targetVals.push_back(1.0);*/
+			printf("\n \n \n input values: %f %f %f \n", inputVals[0], inputVals[1], inputVals[2]);
+			TrainNet = true;
+		}
+		if (TrainNet) {
+			for (int i = 0; i < 100; i++) {
 
-	//			printf("\n \n Net recent average error: %f \n", p_netRecentAverageError);
-	//		}
-	//	}
+				feedForward(inputVals);
+				getResults(resultVals);
+				printf("\n \n result values: %f  \n", resultVals[0]);
+
+				
+				//targetVals.push_back(1.0);
+				//targetVals.push_back(0.0);
+				printf("target values: --------> %f \n", targetVals[0]);
+				backPropagation(targetVals);
+
+				//printf("\n \n Net recent average error: %f \n", p_netRecentAverageError);
+			}
+			TrainNet = false;
+		}
+
+	}
+	
+}
+
+void NeuralNetwork::trainNeuralNetwork() {
+
+}
+
+void NeuralNetwork::generateAutomaticNetwork(std::vector<int> config) {
+
+	for (usint i = 0; i < config.size(); i++) {
+		Layer* tmpL = new Layer(p2list_Layers.count());
+		p2list_Layers.add(tmpL);
+		printf("created a new layer: %d \n", i);
+		printf("Layer ID: %i \n", tmpL->getLayerID());
+		//we have new layer now we add neurons inside
+		for (int j = 0; j < config[i]; j++) {
+			if (i != config.size() - 1) {//first or hidden layer = output weights
+				usint nextLayerNeurons = config[i + 1];
+				Neuron* tmpN = new Neuron(p2list_Neurons.count(), i, j, nextLayerNeurons);
+				tmpL->addNeuron(tmpN, nextLayerNeurons);
+				printf("addNeuron(tmpN) with id: %i\n", tmpN->getNeuronID());
+			}
+			else if (i == config.size() - 1) {//last layer = no output weights
+				Neuron* tmpN = new Neuron(p2list_Neurons.count(), i, j, 0); //new neuron inside layer i
+				tmpL->addNeuron(tmpN, 0/*hardcoded next layer neurons num*/);
+				printf("addNeuron(tmpN)-last \n");
+			}
+		}
 	}
 }
 
@@ -309,7 +406,7 @@ void NeuralNetwork::generateAutomaticNetwork(usint LayerNum) { //check
 }
 
 void NeuralNetwork::feedForward(const std::vector<double> &inputVals) { //check
-	
+	printf("\n FEEDFORWARD MAIN");
 	assert(inputVals.size() == p2list_Layers.getFirst()->data->p2list_LayerNeurons.count());
 	
 	//assign input values to the neurons in first layer
@@ -320,7 +417,7 @@ void NeuralNetwork::feedForward(const std::vector<double> &inputVals) { //check
 	neuronIterator = layerIterator->data->p2list_LayerNeurons.getFirst();
 	for (int i = 0; i < inputVals.size(); i++) {
 		neuronIterator->data->outputValue = inputVals[i];
-		printf("inputValue: %f", inputVals[i]);
+		printf("\ninputValue: %f", inputVals[i]);
 		//neuronIterator->data->inputValues.push_back(inputVals[i]);
 		neuronIterator = neuronIterator->next;
 	}
@@ -332,24 +429,24 @@ void NeuralNetwork::feedForward(const std::vector<double> &inputVals) { //check
 		p2List_item<Neuron*>* neuronIterator = tmpL->p2list_LayerNeurons.getFirst();
 		Layer* tmpLprev;
 		p2list_Layers.at(i - 1, tmpLprev);
+		printf("\n ---feedforward neurons from Layer: %i", tmpLprev->getLayerID());
 		for (int n = 0; n < tmpL->p2list_LayerNeurons.count(); n++) {//iterate neurons in layer
 			neuronIterator->data->feedForward(*tmpLprev);
-			printf("\n Layer: %i", tmpLprev->getLayerID());
-			printf("\n ---NeuronID: %i", neuronIterator->data->getNeuronID());
+			/*printf("\n Layer: %i", tmpLprev->getLayerID());
+			printf("\n ---NeuronID: %i", neuronIterator->data->getNeuronID());*/
 			if (tmpL->getLayerID() != p2list_Layers.count()-1) {
-				printf("\n ------Neuron Weight: %f", neuronIterator->data->outputWeights[neuronIterator->data->p_myIndexInTheList].weight);
-				printf("\n ---------Neuron output: %f", neuronIterator->data->outputValue);
+				/*printf("\n ------Neuron Weight: %f", neuronIterator->data->outputWeights[neuronIterator->data->p_myIndexInTheList].weight);
+				printf("\n ---------Neuron output: %f", neuronIterator->data->outputValue);*/
 			}
 			
 			neuronIterator = neuronIterator->next;
 		}
 	}
-
 	
 }
 
 void NeuralNetwork::backPropagation(const std::vector<double>& _targetVals) {
-
+	printf("\n BACKPROPAGATION MAIN");
 	//Calculate RMS "Root Mean Square Error" also known as overall net error
 	
 	/*Layer& outputLayer = p2list_Layers.getLast();*/
@@ -364,7 +461,8 @@ void NeuralNetwork::backPropagation(const std::vector<double>& _targetVals) {
 		double delta = _targetVals[n] - tmpN->outputValue;
 		p_netError += delta * delta;
 	}
-	p_netError /= tmpL->p2list_LayerNeurons.count() - 1; //average error sqrted
+	float a = tmpL->p2list_LayerNeurons.count();
+	p_netError /= a; //average error sqrted
 	p_netError = sqrt(p_netError); //RMS
 	p_netRecentAverageError = (p_netRecentAverageError * p_netRecentSmoothingFactor + p_netError)
 		/ (p_netRecentSmoothingFactor + 1);
@@ -373,7 +471,7 @@ void NeuralNetwork::backPropagation(const std::vector<double>& _targetVals) {
 	//calculate output layer gradients
 	p2List_item<Neuron*>* neuronIterator;
 	neuronIterator = tmpL->p2list_LayerNeurons.getFirst();//output layer neuron iterator
-	for (int n = 0; n < tmpL->p2list_LayerNeurons.count() - 1 ; n++) {
+	for (int n = 0; n <= tmpL->p2list_LayerNeurons.count() - 1 ; n++) {
 		neuronIterator->data->calculateOutputGradients(targetVals[n]);	
 		neuronIterator = neuronIterator->next;
 	}
@@ -392,6 +490,7 @@ void NeuralNetwork::backPropagation(const std::vector<double>& _targetVals) {
 		p2List_item<Neuron*>* neuronIterator;
 		neuronIterator = layerIterator->data->p2list_LayerNeurons.getFirst();
 		for (int i = 0; i < layerIterator->data->p2list_LayerNeurons.count(); i++) {//calls calchuddengradients of all layer neurons
+			
 			neuronIterator->data->calculateHiddenGradients(*nextL);
 			neuronIterator = neuronIterator->next;
 		}
@@ -423,10 +522,8 @@ void NeuralNetwork::getResults(std::vector<double>& resultVals) {
 	p2List_item<Neuron*>* neuronIterator;
 	neuronIterator = p2list_Layers.getLast()->data->p2list_LayerNeurons.getFirst();
 	
-	for (int n = 0; n < p2list_Layers.getLast()->data->p2list_LayerNeurons.count(); n++) {
-		
+	for (int n = 0; n < p2list_Layers.getLast()->data->p2list_LayerNeurons.count(); n++) {	
 		resultVals.push_back(neuronIterator->data->outputValue);
-		
 		neuronIterator = neuronIterator->next;
 	}
 }

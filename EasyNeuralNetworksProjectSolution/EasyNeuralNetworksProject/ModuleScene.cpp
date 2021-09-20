@@ -58,8 +58,8 @@ update_status ModuleScene::PreUpdate(float dt) {
 	ImGui::EndMainMenuBar();
 	
 	if (displayNeuralNetworkGui) {
-		p_neuralNet->updateNeuralNetwork();
 		p_neuralNet->displayGui();	
+		p_neuralNet->updateNeuralNetwork();
 	}
 	
 
