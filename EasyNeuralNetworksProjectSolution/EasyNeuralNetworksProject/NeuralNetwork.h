@@ -66,6 +66,7 @@ public:
 
 	void trainNeuralNetwork();
 
+	void paintNodes();
 public:
 	int count = 0;
 	int currentID;
@@ -85,8 +86,20 @@ private:
 public://ImGui Vars
 	bool ShowError1 = false;
 	bool ShowError2 = false;
+	bool ShowError3 = false;
 	bool TrainNet = false;
 	std::vector<int> neuronsInside;
+	int inputCounter = 0;
+	bool feedForwardIteration = false;
+	bool iterateNow = false;
+	int targetval = 1;
+	static float vec4a[];
+	bool firstIteration = true;
+	float difference = 0;
+	//color for neurons
+	float red = 0.0;
+	float green = 0.0;
+	float blue = 0.0;
 };
 
 

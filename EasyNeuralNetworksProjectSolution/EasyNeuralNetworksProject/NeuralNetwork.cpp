@@ -13,6 +13,7 @@ NeuralNetwork::NeuralNetwork(usint layers){
 	currentID = 0;
 	deleteItem = false;
 	pinID = 0;
+
 } 
 
 NeuralNetwork::~NeuralNetwork()
@@ -169,10 +170,15 @@ void NeuralNetwork::workStationManagement() {
 		ImGui::Spacing();
 		ImGui::TextColored(ImVec4(1.0f, 1.0f, 0.0f, 1.0f), "Select one of the sugested architectures");
 		ImGui::Spacing();
-		const char* items[] = { "1x2x1", "2x3x1", "2x3x3x1", "3x6x6x1" };
+		const char* items[] = { "1x2x1", "2x3x1", "2x3x3x1", "3x3x3x1" };
 		static int item_current = 0;
 		ImGui::Combo("Predefined configurations", &item_current, items, IM_ARRAYSIZE(items));
 		ImGui::Spacing();
+
+		ImGui::PushID(3);
+		ImGui::PushStyleColor(ImGuiCol_Button, (ImVec4)ImColor::HSV(3 / 7.0f, 0.6f, 0.6f));
+		ImGui::PushStyleColor(ImGuiCol_ButtonHovered, (ImVec4)ImColor::HSV(3 / 7.0f, 0.7f, 0.7f));
+		ImGui::PushStyleColor(ImGuiCol_ButtonActive, (ImVec4)ImColor::HSV(3 / 7.0f, 0.8f, 0.8f));
 		if (ImGui::Button("Generate selected Neural Network")) {
 			if (p2list_Layers.count() == 0) {
 				generateAutomaticNetwork(item_current);
@@ -182,6 +188,14 @@ void NeuralNetwork::workStationManagement() {
 			}
 			
 		}
+		ImGui::Spacing();
+		ImGui::Spacing();
+		ImGui::Spacing();
+		ImGui::PopStyleColor(3);
+		ImGui::PopID();
+		ImGui::AlignTextToFramePadding();
+
+
 		if (ShowError2) {
 			ImGui::Begin("ERROR 01");
 			ImGui::TextColored(ImVec4(1.0f, 0.0f, 0.0f, 1.0f), "You can only use one neural net at a time!");
@@ -223,13 +237,14 @@ void NeuralNetwork::workStationManagement() {
 		static int SelectedLayer;
 		ImGui::SliderInt("Selected Layer", &SelectedLayer, 0, LayerAmmount);
 		int* a = &SelectedLayer;
+	
 		ImGui::Spacing();
 		if (SelectedLayer != NULL) {
 			ImGui::TextColored(ImVec4(0.0f, 1.0f, 0.0f, 1.0f), "Neurons inside: %i", neuronsInside[SelectedLayer]);
 		}
 		static int NeuronsPerLayer;
 		ImGui::InputInt("insert a number", &NeuronsPerLayer, 1, 2);
-
+	
 		if (neuronsInside.size() != 16) {
 			for (int i = 0; i < 16; i++) {
 				neuronsInside.push_back(0);
@@ -259,60 +274,165 @@ void NeuralNetwork::workStationManagement() {
 		ImGui::SameLine();
 		ImGui::Text("%i", NeuronsPerLayer);
 
-		//######################################################
+		//######################################################aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 		ImGui::Spacing();
 		ImGui::Spacing();
 		ImGui::Spacing();
-		ImGui::TextColored(ImVec4(1.0f, 1.0f, 0.0f, 1.0f), "insert how many inputs will use this Net");
+		ImGui::TextColored(ImVec4(1.0f, 1.0f, 0.0f, 1.0f), "insert as many inputs as neurons you need in the first layer");
 		ImGui::Spacing();
-		static int numInputs;
-		ImGui::InputInt("inputs", &numInputs);
-		if (numInputs != 0) {
-			neuronsInside[0] = numInputs;
+		static int input = 0;
+		ImGui::SliderInt("input value", &input, 0, 1);
+		
+		if (ImGui::Button("Save value_")) {			
+			inputVals.push_back(input);
+			inputCounter++;
+			neuronsInside[0] = inputCounter;
 		}
+		
+		ImGui::Spacing();
+		ImGui::Spacing();
+		ImGui::Text("Neurons in first layer: %i",inputCounter );
+		ImGui::Text("inputs in first layer: %i", inputVals.size());
+		ImGui::Spacing();
 
-		//#######################################################
+		//#######################################################aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 
 		ImGui::Spacing();
 		ImGui::Spacing();
 		ImGui::Spacing();
 		ImGui::TextColored(ImVec4(1.0f, 1.0f, 0.0f, 1.0f), "click the button to generate your network");
 		ImGui::Spacing();
+		
+		ImGui::Spacing();
+		ImGui::Spacing();
+		ImGui::Spacing();
+		ImGui::SameLine();
+		ImGui::PushID(3);
+		ImGui::PushStyleColor(ImGuiCol_Button, (ImVec4)ImColor::HSV(3 / 7.0f, 0.6f, 0.6f));
+		ImGui::PushStyleColor(ImGuiCol_ButtonHovered, (ImVec4)ImColor::HSV(3 / 7.0f, 0.7f, 0.7f));
+		ImGui::PushStyleColor(ImGuiCol_ButtonActive, (ImVec4)ImColor::HSV(3 / 7.0f, 0.8f, 0.8f));
 		if (ImGui::Button("Generate Neural Net")) {
-			generateAutomaticNetwork(neuronsInside);
+			if (neuronsInside[0] != 0) {
+				generateAutomaticNetwork(neuronsInside);
+			}	
 		}
+		ImGui::Spacing();
+		ImGui::Spacing();
+		ImGui::Spacing();
+		ImGui::PopStyleColor(3);
+		ImGui::PopID();
+		ImGui::AlignTextToFramePadding();
+		
 
 	}	// CONFIG END
 	if (ImGui::CollapsingHeader("Neural Network training ")) {
-		if (ImGui::Button("train Net")) {
-			inputVals.push_back(0.5);
-			inputVals.push_back(0.5);
-			inputVals.push_back(0.5);
-			targetVals.push_back(0.0);
-			/*targetVals.push_back(1.0);
-			targetVals.push_back(1.0);*/
-			printf("\n \n \n input values: %f %f %f \n", inputVals[0], inputVals[1], inputVals[2]);
-			TrainNet = true;
-		}
-		if (TrainNet) {
-			for (int i = 0; i < 100; i++) {
+		ImGui::Spacing();
+		ImGui::Spacing();
+		ImGui::Spacing();
+		if (p2list_Layers.count() > 1) {
 
+			static float vec4a[1] = { 0.0 };//INPUT VALUES
+			ImGui::InputFloat("input values from 0.0 to 1.0", vec4a, 0.1);
+			if (ImGui::Button("Save Input") && inputVals.size() < p2list_Layers.getFirst()->data->p2list_LayerNeurons.count()) {
+				inputVals.push_back(vec4a[0]);
+			}
+			ImGui::Spacing();
+			ImGui::Spacing();
+			ImGui::Spacing();
+			if (p2list_Layers.getFirst() != nullptr)
+				ImGui::Text("input values: %i, input Layer Neurons: %i", inputVals.size(), p2list_Layers.getFirst()->data->p2list_LayerNeurons.count());
+			ImGui::Spacing();
+			ImGui::Spacing();
+			ImGui::Spacing();
+			
+			static float vec4b[1] = { 0.0 };//TARGET VALUES
+			ImGui::InputFloat("target Values from 0 to 1", vec4b, 0.1);
+			if (ImGui::Button("Save output") && targetVals.size() < p2list_Layers.getLast()->data->p2list_LayerNeurons.count()) {
+				targetVals.push_back(vec4b[0]);
+			}
+			ImGui::Spacing();
+			ImGui::Spacing();
+			ImGui::Spacing();
+			if (p2list_Layers.getFirst() != nullptr)
+				ImGui::Text("target values: %i, output Layer Neurons: %i", targetVals.size(), p2list_Layers.getLast()->data->p2list_LayerNeurons.count());
+			ImGui::Spacing();
+			ImGui::Spacing();
+			ImGui::Spacing();
+
+			if (ImGui::Button("train Net")) {
+				/*printf("\n \n \n input values: %f %f %f \n", inputVals[0], inputVals[1], inputVals[2]);*/
+				TrainNet = true;
+			}
+
+			ImGui::Spacing();
+			ImGui::Spacing();
+			ImGui::Spacing();
+
+			if (App->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN) {//DO ITERATION
+				iterateNow = true;
+			}
+			if (iterateNow && inputVals.size() > 0) {//ITERATE NET STEP BY STEP
+				iterateNow = false;
 				feedForward(inputVals);
 				getResults(resultVals);
 				printf("\n \n result values: %f  \n", resultVals[0]);
-
-				
-				//targetVals.push_back(1.0);
-				//targetVals.push_back(0.0);
 				printf("target values: --------> %f \n", targetVals[0]);
 				backPropagation(targetVals);
-
-				//printf("\n \n Net recent average error: %f \n", p_netRecentAverageError);
+				if (firstIteration) {
+					firstIteration = false;
+					difference = targetVals[0] - resultVals[0];
+				}
 			}
-			TrainNet = false;
-		}
+			if (resultVals.size() > 0)
+				ImGui::TextColored(ImVec4(0.0f, 1.0f, 1.0f, 1.0f), "output value: %f", resultVals[0]);
+			ImGui::Spacing();
+			ImGui::Spacing();
+			ImGui::Spacing();
+			ImGui::TextColored(ImVec4(0.0f, 1.0f, 1.0f, 1.0f), "Net error: %f", p_netError);
+			ImGui::TextColored(ImVec4(0.0f, 1.0f, 1.0f, 1.0f), "Net recent average error: %f", p_netRecentAverageError);
+			ImGui::Spacing();
+			ImGui::Spacing();
+			ImGui::Spacing();
 
+			static int i0 = 0;
+			if (TrainNet) { //TRAIN ENTIRE NET
+				for (int i = 0; i < i0; i++) {
+					ImGui::Spacing();
+					ImGui::Spacing();
+					ImGui::Spacing();
+					feedForward(inputVals);
+					getResults(resultVals);
+					printf("\n \n result values: %f  \n", resultVals[0]);
+					printf("target values: --------> %f \n", targetVals[0]);
+					backPropagation(targetVals);
+					if (firstIteration) {
+						firstIteration = false;
+						difference = targetVals[0] - resultVals[0];
+					}
+				}
+				TrainNet = false;
+			}ImGui::SameLine();
+
+			ImGui::InputInt("training iterations", &i0);
+		}
+		else {
+			ImGui::TextColored(ImVec4(1.0f, 1.0f, 0.0f, 1.0f), "You need to generate a network in order to train it");
+		}
+		ImGui::Spacing();
+		ImGui::Spacing();
+		ImGui::Spacing();		
+	}	
+	if (firstIteration == false) {
+		paintNodes();
 	}
+
+
+}
+
+
+void NeuralNetwork::paintNodes() {
+	red = targetVals[0] - resultVals[0];
+	green = 1.0 - red;
 	
 }
 
@@ -377,8 +497,8 @@ void NeuralNetwork::generateAutomaticNetwork(usint LayerNum) { //check
 		numLayers = 4;
 		neuronsPerLayer.clear();
 		neuronsPerLayer.push_back(3);
-		neuronsPerLayer.push_back(6);
-		neuronsPerLayer.push_back(6);
+		neuronsPerLayer.push_back(3);
+		neuronsPerLayer.push_back(3);
 		neuronsPerLayer.push_back(1);
 		break;	
 	}

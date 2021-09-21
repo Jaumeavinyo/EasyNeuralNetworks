@@ -1,18 +1,28 @@
-﻿  NeuralNetwork.cpp
-C:\Users\Usuario\Documents\GitHub\EasyNeuralNetworks\EasyNeuralNetworksProjectSolution\EasyNeuralNetworksProject\NeuralNetwork.cpp(30,20): warning C4018: '<': signed/unsigned mismatch
-C:\Users\Usuario\Documents\GitHub\EasyNeuralNetworks\EasyNeuralNetworksProjectSolution\EasyNeuralNetworksProject\NeuralNetwork.cpp(151,22): warning C4018: '<': signed/unsigned mismatch
-C:\Users\Usuario\Documents\GitHub\EasyNeuralNetworks\EasyNeuralNetworksProjectSolution\EasyNeuralNetworksProject\NeuralNetwork.cpp(425,20): warning C4018: '<': signed/unsigned mismatch
-C:\Users\Usuario\Documents\GitHub\EasyNeuralNetworks\EasyNeuralNetworksProjectSolution\EasyNeuralNetworksProject\NeuralNetwork.cpp(432,21): warning C4018: '<': signed/unsigned mismatch
-C:\Users\Usuario\Documents\GitHub\EasyNeuralNetworks\EasyNeuralNetworksProjectSolution\EasyNeuralNetworksProject\NeuralNetwork.cpp(456,20): warning C4018: '<': signed/unsigned mismatch
-C:\Users\Usuario\Documents\GitHub\EasyNeuralNetworks\EasyNeuralNetworksProjectSolution\EasyNeuralNetworksProject\NeuralNetwork.cpp(463,10): warning C4244: 'initializing': conversion from 'unsigned int' to 'float', possible loss of data
-C:\Users\Usuario\Documents\GitHub\EasyNeuralNetworks\EasyNeuralNetworksProjectSolution\EasyNeuralNetworksProject\NeuralNetwork.cpp(473,20): warning C4018: '<=': signed/unsigned mismatch
-C:\Users\Usuario\Documents\GitHub\EasyNeuralNetworks\EasyNeuralNetworksProjectSolution\EasyNeuralNetworksProject\NeuralNetwork.cpp(491,21): warning C4018: '<': signed/unsigned mismatch
-C:\Users\Usuario\Documents\GitHub\EasyNeuralNetworks\EasyNeuralNetworksProjectSolution\EasyNeuralNetworksProject\NeuralNetwork.cpp(508,21): warning C4018: '<': signed/unsigned mismatch
-C:\Users\Usuario\Documents\GitHub\EasyNeuralNetworks\EasyNeuralNetworksProjectSolution\EasyNeuralNetworksProject\NeuralNetwork.cpp(524,20): warning C4018: '<': signed/unsigned mismatch
-C:\Users\Usuario\Documents\GitHub\EasyNeuralNetworks\EasyNeuralNetworksProjectSolution\EasyNeuralNetworksProject\NeuralNetwork.cpp(568,20): warning C4018: '<': signed/unsigned mismatch
-  LINK : 0 new modules and 1 (out of 380) modules have changed since prior linking
+﻿  Neuron.cpp
+C:\Users\Usuario\Documents\GitHub\EasyNeuralNetworks\EasyNeuralNetworksProjectSolution\EasyNeuralNetworksProject\Neuron.cpp(24,24): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\Usuario\Documents\GitHub\EasyNeuralNetworks\EasyNeuralNetworksProjectSolution\EasyNeuralNetworksProject\Neuron.cpp(13,7): warning C4101: 'link': unreferenced local variable
+C:\Users\Usuario\Documents\GitHub\EasyNeuralNetworks\EasyNeuralNetworksProjectSolution\EasyNeuralNetworksProject\Neuron.cpp(168,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Usuario\Documents\GitHub\EasyNeuralNetworks\EasyNeuralNetworksProjectSolution\EasyNeuralNetworksProject\Neuron.cpp(204,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Usuario\Documents\GitHub\EasyNeuralNetworks\EasyNeuralNetworksProjectSolution\EasyNeuralNetworksProject\Neuron.cpp(216,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Usuario\Documents\GitHub\EasyNeuralNetworks\EasyNeuralNetworksProjectSolution\EasyNeuralNetworksProject\Neuron.cpp(221,73): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\Usuario\Documents\GitHub\EasyNeuralNetworks\EasyNeuralNetworksProjectSolution\EasyNeuralNetworksProject\Neuron.cpp(222,83): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
+C:\Users\Usuario\Documents\GitHub\EasyNeuralNetworks\EasyNeuralNetworksProjectSolution\EasyNeuralNetworksProject\Neuron.cpp(223,10): warning C4477: 'printf' : format string '%f' requires an argument of type 'double', but variadic argument 3 has type '_Ty'
+          with
+          [
+              _Ty=weight
+          ]
+  LINK : 0 new modules and 10 (out of 380) modules have changed since prior linking
   Starting pass 2
+       Neuron.obj
+       ModuleWindow.obj
+       ModuleScene.obj
+       ModuleRender.obj
        NeuralNetwork.obj
+       ModuleInput.obj
+       ModuleImGui.obj
+       Main.obj
+       Layer.obj
+       App.obj
        LIBCMTD.lib(loadcfg.obj)
   Finished pass 2
   EasyNeuralNetworksProject.vcxproj -> C:\Users\Usuario\Documents\GitHub\EasyNeuralNetworks\EasyNeuralNetworksProjectSolution\x64\Debug\EasyNeuralNetworksProject.exe

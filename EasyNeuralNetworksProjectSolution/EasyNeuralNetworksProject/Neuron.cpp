@@ -58,6 +58,8 @@ void Neuron::displayGui() {
 	
 	ImNodes::BeginNode(p_neuronID);
 	
+
+	ImNodes::PushColorStyle(ImNodesCol_TitleBar, IM_COL32(App->scene->getNeuralNetwork()->red*255,  App->scene->getNeuralNetwork()->green*255, 0, 255));
 	ImNodes::BeginNodeTitleBar();
 	ImGui::Text("ID: %i Layer:%i",p_neuronID, p_neuronLayerID);
 	if (ImGui::Button("x")) {
