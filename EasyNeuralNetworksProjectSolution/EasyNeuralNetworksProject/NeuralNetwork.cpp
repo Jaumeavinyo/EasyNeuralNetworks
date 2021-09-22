@@ -234,7 +234,7 @@ void NeuralNetwork::workStationManagement() {
 		ImGui::TextColored(ImVec4(1.0f, 1.0f, 0.0f, 1.0f), "For each layer, select an ammount of neurons");
 		ImGui::Spacing();
 
-		static int SelectedLayer;
+		static int SelectedLayer = 0;
 		ImGui::SliderInt("Selected Layer", &SelectedLayer, 0, LayerAmmount);
 		int* a = &SelectedLayer;
 	
@@ -275,19 +275,7 @@ void NeuralNetwork::workStationManagement() {
 		ImGui::Text("%i", NeuronsPerLayer);
 
 		//######################################################aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-		ImGui::Spacing();
-		ImGui::Spacing();
-		ImGui::Spacing();
-		ImGui::TextColored(ImVec4(1.0f, 1.0f, 0.0f, 1.0f), "insert as many inputs as neurons you need in the first layer");
-		ImGui::Spacing();
-		static int input = 0;
-		ImGui::SliderInt("input value", &input, 0, 1);
 		
-		if (ImGui::Button("Save value_")) {			
-			inputVals.push_back(input);
-			inputCounter++;
-			neuronsInside[0] = inputCounter;
-		}
 		
 		ImGui::Spacing();
 		ImGui::Spacing();
@@ -312,7 +300,7 @@ void NeuralNetwork::workStationManagement() {
 		ImGui::PushStyleColor(ImGuiCol_ButtonHovered, (ImVec4)ImColor::HSV(3 / 7.0f, 0.7f, 0.7f));
 		ImGui::PushStyleColor(ImGuiCol_ButtonActive, (ImVec4)ImColor::HSV(3 / 7.0f, 0.8f, 0.8f));
 		if (ImGui::Button("Generate Neural Net")) {
-			if (neuronsInside[0] != 0) {
+			if (neuronsInside[0] != 0 ) {
 				generateAutomaticNetwork(neuronsInside);
 			}	
 		}
@@ -340,7 +328,7 @@ void NeuralNetwork::workStationManagement() {
 			ImGui::Spacing();
 			ImGui::Spacing();
 			if (p2list_Layers.getFirst() != nullptr)
-				ImGui::Text("input values: %i, input Layer Neurons: %i", inputVals.size(), p2list_Layers.getFirst()->data->p2list_LayerNeurons.count());
+				ImGui::TextColored(ImVec4(1.0f, 1.0f, 0.0f, 1.0f), "input values: %i, input Layer Neurons: %i", inputVals.size(), p2list_Layers.getFirst()->data->p2list_LayerNeurons.count());
 			ImGui::Spacing();
 			ImGui::Spacing();
 			ImGui::Spacing();
@@ -354,7 +342,7 @@ void NeuralNetwork::workStationManagement() {
 			ImGui::Spacing();
 			ImGui::Spacing();
 			if (p2list_Layers.getFirst() != nullptr)
-				ImGui::Text("target values: %i, output Layer Neurons: %i", targetVals.size(), p2list_Layers.getLast()->data->p2list_LayerNeurons.count());
+				ImGui::TextColored(ImVec4(1.0f, 1.0f, 0.0f, 1.0f), "target values: %i, output Layer Neurons: %i", targetVals.size(), p2list_Layers.getLast()->data->p2list_LayerNeurons.count());
 			ImGui::Spacing();
 			ImGui::Spacing();
 			ImGui::Spacing();
@@ -414,6 +402,18 @@ void NeuralNetwork::workStationManagement() {
 			}ImGui::SameLine();
 
 			ImGui::InputInt("training iterations", &i0);
+
+			ImGui::TextColored(ImVec4(1.0f, 1.0f, 0.0f, 1.0f), "if your neural network is trained, you can use it");
+
+			ImGui::Spacing();
+			ImGui::Spacing();
+			ImGui::Spacing(); 
+			ImGui::Spacing();
+			ImGui::Spacing();
+			ImGui::Spacing();
+			if (ImGui::Button("use neural network")) {
+				feedForward(inputVals);
+			}
 		}
 		else {
 			ImGui::TextColored(ImVec4(1.0f, 1.0f, 0.0f, 1.0f), "You need to generate a network in order to train it");
