@@ -383,7 +383,7 @@ void NeuralNetwork::workStationManagement() {
 			ImGui::Spacing();
 
 			static int i0 = 0;
-			if (TrainNet) { //TRAIN ENTIRE NET
+			if (TrainNet && resultVals.size()>0 && inputVals.size() == p2list_Layers.getFirst()->data->p2list_LayerNeurons.count() ) { //TRAIN ENTIRE NET
 				for (int i = 0; i < i0; i++) {
 					ImGui::Spacing();
 					ImGui::Spacing();
