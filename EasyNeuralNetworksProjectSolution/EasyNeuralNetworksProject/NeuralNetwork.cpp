@@ -1,7 +1,7 @@
 #include "NeuralNetwork.h"
-#include "..\ImGUI\imgui.h"
-#include "..\ImGUI\imNODES\imnodes.h"
-#include "..\ImGUI\imNODES\imnodes_internal.h"
+#include "lib\ImGUI\imgui.h"
+#include "lib\ImGUI\imNODES\imnodes.h"
+#include "lib\ImGUI\imNODES\imnodes_internal.h"
 #include "App.h"
 //############  CONSTRUCTORS ############
 
@@ -383,7 +383,7 @@ void NeuralNetwork::workStationManagement() {
 			ImGui::Spacing();
 
 			static int i0 = 0;
-			if (TrainNet && resultVals.size()>0 && inputVals.size() == p2list_Layers.getFirst()->data->p2list_LayerNeurons.count() ) { //TRAIN ENTIRE NET
+			if (TrainNet) { //TRAIN ENTIRE NET
 				for (int i = 0; i < i0; i++) {
 					ImGui::Spacing();
 					ImGui::Spacing();

@@ -1,9 +1,9 @@
 #include "ModuleImGui.h"
 #include "glad/glad.h"
-#include "..\ImGUI\imgui.h"
-#include "..\ImGUI\imNODES\imnodes.h"
-#include "..\ImGUI\backends\imgui_impl_opengl3.h"
-#include "..\ImGUI\backends\imgui_impl_sdl.h"
+#include "lib\ImGUI\imgui.h"
+#include "lib\ImGUI\imNODES\imnodes.h"
+#include "lib\ImGUI\backends\imgui_impl_opengl3.h"
+#include "lib\ImGUI\backends\imgui_impl_sdl.h"
 #include <SDL.h>
 #include <SDL_opengl.h>
 #include "App.h"

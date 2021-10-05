@@ -1,5 +1,5 @@
 #include "ModuleScene.h"
-#include "..\ImGUI\imgui.h"
+#include "lib\ImGUI\imgui.h"
 #include "App.h"
 
 
@@ -99,4 +99,6 @@ NeuralNetwork* ModuleScene::getNeuralNetwork() {
 	if (p_neuralNet != NULL) {
 		return p_neuralNet;
 	}
+
+	return nullptr;
 }

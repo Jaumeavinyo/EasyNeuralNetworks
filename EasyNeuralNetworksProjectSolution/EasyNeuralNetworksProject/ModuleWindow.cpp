@@ -1,6 +1,6 @@
 #include "ModuleWindow.h"
 #include "App.h"
-#include "..\ImGUI\backends\imgui_impl_opengl3.h"
+#include "lib\ImGUI\backends\imgui_impl_opengl3.h"
 #include "glad/glad.h"
 //############  CONSTRUCTORS ############
 

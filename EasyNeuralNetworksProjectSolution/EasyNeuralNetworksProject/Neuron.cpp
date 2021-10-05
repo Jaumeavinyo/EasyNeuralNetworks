@@ -1,7 +1,7 @@
 #include "Neuron.h"
 #include "NeuralNetwork.h"
-#include "..\ImGUI\imgui.h"
-#include "..\ImGUI\imNODES\imnodes.h"
+#include "lib\ImGUI\imgui.h"
+#include "lib\ImGUI\imNODES\imnodes.h"
 #include "App.h"
 
 struct Link;
