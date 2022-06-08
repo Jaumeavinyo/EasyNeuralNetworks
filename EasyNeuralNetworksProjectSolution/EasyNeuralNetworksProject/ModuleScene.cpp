@@ -71,9 +71,6 @@ update_status  ModuleScene::Update(float dt) {
 
 	update_status ret = update_status::UPDATE_CONTINUE;
 
-	
-
-
 	return ret;
 }
 

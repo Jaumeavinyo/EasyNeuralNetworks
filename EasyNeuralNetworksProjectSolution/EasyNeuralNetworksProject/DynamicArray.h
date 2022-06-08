@@ -65,7 +65,7 @@ public:
 		return p_Array[index];
 	}
 
-	void push_back(const T& value)
+	void pushBack(const T& value)
 	{
 		if (p_Size >= p_Capacity)
 		{
@@ -75,7 +75,7 @@ public:
 		p_Size++;
 	}
 
-	void push_front(const T& value)
+	void pushFront(const T& value)
 	{
 		if (p_Size >= p_Capacity)
 		{
@@ -110,7 +110,7 @@ public:
 		p_Size = 0;
 	}
 
-	void shrink_to_fit()
+	void shrinkToFit()
 	{
 		p_Capacity = p_Size;
 		T* fitted_array = new T[p_Capacity];
