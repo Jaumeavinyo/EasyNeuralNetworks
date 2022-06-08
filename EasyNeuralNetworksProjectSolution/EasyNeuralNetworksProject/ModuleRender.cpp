@@ -90,7 +90,8 @@ bool ModuleRender::CleanUp() {
 	bool ret = true;
 
 	SDL_DestroyRenderer(renderer);
-
+	SDL_DestroyWindow(App->window->window);
+	SDL_Quit();
 	return ret;
 
 }

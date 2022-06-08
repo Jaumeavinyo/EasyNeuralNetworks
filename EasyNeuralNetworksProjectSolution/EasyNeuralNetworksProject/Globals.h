@@ -31,9 +31,9 @@ enum update_status
 #define WIN_RESIZABLE true
 #define WIN_BORDERLESS false
 #define WIN_FULLSCREEN_DESKTOP false
-#define VSYNC true //imgui main.cpp uses it
-#define WIN_DOUBLE_BUFFERING false // glew.h stuff  //imgui main.cpp uses it
-#define SDL_WIN_OPENGL true //imgui main.cpp uses it
+#define VSYNC true //imgui main.cpp 
+#define WIN_DOUBLE_BUFFERING false // glew.h stuff  //imgui main.cpp 
+#define SDL_WIN_OPENGL true //imgui main.cpp 
 #define SDL_WIN_ALLOW_HIGHDPI true
 #define TITLE "Easy Neural Networks"
 
