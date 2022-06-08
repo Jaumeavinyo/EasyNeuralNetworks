@@ -173,5 +173,11 @@
     <ClInclude Include="lib\ImGUI\imNODES\imnodes_internal.h">
       <Filter>Source Files\ImGui\ImNodes</Filter>
     </ClInclude>
+    <ClInclude Include="String_.h">
+      <Filter>Resource Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DynamicArray.h">
+      <Filter>Resource Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

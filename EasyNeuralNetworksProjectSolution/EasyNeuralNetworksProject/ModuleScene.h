@@ -5,6 +5,10 @@
 #include "Module.h"
 
 #include "NeuralNetwork.h"
+class debugging {
+	debugging() {}
+	~debugging(){}
+};
 
 class ModuleScene :public Module
 {

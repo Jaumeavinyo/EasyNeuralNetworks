@@ -1,6 +1,7 @@
 #include "ModuleScene.h"
 #include "lib\ImGUI\imgui.h"
 #include "App.h"
+#include "DynamicArray.h"
 
 
 //############  CONSTRUCTORS ############
@@ -47,7 +48,7 @@ update_status ModuleScene::PreUpdate(float dt) {
 	ImGui::BeginMainMenuBar();
 	if (ImGui::BeginMenu("File"))
 	{
-		if (ImGui::MenuItem("New Scenario"))
+		if (ImGui::MenuItem("New Neural Scenario"))
 		{
 			p_neuralNet = new NeuralNetwork(0);
 			displayNeuralNetworkGui = true;
@@ -69,6 +70,9 @@ update_status ModuleScene::PreUpdate(float dt) {
 update_status  ModuleScene::Update(float dt) {
 
 	update_status ret = update_status::UPDATE_CONTINUE;
+
+	
+
 
 	return ret;
 }
