@@ -1,3 +1,4 @@
+#include "glad/glad.h"
 #include "ModuleRender.h"
 #include "App.h"
 
@@ -22,7 +23,7 @@ ModuleRender::~ModuleRender() {
 bool ModuleRender::Init() {
 	
 	printf("ModuleRender Init()\n");
-
+	
 	bool ret = true;
 
 	uint32 flags = SDL_RENDERER_ACCELERATED;
@@ -77,10 +78,16 @@ update_status  ModuleRender::Update(float dt) {
 update_status  ModuleRender::PostUpdate(float dt) {
 
 	update_status ret = update_status::UPDATE_CONTINUE;
-
+	
+	// clear_color = ImVec4(0.45f, 0.55f, 0.60f, 1.00f);
+	glViewport(0, 0, (int)SCREEN_WIDTH, (int)SCREEN_HEIGHT);
+	setBackgroundColor(1, 1, 0, 1);
+	glClearColor(background.r, background.g, background.b, 1);
+	glClear(GL_COLOR_BUFFER_BIT);
+	
 	SDL_SetRenderDrawColor(renderer, background.r, background.g, background.g, background.a);//SET COLOR FOR RENDERING
 	//SDL_RenderPresent(renderer);//UPDATE SCREEN WITH NEW RENDERING DONE
-
+	SDL_GL_SwapWindow(App->window->window);
 	return ret;
 }
 
@@ -125,4 +132,52 @@ iPoint ModuleRender::ScreenToWorld(int x, int y) const
 	ret.y = (y - camera.y / scale);
 
 	return ret;
+}
+
+bool ModuleRender::Blit(SDL_Texture* texture, int x, int y, const SDL_Rect* section, SDL_RendererFlip flip, bool use_camera, float scale_, float speed, double angle, int pivot_x, int pivot_y) const {
+	
+	bool ret = true;
+
+	SDL_Rect rect;
+
+	if (use_camera) {
+		rect.x = (int)(camera.x * speed) + x;
+		rect.y = (int)(camera.y * speed) + y;
+	}
+	else {
+		rect.x = x;
+		rect.y = y;
+	}
+
+	if (section != NULL) {
+		rect.w = section->w;
+		rect.h = section->h;
+
+	}
+	else {
+		SDL_QueryTexture(texture, NULL, NULL, &rect.w, &rect.h);
+	}
+
+	rect.w *= scale_;
+	rect.h *= scale_;
+
+	SDL_Point* p = NULL;
+	SDL_Point pivot;
+
+	if (pivot_x != INT_MAX && pivot_y != INT_MAX)
+	{
+		pivot.x = pivot_x;
+		pivot.y = pivot_y;
+		p = &pivot;
+	}
+
+	if (SDL_RenderCopyEx(renderer, texture, section, &rect, angle, p, flip) != 0)
+	{
+		std::cout << "Cannot blit to screen. SDL_RenderCopy error: %s", SDL_GetError();
+		ret = false;
+	}
+
+	return ret;
+
+
 }

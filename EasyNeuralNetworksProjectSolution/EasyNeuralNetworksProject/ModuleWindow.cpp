@@ -96,6 +96,15 @@ bool ModuleWindow::Init() {
 		screen_surface = SDL_GetWindowSurface(window);
 	}
 
+	if (!gladLoadGLLoader((GLADloadproc)SDL_GL_GetProcAddress))
+	{
+		std::cerr << "[ERROR] Couldn't initialize glad" << std::endl;
+	}
+	else
+	{
+		std::cout << "[INFO] glad initialized\n";
+	}
+
 	/* Drag and drop events can be placed here from SDL_events.h */
 
 

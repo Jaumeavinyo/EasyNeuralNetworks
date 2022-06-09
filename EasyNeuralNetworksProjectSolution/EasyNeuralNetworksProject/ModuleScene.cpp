@@ -45,7 +45,7 @@ update_status ModuleScene::PreUpdate(float dt) {
 	update_status ret = update_status::UPDATE_CONTINUE;
 
 
-	ImGui::BeginMainMenuBar();
+	/*ImGui::BeginMainMenuBar();
 	if (ImGui::BeginMenu("File"))
 	{
 		if (ImGui::MenuItem("New Neural Scenario"))
@@ -61,7 +61,7 @@ update_status ModuleScene::PreUpdate(float dt) {
 	if (displayNeuralNetworkGui) {
 		p_neuralNet->displayGui();	
 		p_neuralNet->updateNeuralNetwork();
-	}
+	}*/
 	
 
 	return ret;

@@ -1,65 +1,11 @@
-﻿  App.cpp
-  Layer.cpp
-C:\Users\jauma\Documents\GitHub\EasyNeuralNetworks\EasyNeuralNetworksProjectSolution\EasyNeuralNetworksProject\Layer.cpp(24,20): warning C4018: '<': signed/unsigned mismatch
-  Main.cpp
-  ModuleImGui.cpp
-  ModuleInput.cpp
-C:\Users\jauma\Documents\GitHub\EasyNeuralNetworks\EasyNeuralNetworksProjectSolution\EasyNeuralNetworksProject\ModuleInput.cpp(118,14): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-  ModuleRender.cpp
-C:\Users\jauma\Documents\GitHub\EasyNeuralNetworks\EasyNeuralNetworksProjectSolution\EasyNeuralNetworksProject\ModuleRender.cpp(113,12): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-C:\Users\jauma\Documents\GitHub\EasyNeuralNetworks\EasyNeuralNetworksProjectSolution\EasyNeuralNetworksProject\ModuleRender.cpp(122,12): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-  ModuleScene.cpp
-  ModuleWindow.cpp
-  NeuralNetwork.cpp
-C:\Users\jauma\Documents\GitHub\EasyNeuralNetworks\EasyNeuralNetworksProjectSolution\EasyNeuralNetworksProject\NeuralNetwork.cpp(31,20): warning C4018: '<': signed/unsigned mismatch
-C:\Users\jauma\Documents\GitHub\EasyNeuralNetworks\EasyNeuralNetworksProjectSolution\EasyNeuralNetworksProject\NeuralNetwork.cpp(77,21): warning C4018: '<': signed/unsigned mismatch
-C:\Users\jauma\Documents\GitHub\EasyNeuralNetworks\EasyNeuralNetworksProjectSolution\EasyNeuralNetworksProject\NeuralNetwork.cpp(152,22): warning C4018: '<': signed/unsigned mismatch
-C:\Users\jauma\Documents\GitHub\EasyNeuralNetworks\EasyNeuralNetworksProjectSolution\EasyNeuralNetworksProject\NeuralNetwork.cpp(323,64): warning C4305: 'argument': truncation from 'double' to 'float'
-C:\Users\jauma\Documents\GitHub\EasyNeuralNetworks\EasyNeuralNetworksProjectSolution\EasyNeuralNetworksProject\NeuralNetwork.cpp(337,61): warning C4305: 'argument': truncation from 'double' to 'float'
-C:\Users\jauma\Documents\GitHub\EasyNeuralNetworks\EasyNeuralNetworksProjectSolution\EasyNeuralNetworksProject\NeuralNetwork.cpp(371,33): warning C4244: '=': conversion from '_Ty' to 'float', possible loss of data
-          with
-          [
-              _Ty=double
-          ]
-C:\Users\jauma\Documents\GitHub\EasyNeuralNetworks\EasyNeuralNetworksProjectSolution\EasyNeuralNetworksProject\NeuralNetwork.cpp(398,34): warning C4244: '=': conversion from '_Ty' to 'float', possible loss of data
-          with
-          [
-              _Ty=double
-          ]
-C:\Users\jauma\Documents\GitHub\EasyNeuralNetworks\EasyNeuralNetworksProjectSolution\EasyNeuralNetworksProject\NeuralNetwork.cpp(434,22): warning C4244: '=': conversion from '_Ty' to 'float', possible loss of data
-          with
-          [
-              _Ty=double
-          ]
-C:\Users\jauma\Documents\GitHub\EasyNeuralNetworks\EasyNeuralNetworksProjectSolution\EasyNeuralNetworksProject\NeuralNetwork.cpp(435,14): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-C:\Users\jauma\Documents\GitHub\EasyNeuralNetworks\EasyNeuralNetworksProjectSolution\EasyNeuralNetworksProject\NeuralNetwork.cpp(538,20): warning C4018: '<': signed/unsigned mismatch
-C:\Users\jauma\Documents\GitHub\EasyNeuralNetworks\EasyNeuralNetworksProjectSolution\EasyNeuralNetworksProject\NeuralNetwork.cpp(546,20): warning C4018: '<': signed/unsigned mismatch
-C:\Users\jauma\Documents\GitHub\EasyNeuralNetworks\EasyNeuralNetworksProjectSolution\EasyNeuralNetworksProject\NeuralNetwork.cpp(553,21): warning C4018: '<': signed/unsigned mismatch
-C:\Users\jauma\Documents\GitHub\EasyNeuralNetworks\EasyNeuralNetworksProjectSolution\EasyNeuralNetworksProject\NeuralNetwork.cpp(577,20): warning C4018: '<': signed/unsigned mismatch
-C:\Users\jauma\Documents\GitHub\EasyNeuralNetworks\EasyNeuralNetworksProjectSolution\EasyNeuralNetworksProject\NeuralNetwork.cpp(584,10): warning C4244: 'initializing': conversion from 'unsigned int' to 'float', possible loss of data
-C:\Users\jauma\Documents\GitHub\EasyNeuralNetworks\EasyNeuralNetworksProjectSolution\EasyNeuralNetworksProject\NeuralNetwork.cpp(594,20): warning C4018: '<=': signed/unsigned mismatch
-C:\Users\jauma\Documents\GitHub\EasyNeuralNetworks\EasyNeuralNetworksProjectSolution\EasyNeuralNetworksProject\NeuralNetwork.cpp(612,21): warning C4018: '<': signed/unsigned mismatch
-C:\Users\jauma\Documents\GitHub\EasyNeuralNetworks\EasyNeuralNetworksProjectSolution\EasyNeuralNetworksProject\NeuralNetwork.cpp(629,21): warning C4018: '<': signed/unsigned mismatch
-C:\Users\jauma\Documents\GitHub\EasyNeuralNetworks\EasyNeuralNetworksProjectSolution\EasyNeuralNetworksProject\NeuralNetwork.cpp(645,20): warning C4018: '<': signed/unsigned mismatch
-C:\Users\jauma\Documents\GitHub\EasyNeuralNetworks\EasyNeuralNetworksProjectSolution\EasyNeuralNetworksProject\NeuralNetwork.cpp(689,20): warning C4018: '<': signed/unsigned mismatch
-  Neuron.cpp
-C:\Users\jauma\Documents\GitHub\EasyNeuralNetworks\EasyNeuralNetworksProjectSolution\EasyNeuralNetworksProject\Neuron.cpp(24,24): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-C:\Users\jauma\Documents\GitHub\EasyNeuralNetworks\EasyNeuralNetworksProjectSolution\EasyNeuralNetworksProject\Neuron.cpp(13,7): warning C4101: 'link': unreferenced local variable
-C:\Users\jauma\Documents\GitHub\EasyNeuralNetworks\EasyNeuralNetworksProjectSolution\EasyNeuralNetworksProject\Neuron.cpp(134,21): warning C4018: '<': signed/unsigned mismatch
-C:\Users\jauma\Documents\GitHub\EasyNeuralNetworks\EasyNeuralNetworksProjectSolution\EasyNeuralNetworksProject\Neuron.cpp(150,21): warning C4018: '<': signed/unsigned mismatch
-C:\Users\jauma\Documents\GitHub\EasyNeuralNetworks\EasyNeuralNetworksProjectSolution\EasyNeuralNetworksProject\Neuron.cpp(168,20): warning C4018: '<': signed/unsigned mismatch
-C:\Users\jauma\Documents\GitHub\EasyNeuralNetworks\EasyNeuralNetworksProjectSolution\EasyNeuralNetworksProject\Neuron.cpp(204,20): warning C4018: '<': signed/unsigned mismatch
-C:\Users\jauma\Documents\GitHub\EasyNeuralNetworks\EasyNeuralNetworksProjectSolution\EasyNeuralNetworksProject\Neuron.cpp(216,20): warning C4018: '<': signed/unsigned mismatch
-C:\Users\jauma\Documents\GitHub\EasyNeuralNetworks\EasyNeuralNetworksProjectSolution\EasyNeuralNetworksProject\Neuron.cpp(221,73): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-C:\Users\jauma\Documents\GitHub\EasyNeuralNetworks\EasyNeuralNetworksProjectSolution\EasyNeuralNetworksProject\Neuron.cpp(222,83): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
-C:\Users\jauma\Documents\GitHub\EasyNeuralNetworks\EasyNeuralNetworksProjectSolution\EasyNeuralNetworksProject\Neuron.cpp(223,10): warning C4477: 'printf' : format string '%f' requires an argument of type 'double', but variadic argument 3 has type '_Ty'
-          with
-          [
-              _Ty=weight
-          ]
+﻿  ModuleRender.cpp
+C:\Users\jauma\Documents\GitHub\EasyNeuralNetworks\EasyNeuralNetworksProjectSolution\EasyNeuralNetworksProject\ModuleRender.cpp(120,12): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\jauma\Documents\GitHub\EasyNeuralNetworks\EasyNeuralNetworksProjectSolution\EasyNeuralNetworksProject\ModuleRender.cpp(129,12): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\jauma\Documents\GitHub\EasyNeuralNetworks\EasyNeuralNetworksProjectSolution\EasyNeuralNetworksProject\ModuleRender.cpp(161,18): warning C4244: '*=': conversion from 'float' to 'int', possible loss of data
+C:\Users\jauma\Documents\GitHub\EasyNeuralNetworks\EasyNeuralNetworksProjectSolution\EasyNeuralNetworksProject\ModuleRender.cpp(162,18): warning C4244: '*=': conversion from 'float' to 'int', possible loss of data
   Generating code
-  3 of 2467 functions ( 0.1%) were compiled, the rest were copied from previous compilation.
+  2 of 1507 functions ( 0.1%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
-    24 functions had inline decision re-evaluated but remain unchanged
+    14 functions had inline decision re-evaluated but remain unchanged
   Finished generating code
   EasyNeuralNetworksProject.vcxproj -> C:\Users\jauma\Documents\GitHub\EasyNeuralNetworks\EasyNeuralNetworksProjectSolution\Release\EasyNeuralNetworksProject.exe

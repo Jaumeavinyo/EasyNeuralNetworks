@@ -25,4 +25,5 @@ struct fPoint {
 
 };
 
+
 #endif VARIABLES_H

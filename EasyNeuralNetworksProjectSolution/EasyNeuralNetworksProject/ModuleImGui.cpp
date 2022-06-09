@@ -27,14 +27,7 @@ bool ModuleImGui::Init() {
 	bool ret = true;
 	printf("ModuleImGui Init()\n");
 	
-	if (!gladLoadGLLoader((GLADloadproc)SDL_GL_GetProcAddress))
-	{
-		std::cerr << "[ERROR] Couldn't initialize glad" << std::endl;
-	}
-	else
-	{
-		std::cout << "[INFO] glad initialized\n";
-	}
+	//glad init necessary for ImGui done in window init()
 	std::string glsl_version = "";
 	glsl_version = "#version 130";
 
@@ -103,14 +96,14 @@ update_status ModuleImGui::Update(float dt) {
 update_status ModuleImGui::PostUpdate(float dt) {
 
 	update_status ret = update_status::UPDATE_CONTINUE;
-	ImVec4 clear_color = ImVec4(0.45f, 0.55f, 0.60f, 1.00f);
+	//ImVec4 clear_color = ImVec4(0.45f, 0.55f, 0.60f, 1.00f);
 	// Rendering
 	ImGui::Render();
-	glViewport(0, 0, (int)SCREEN_WIDTH, (int)SCREEN_HEIGHT);
+	/*glViewport(0, 0, (int)SCREEN_WIDTH, (int)SCREEN_HEIGHT);
 	glClearColor(clear_color.x * clear_color.w, clear_color.y * clear_color.w, clear_color.z * clear_color.w, clear_color.w);
-	glClear(GL_COLOR_BUFFER_BIT);
+	glClear(GL_COLOR_BUFFER_BIT);*/
 	ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
-	SDL_GL_SwapWindow(App->window->window);
+	/*SDL_GL_SwapWindow(App->window->window);*/
 	return ret;
 
 }
