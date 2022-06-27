@@ -1,11 +1,1 @@
-﻿  ModuleRender.cpp
-C:\Users\jauma\Documents\GitHub\EasyNeuralNetworks\EasyNeuralNetworksProjectSolution\EasyNeuralNetworksProject\ModuleRender.cpp(120,12): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-C:\Users\jauma\Documents\GitHub\EasyNeuralNetworks\EasyNeuralNetworksProjectSolution\EasyNeuralNetworksProject\ModuleRender.cpp(129,12): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-C:\Users\jauma\Documents\GitHub\EasyNeuralNetworks\EasyNeuralNetworksProjectSolution\EasyNeuralNetworksProject\ModuleRender.cpp(161,18): warning C4244: '*=': conversion from 'float' to 'int', possible loss of data
-C:\Users\jauma\Documents\GitHub\EasyNeuralNetworks\EasyNeuralNetworksProjectSolution\EasyNeuralNetworksProject\ModuleRender.cpp(162,18): warning C4244: '*=': conversion from 'float' to 'int', possible loss of data
-  Generating code
-  2 of 1507 functions ( 0.1%) were compiled, the rest were copied from previous compilation.
-    0 functions were new in current compilation
-    14 functions had inline decision re-evaluated but remain unchanged
-  Finished generating code
-  EasyNeuralNetworksProject.vcxproj -> C:\Users\jauma\Documents\GitHub\EasyNeuralNetworks\EasyNeuralNetworksProjectSolution\Release\EasyNeuralNetworksProject.exe
+﻿  EasyNeuralNetworksProject.vcxproj -> C:\Users\jauma\Documents\GitHub\EasyNeuralNetworks\EasyNeuralNetworksProjectSolution\Release\EasyNeuralNetworksProject.exe
