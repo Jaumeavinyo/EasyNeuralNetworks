@@ -118,14 +118,14 @@
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
-      <AdditionalIncludeDirectories>lib\SDL2\include;lib\glfw\include;lib\glad\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>lib\SDL2\include;lib\glfw\include;lib\glad\include;..\SDL_image\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;lib\SDL2\lib\x86\SDL2.lib;lib\SDL2\lib\x86\SDL2main.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;lib\SDL2\lib\x86\SDL2.lib;lib\SDL2\lib\x86\SDL2main.lib;lib\SDL2\lib\x86\SDL2_image.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -184,6 +184,7 @@
     <ClCompile Include="ModuleScene.cpp" />
     <ClCompile Include="ModuleWindow.cpp" />
     <ClCompile Include="Neuron.cpp" />
+    <ClCompile Include="SDLManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="DynamicArray.h" />
@@ -211,6 +212,7 @@
     <ClInclude Include="ModuleWindow.h" />
     <ClInclude Include="Neuron.h" />
     <ClInclude Include="p2List.h" />
+    <ClInclude Include="SDLManager.h" />
     <ClInclude Include="StandartLibraries.h" />
     <ClInclude Include="String_.h" />
     <ClInclude Include="Variables.h" />

@@ -7,7 +7,7 @@
 #include "ModuleImGui.h"
 #include "ModuleScene.h"
 
-
+#include "SDLManager.h"
 
 class Application{
 
@@ -18,6 +18,11 @@ public:
 	ModuleInput*  input;
 	ModuleImGui* imgui;
 	ModuleScene* scene;
+
+
+	//Managers: SDL_Manager
+	SDLManager* sdlManager;
+	
 
 private:
 	

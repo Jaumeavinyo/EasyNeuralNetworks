@@ -1,6 +1,7 @@
 #ifndef __p2List_H__
 #define __p2List_H__
 
+#include "Variables.h"
 
 /**
 * Contains items from double linked list
@@ -73,7 +74,7 @@ public:
 	}
 
 	/**
-	* Add new item
+	* Add new item at the end
 	*/
 	p2List_item<tdata>* add(const tdata& item)
 	{

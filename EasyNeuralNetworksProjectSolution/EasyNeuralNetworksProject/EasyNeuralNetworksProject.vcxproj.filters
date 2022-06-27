@@ -34,6 +34,9 @@
     <Filter Include="Source Files\ImGui\ImNodes">
       <UniqueIdentifier>{20edc6e3-a5c2-4325-83ff-5028bb0c341d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Tools">
+      <UniqueIdentifier>{d24cf516-e122-4432-8dc7-e5be1b27b0ef}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ModuleWindow.cpp">
@@ -92,6 +95,9 @@
     </ClCompile>
     <ClCompile Include="lib\ImGUI\imNODES\imnodes.cpp">
       <Filter>Source Files\ImGui\ImNodes</Filter>
+    </ClCompile>
+    <ClCompile Include="SDLManager.cpp">
+      <Filter>Source Files\Tools</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -178,6 +184,9 @@
     </ClInclude>
     <ClInclude Include="DynamicArray.h">
       <Filter>Resource Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SDLManager.h">
+      <Filter>Source Files\Tools</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

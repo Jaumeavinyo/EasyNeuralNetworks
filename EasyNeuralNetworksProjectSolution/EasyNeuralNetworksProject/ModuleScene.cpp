@@ -44,6 +44,13 @@ update_status ModuleScene::PreUpdate(float dt) {
 
 	update_status ret = update_status::UPDATE_CONTINUE;
 
+	SDL_Texture* tex = App->sdlManager->load("..\imgs\panda.png",App->render->renderer);
+	SDL_Rect* rect = nullptr;
+	rect->x = 0;
+	rect->y = 0;
+	rect->w = 100;
+	rect->h = 100;
+	App->render->Blit(tex, 100, 100, rect);
 
 	/*ImGui::BeginMainMenuBar();
 	if (ImGui::BeginMenu("File"))
