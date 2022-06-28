@@ -20,7 +20,7 @@ SDL_Texture* const SDLManager::load(const char* filePath, SDL_Renderer* renderer
 
 	if (surface == NULL)
 	{
-		printf("Could not load surface with path: %s. IMG_Load: %s", filePath, IMG_GetError());
+		printf("\n Could not load surface with path: %s. IMG_Load: %s", filePath, IMG_GetError());
 	}
 	else
 	{

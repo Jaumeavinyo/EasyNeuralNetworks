@@ -81,7 +81,7 @@ update_status  ModuleRender::PostUpdate(float dt) {
 	
 	// clear_color = ImVec4(0.45f, 0.55f, 0.60f, 1.00f);
 	glViewport(0, 0, (int)SCREEN_WIDTH, (int)SCREEN_HEIGHT);
-	setBackgroundColor(1, 1, 0, 1);
+	//setBackgroundColor(1, 1, 0, 1);
 	glClearColor(background.r, background.g, background.b, 1);
 	glClear(GL_COLOR_BUFFER_BIT);
 	
@@ -173,7 +173,7 @@ bool ModuleRender::Blit(SDL_Texture* texture, int x, int y, const SDL_Rect* sect
 
 	if (SDL_RenderCopyEx(renderer, texture, section, &rect, angle, p, flip) != 0)
 	{
-		std::cout << "Cannot blit to screen. SDL_RenderCopy error: %s", SDL_GetError();
+		std::cout << "\n Cannot blit to screen. SDL_RenderCopy error: %s", SDL_GetError();
 		ret = false;
 	}
 
