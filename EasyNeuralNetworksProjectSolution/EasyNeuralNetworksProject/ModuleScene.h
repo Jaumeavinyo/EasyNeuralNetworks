@@ -36,6 +36,11 @@ public:
 
 	NeuralNetwork* getNeuralNetwork();
 
+	SDL_Texture* tex;
+	SDL_Rect rect;
+
+
+
 private:
 
 	NeuralNetwork* p_neuralNet;

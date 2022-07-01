@@ -11,9 +11,12 @@ SDLManager::SDLManager()
 
 SDLManager::~SDLManager()
 {
+	for (int i = 0; i < textures.count(); i++) {
+		//textures destroy all
+	}
 }
 
-SDL_Texture* const SDLManager::load(const char* filePath, SDL_Renderer* renderer) {
+SDL_Texture* const SDLManager::loadTexture(const char* filePath, SDL_Renderer* renderer) {
 
 	SDL_Texture* texture = NULL;
 	SDL_Surface* surface = IMG_Load(filePath);

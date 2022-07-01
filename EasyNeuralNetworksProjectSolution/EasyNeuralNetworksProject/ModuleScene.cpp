@@ -34,6 +34,13 @@ bool ModuleScene::Start() {
 	printf("ModuleScene Start()\n");
 	printf(" ---> creating new neural network program,...");
 
+	tex = App->sdlManager->loadTexture("forest.png", App->render->renderer);
+	if (tex == NULL) {
+		printf("ssssssssssss""\n");
+	}
+	rect = { 0, 0, 1000, 1000 };
+
+
 	
 
 	return ret;
@@ -44,13 +51,9 @@ update_status ModuleScene::PreUpdate(float dt) {
 
 	update_status ret = update_status::UPDATE_CONTINUE;
 
-	SDL_Texture* tex = App->sdlManager->load("panda.png",App->render->renderer);
-	SDL_Rect rect = { 10, 10, 100, 100 };
-	 
 	
-	App->render->Blit(tex, 100, 100, &rect);
 
-	/*ImGui::BeginMainMenuBar();
+	ImGui::BeginMainMenuBar();
 	if (ImGui::BeginMenu("File"))
 	{
 		if (ImGui::MenuItem("New Neural Scenario"))
@@ -66,7 +69,7 @@ update_status ModuleScene::PreUpdate(float dt) {
 	if (displayNeuralNetworkGui) {
 		p_neuralNet->displayGui();	
 		p_neuralNet->updateNeuralNetwork();
-	}*/
+	}
 	
 
 	return ret;
@@ -75,7 +78,7 @@ update_status ModuleScene::PreUpdate(float dt) {
 update_status  ModuleScene::Update(float dt) {
 
 	update_status ret = update_status::UPDATE_CONTINUE;
-
+	App->render->Blit(tex, 100, 100, &rect);
 	return ret;
 }
 
@@ -83,7 +86,7 @@ update_status  ModuleScene::PostUpdate(float dt) {
 
 	update_status ret = update_status::UPDATE_CONTINUE;
 
-
+	
 
 	return ret;
 }
@@ -93,6 +96,7 @@ bool ModuleScene::CleanUp() {
 
 	bool ret = true;
 
+	
 
 	return ret;
 

@@ -15,7 +15,7 @@ public:
 
 
 
-	SDL_Texture* const load(const char* filePath, SDL_Renderer* renderer);
+	SDL_Texture* const loadTexture(const char* filePath, SDL_Renderer* renderer);
 	SDL_Texture* const loadSurface(SDL_Surface* surface, SDL_Renderer* renderer);
 
 

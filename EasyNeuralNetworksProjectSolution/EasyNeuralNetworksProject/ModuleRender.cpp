@@ -36,10 +36,22 @@ bool ModuleRender::Init() {
 		ret = false;
 	}
 	else {
+		
+
+		int imgFlags = IMG_INIT_JPG | IMG_INIT_PNG;
+
+		if (!(IMG_Init(imgFlags) & imgFlags))
+		{
+			printf("SDL_image function IMG_Init() could not initialize! SDL_image Error: %s\n", IMG_GetError());
+			ret = false;
+		}
+
 		camera.h = App->window->screen_surface->h;
 		camera.w = App->window->screen_surface->w;
 		camera.x = 100;
 		camera.y = 200;
+
+		setBackgroundColor(1, 1, 0, 1);
 	}
 
 	return ret;
@@ -63,6 +75,7 @@ update_status  ModuleRender::PreUpdate(float dt) {
 
 	update_status ret = update_status::UPDATE_CONTINUE;
 
+	
 	SDL_RenderClear(renderer);//CLEAR PREV FRAME SCREEN
 
 	return ret;
@@ -71,7 +84,7 @@ update_status  ModuleRender::PreUpdate(float dt) {
 update_status  ModuleRender::Update(float dt) {
 
 	update_status ret = update_status::UPDATE_CONTINUE;
-
+	DrawLine(0, 0, 1000, 1000*dt, 255, 30, 22, 255);
 	return ret;
 }
 
@@ -79,7 +92,13 @@ update_status  ModuleRender::PostUpdate(float dt) {
 
 	update_status ret = update_status::UPDATE_CONTINUE;
 	
-	// clear_color = ImVec4(0.45f, 0.55f, 0.60f, 1.00f);
+	glViewport(0, 0, (int)SCREEN_WIDTH, (int)SCREEN_HEIGHT);
+
+	SDL_SetRenderDrawColor(renderer, background.r, background.g, background.g, background.a);
+	SDL_RenderPresent(renderer);
+	
+	
+	/*// clear_color = ImVec4(0.45f, 0.55f, 0.60f, 1.00f);
 	glViewport(0, 0, (int)SCREEN_WIDTH, (int)SCREEN_HEIGHT);
 	//setBackgroundColor(1, 1, 0, 1);
 	glClearColor(background.r, background.g, background.b, 1);
@@ -88,6 +107,10 @@ update_status  ModuleRender::PostUpdate(float dt) {
 	SDL_SetRenderDrawColor(renderer, background.r, background.g, background.g, background.a);//SET COLOR FOR RENDERING
 	//SDL_RenderPresent(renderer);//UPDATE SCREEN WITH NEW RENDERING DONE
 	SDL_GL_SwapWindow(App->window->window);
+	SDL_SetRenderDrawColor(renderer, background.r, background.g, background.g, background.a);
+	SDL_RenderPresent(renderer);*/
+
+
 	return ret;
 }
 
@@ -180,4 +203,29 @@ bool ModuleRender::Blit(SDL_Texture* texture, int x, int y, const SDL_Rect* sect
 	return ret;
 
 
+}
+
+
+bool ModuleRender::DrawLine(int x1, int y1, int x2, int y2, Uint8 r, Uint8 g, Uint8 b, Uint8 a, bool use_camera) const
+{
+	bool ret = true;	//TODO: Uncomment and see why it fucks up (Symbol file not loaded)
+	uint scale = App->window->GetScale();
+
+	SDL_SetRenderDrawBlendMode(renderer, SDL_BLENDMODE_BLEND);
+	SDL_SetRenderDrawColor(renderer, r, g, b, a);
+
+	int result = -1;
+
+	if (use_camera)
+		result = SDL_RenderDrawLine(renderer, camera.x + x1 * scale, camera.y + y1 * scale, camera.x + x2 * scale, camera.y + y2 * scale);
+	else
+		result = SDL_RenderDrawLine(renderer, x1 * scale, y1 * scale, x2 * scale, y2 * scale);
+
+	if (result != 0)
+	{
+		printf("Cannot draw quad to screen. SDL_RenderFillRect error: %s", SDL_GetError());
+		ret = false;
+	}
+
+	return ret;
 }
